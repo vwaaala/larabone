@@ -25,16 +25,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // $user = User::whereName('Admin')->first();
-        // $admin_role = Role::whereName('admin')->first();
-        // $user->roles()->attach($admin_role);
-        // $user = User::whereName('Admin')->with('roles')->first();
-        ///////////////////////////////////////////////
 
+//         dd();
+         return view('home');
 
-
-        // dd($user->toArray());
-        // return view('home');
+//        abort_if(auth()->user()->roles(), Response::HTTP_FORBIDDEN, '403 Forbidden');
+//
+//        $users = User::paginate(5);
+//
+//        return view('pages.users.index', compact('users'));
     }
 
 

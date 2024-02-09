@@ -71,15 +71,15 @@ class Role extends Model
     }
 
     /**
-     * Determine if the current role has a specific permission.
-     * This method checks if the permissions collection associated with the current Role
-     * contains a permission with the provided name.
+     * Determine if the role has a specific permission.
      *
-     * @param  string $permission The name of the permission to check for.
+     * @param string $permission The name of the permission to check for.
      * @return bool
      */
     public function hasPermission($permission): bool
     {
+        // Check if the permissions collection associated with the role contains a permission with the provided name
         return $this->permissions->contains('name', $permission);
     }
+
 }

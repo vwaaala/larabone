@@ -18,7 +18,7 @@
                 <div class="col-md-6">
                     <h3>{{ $user->name }}</h3>
                     <p>Email: {{ $user->email }}</p>
-                    <p>User Role: {{ $user->isSuperAdmin() ? $user->role->name. ' (Super)' : $user->role->name }}</p>
+                    <p>User Role: {{ $user->isSuperAdmin() ? 'Super Admin' : implode(", ", auth()->user()->getRoleNames()) }}</p>
                 </div>
                 <div class="col-md-6">
                     @include('user.action')

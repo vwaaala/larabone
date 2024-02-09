@@ -61,7 +61,7 @@ implements MustVerifyEmail {
         'password' => 'hashed',
     ];
 
-    
+
     /**
      * Define a relationship between the User model and the Role model.
      * This method returns a BelongsToMany relationship, indicating that a user can have multiple roles and a role can belong to multiple users.
@@ -83,8 +83,44 @@ implements MustVerifyEmail {
     public function hasRole($role): bool
     {
         // Check if the authenticated user has the specified role
-        return $this->role()->contains('name', $role);
+        return $this->roles->contains('name', $role);
     }
+
+    /**
+     * Determine if the user has a specific permission.
+     *
+     * @param string $permission The name of the permission to check for.
+     * @return bool
+     */
+    public function hasPermission($permission): bool
+    {
+        // Iterate through user's roles to check if any role has the permission
+        foreach ($this->roles as $role) {
+            if ($role->hasPermission($permission)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Get role name(s) associated with the user.
+     *
+     * @return array Array of role names
+     */
+    public function getRoleNames(): array
+    {
+        // Initialize an empty array to store role names
+        $roleNames = [];
+
+        // Iterate through user's roles to retrieve role names
+        foreach ($this->roles as $role) {
+            $roleNames[] = $role->name;
+        }
+
+        return $roleNames;
+    }
+
 
     /**
      * Check if the authenticated user is a super admin.
