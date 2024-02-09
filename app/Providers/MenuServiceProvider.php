@@ -26,7 +26,7 @@ class MenuServiceProvider extends ServiceProvider
             return Menu::new()
                 ->addClass('navbar-nav me-auto')
                 ->route('home', 'Dashboard')
-                ->route('query', 'Query')
+                ->route('tiket', 'Query')
                 ->route('role', 'Role')
                 ->route('user.index', 'User')
                 ->each(function (Link $item) {

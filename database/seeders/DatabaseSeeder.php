@@ -8,13 +8,16 @@ use Illuminate\Database\Seeder;
 class DatabaseSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * This method runs the database seeders to populate the database
+     * with initial data for users and roles.
      */
     public function run(): void
     {
         $this->call([
-            RoleSeeder::class,
             UserSeeder::class,
+            RoleSeeder::class,
+            PermissionSeeder::class,
         ]);
     }
+
 }

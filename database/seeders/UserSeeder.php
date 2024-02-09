@@ -7,10 +7,23 @@ use App\Models\User;
 class UserSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Run method to create users.
      */
     public function run(): void
     {
-        User::insert([['name' => 'John Doe', 'email' => 'admin@bunk3r.net', 'password' => bcrypt('secret'), 'role_id' => '1', 'avatar' => '/assets/images/avatar/avatar.jpg'], ['name' => 'Justin Timberlake', 'email' => 'user@bunk3r.net', 'password' => bcrypt('secret'), 'role_id' => '2', 'avatar' => '/assets/images/avatar/avatar.jpg']]);
-    }
+        // Create an admin user with specified details
+        User::create([
+            'name' => 'Admin', 'email' => 'admin@bunk3r.net', 'password' => bcrypt('secret'),
+        ]);
+    
+        // Create a moderator user with specified details
+        User::create([
+            'name' => 'Moderator', 'email' => 'moderator@bunk3r.net', 'password' => bcrypt('secret'),
+        ]);
+    
+        // Create a regular user with specified details
+        User::create([
+            'name' => 'User', 'email' => 'user@bunk3r.net', 'password' => bcrypt('secret'),
+        ]);
+    }    
 }

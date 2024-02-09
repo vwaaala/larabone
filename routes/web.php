@@ -35,7 +35,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('roles/{id}/retrieve', [App\Http\Controllers\RoleController::class, 'retrieveDeleted'])->name('role.retrieveDeleted')->middleware(['role:admin']);
 
     Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::get('queries', [App\Http\Controllers\QueryController::class, 'index'])->name('query');
 
 
     Route::get('users', [App\Http\Controllers\UserController::class, 'index'])->name('user.index')->middleware(['role:admin']);

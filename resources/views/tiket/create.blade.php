@@ -8,7 +8,7 @@
         <div class="card-body">
             <form method="POST" action="">
                 @csrf <!-- Add CSRF token field -->
-                
+
                 <div class="mb-3">
                     <label for="subject" class="form-label">Subject<span class="text-danger">*</span></label>
                     <input type="text" class="form-control @error('subject') is-invalid @enderror" id="subject" name="subject" placeholder="Enter subject" required>
@@ -18,8 +18,8 @@
                 </div>
                 <div class="mb-3">
                     <label for="query" class="form-label">Query<span class="text-danger">*</span></label>
-                    <textarea class="form-control @error('query') is-invalid @enderror" id="query" name="query" rows="3" placeholder="Enter your query" required></textarea>
-                    @error('query')
+                    <textarea class="form-control @error('tiket') is-invalid @enderror" id="query" name="query" rows="3" placeholder="Enter your query" required></textarea>
+                    @error('tiket')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>

@@ -23,10 +23,10 @@ class UsersDataTable extends DataTable
         })->addColumn('action', 'user.action'); // Add a column for actions using the 'user.action' view
     }
 
-    // Function to set the initial query for the DataTable
+    // Function to set the initial tiket for the DataTable
     public function query(User $model): QueryBuilder
     {
-        // Use Eloquent's newQuery method to get a new query builder instance
+        // Use Eloquent's newQuery method to get a new tiket builder instance
         $query = $model->newQuery()->with('role'); // Eager load the 'role' relationship
 
         // Check if deleted items should be included

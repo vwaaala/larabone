@@ -62,38 +62,62 @@ implements MustVerifyEmail {
         'password' => 'hashed',
     ];
 
+    
+    /**
+     * Define a relationship between the User model and the Role model.
+     * This method returns a BelongsToMany relationship, indicating that a user can have multiple roles and a role can belong to multiple users.
+     * The 'user_roles' table is used as the intermediate pivot table for this relationship.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function roles(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Role::class, 'user_roles');
+    }
+
     /**
      * Check if the user has the specified role.
      *
      * @param string $role
      * @return bool
      */
-    public function hasRole(int $role): bool
+    public function hasRole($role): bool
     {
         // Check if the authenticated user has the specified role
-        return $this->role()->where('id', $role)->exists();
+        return $this->role()->contains('name', $role);
     }
 
-    public function role(): \Illuminate\Database\Eloquent\Relations\BelongsTo
-    {
-        return $this->belongsTo(Role::class, 'role_id');
-    }
-
+    /**
+     * Check if the authenticated user is a super admin.
+     *
+     * @return bool Returns true if the authenticated user is a super admin, false otherwise.
+     */
     public function isSuperAdmin()
     {
-        // Check if the authenticated user has the specified role
+        // Check if the authenticated user ID matches the super admin ID configured in the application's settings
         return $this->id == config('panel.super_admin');
     }
 
+
+    /**
+     * Check if the authenticated user is not a super admin.
+     *
+     * @return bool
+     */
     public function isNotSuperAdmin()
     {
-        // Check if the authenticated user has the specified role
+        // Compare the authenticated user's ID with the super admin ID from the configuration
         return $this->id != config('panel.super_admin');
     }
 
+    /**
+     * Check if the authenticated user has the admin role.
+     *
+     * @return bool
+     */
     public function isAdmin()
     {
-        // Check if the authenticated user has the specified role
+        // Check if the authenticated user has the admin role based on the configured admin role ID
         return $this->role()->where('id', config('panel.admin_role_id'))->exists();
     }
 

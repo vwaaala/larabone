@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('avatar')->default('/assets/images/avatar/avatar.jpg');
-            $table->foreignId('role_id')->default(2)->constrained();
             $table->enum('status',['pending','active', 'inactive', 'banned'])->default('pending');
             $table->string('password');
             $table->rememberToken();

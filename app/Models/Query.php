@@ -22,7 +22,7 @@ class Query extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = ['user_id', 'query',];
+    protected $fillable = ['user_id', 'tiket',];
 
     /**
      * The attributes that will be set by SoftDeletes action
