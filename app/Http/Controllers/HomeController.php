@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +25,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        // $user = User::whereName('Admin')->first();
+        // $admin_role = Role::whereName('admin')->first();
+        // $user->roles()->attach($admin_role);
+        // $user = User::whereName('Admin')->with('roles')->first();
+        ///////////////////////////////////////////////
+
+
+
+        // dd($user->toArray());
+        // return view('home');
     }
+
+
 }

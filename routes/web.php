@@ -18,13 +18,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes(['verify' => true]);
 
+// This method registers the typical authentication routes for the application.
+// These routes include login, registration, logout, and password reset routes.
+// Auth::routes(['verify' => true]); // Uncomment to enable email verification, also add 'verified' in route middleware array
+Auth::routes(); // Comment if enabled email verification
+
+/**
+ * Route definition to handle changing the locale/language.
+ * 
+ * @param string $locale The locale/language code to be set.
+ * @return \Illuminate\Routing\Route Route instance.
+ */
 Route::get('/locale/{locale}', function ($locale) {
-
+    // Your route logic to handle locale/language change goes here.
 })->name('locale');
+
+
 // Auth middleware for authenticated users
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('roles', [App\Http\Controllers\RoleController::class, 'index'])->name('role.index')->middleware(['role:admin']);
     Route::get('roles/create', [App\Http\Controllers\RoleController::class, 'create'])->name('role.create')->middleware(['role:admin']);
     Route::post('roles/store', [App\Http\Controllers\RoleController::class, 'store'])->name('role.store')->middleware(['role:admin']);
@@ -47,6 +59,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('users/{id}/destroy', [App\Http\Controllers\UserController::class, 'destroy'])->name('user.destroy')->middleware(['role:admin']);
     Route::post('users/{id}/delete', [App\Http\Controllers\UserController::class, 'forceDelete'])->name('user.forceDelete')->middleware(['role:admin']);
     Route::get('users/{id}/retrieve', [App\Http\Controllers\UserController::class, 'retrieveDeleted'])->name('user.retrieveDeleted')->middleware(['role:admin']);
+
 
 });
 

@@ -24,7 +24,7 @@ class Role extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'description'];
 
     /**
      * The attributes that will be set by SoftDeletes action

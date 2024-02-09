@@ -29,7 +29,6 @@ implements MustVerifyEmail {
         'name',
         'email',
         'avatar',
-        'role_id',
         'status',
         'password',
     ];
@@ -118,7 +117,7 @@ implements MustVerifyEmail {
     public function isAdmin()
     {
         // Check if the authenticated user has the admin role based on the configured admin role ID
-        return $this->role()->where('id', config('panel.admin_role_id'))->exists();
+        return $this->roles()->where('roles.id', config('panel.admin_role_id'))->exists();
     }
 
 }
