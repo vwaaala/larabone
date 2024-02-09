@@ -46,7 +46,7 @@ return [
      */
     'engines'        => [
         'eloquent'   => Yajra\DataTables\EloquentDataTable::class,
-        'tiket'      => Yajra\DataTables\QueryDataTable::class,
+        'ticket'      => Yajra\DataTables\QueryDataTable::class,
         'collection' => Yajra\DataTables\CollectionDataTable::class,
         'resource' => Yajra\DataTables\ApiResourceDataTable::class,
     ],
@@ -59,7 +59,7 @@ return [
     'builders'       => [
         //Illuminate\Database\Eloquent\Relations\Relation::class => 'eloquent',
         //Illuminate\Database\Eloquent\Builder::class            => 'eloquent',
-        //Illuminate\Database\Query\Builder::class               => 'tiket',
+        //Illuminate\Database\Query\Builder::class               => 'ticket',
         //Illuminate\Support\Collection::class                   => 'collection',
     ],
 

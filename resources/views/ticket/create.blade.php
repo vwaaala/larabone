@@ -18,8 +18,8 @@
                 </div>
                 <div class="mb-3">
                     <label for="query" class="form-label">Query<span class="text-danger">*</span></label>
-                    <textarea class="form-control @error('tiket') is-invalid @enderror" id="query" name="query" rows="3" placeholder="Enter your query" required></textarea>
-                    @error('tiket')
+                    <textarea class="form-control @error('ticket') is-invalid @enderror" id="query" name="query" rows="3" placeholder="Enter your query" required></textarea>
+                    @error('ticket')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>

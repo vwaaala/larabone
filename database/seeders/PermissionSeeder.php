@@ -14,6 +14,8 @@ class PermissionSeeder extends Seeder
     {
         // Create permissions for user management
         Permission::insert([
+            ['name' => 'manage_user', 'description' => 'can view all user'],
+            ['name' => 'self_user', 'description' => 'can edit, update, view self'],
             ['name' => 'create_user', 'description' => 'can create new user'],
             ['name' => 'edit_user', 'description' => 'can edit existing user'],
             ['name' => 'view_user', 'description' => 'can view user details'],
@@ -23,6 +25,7 @@ class PermissionSeeder extends Seeder
 
         // Create permissions for role management
         Permission::insert([
+            ['name' => 'manage_role', 'description' => 'can view all role'],
             ['name' => 'create_role', 'description' => 'can create new role'],
             ['name' => 'edit_role', 'description' => 'can edit existing role'],
             ['name' => 'view_role', 'description' => 'can view role details'],
@@ -32,6 +35,7 @@ class PermissionSeeder extends Seeder
 
         // Create permissions for permission management
         Permission::insert([
+            ['name' => 'manage_permission', 'description' => 'can view all permission'],
             ['name' => 'create_permission', 'description' => 'can create new permission'],
             ['name' => 'edit_permission', 'description' => 'can edit existing permission'],
             ['name' => 'view_permission', 'description' => 'can view permission details'],

@@ -73,17 +73,28 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="card-footer">
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">{{ __('Click to fill Credentials') }}</div>
+
+                        <div class="card-body">
                             <div class="row mb-0">
                                 <div class="col-md-8 offset-md-4">
                                     <button type="button" onclick="fillForm('admin@bunk3r.net', 'secret')"
                                             class="btn btn-primary">
-                                        Fill Admin
+                                        Super Admin
+                                    </button>
+
+                                    <button type="button" onclick="fillForm('moderator@bunk3r.net', 'secret')"
+                                            class="btn btn-primary">
+                                        Moderator
                                     </button>
 
                                     <button type="button" onclick="fillForm('user@bunk3r.net', 'secret')"
                                             class="btn btn-primary">
-                                        Fill User
+                                        User
                                     </button>
                                 </div>
                             </div>

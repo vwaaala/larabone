@@ -26,7 +26,7 @@ Auth::routes(); // Comment if enabled email verification
 
 /**
  * Route definition to handle changing the locale/language.
- * 
+ *
  * @param string $locale The locale/language code to be set.
  * @return \Illuminate\Routing\Route Route instance.
  */
@@ -59,6 +59,30 @@ Route::middleware(['auth'])->group(function () {
     Route::post('users/{id}/destroy', [App\Http\Controllers\UserController::class, 'destroy'])->name('user.destroy')->middleware(['role:admin']);
     Route::post('users/{id}/delete', [App\Http\Controllers\UserController::class, 'forceDelete'])->name('user.forceDelete')->middleware(['role:admin']);
     Route::get('users/{id}/retrieve', [App\Http\Controllers\UserController::class, 'retrieveDeleted'])->name('user.retrieveDeleted')->middleware(['role:admin']);
+
+//    // Route for displaying a listing of permissions
+//    Route::get('/permissions', [PermissionController::class, 'index'])->name('permissions.index');
+//
+//    // Route for showing the form for creating a new permission
+//    Route::get('/permissions/create', [PermissionController::class, 'create'])->name('permissions.create');
+//
+//    // Route for storing a newly created permission in storage
+//    Route::post('/permissions', [PermissionController::class, 'store'])->name('permissions.store');
+//
+//    // Route for displaying the specified permission
+//    Route::get('/permissions/{permission}', [PermissionController::class, 'show'])->name('permissions.show');
+//
+//    // Route for showing the form for editing the specified permission
+//    Route::get('/permissions/{permission}/edit', [PermissionController::class, 'edit'])->name('permissions.edit');
+//
+//    // Route for updating the specified permission in storage
+//    Route::put('/permissions/{permission}', [PermissionController::class, 'update'])->name('permissions.update');
+//
+//    // Route for deleting the specified permission from storage
+//    Route::delete('/permissions/{permission}', [PermissionController::class, 'destroy'])->name('permissions.destroy');
+
+    Route::delete('permissions/destroy', [\App\Http\Controllers\PermissionController::class, 'massDestroy'])->name('permissions.massDestroy');
+    Route::resource('permissions', \App\Http\Controllers\PermissionController::class);
 
 
 });
