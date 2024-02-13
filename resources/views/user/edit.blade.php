@@ -58,15 +58,15 @@
                                 </div>
                             </div>
                         </div>
-                        @can('admin') <!-- Checking if user is admin -->
 
-                        @if(auth()->user()->id != $user->id && $user->isNotSuperAdmin())
+                        @if(auth()->user()->id != $user->id)
                         <div class="col-6">
                             <!-- Dropdown for selecting user's role -->
                             <label for="roleSelect" class="form-label">Role <span
                                     class="text-danger">*</span></label>
                             <select class="form-select @error('role') is-invalid @enderror" id="roleSelect"
                                     name="role">
+                                    @php $roles = []; @endphp
                                 @foreach($roles as $value)
 
                                     <option value="{{ $value->id }}"
@@ -96,7 +96,6 @@
                             @enderror
                         </div>
                         @endif
-                        @endcan
                         <div class="col-12 mt-2">
                             <!-- Button to submit user update -->
                             <button type="submit" class="btn btn-success">Update user</button>

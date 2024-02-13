@@ -13,7 +13,7 @@
         <p class="text-center"><strong>Email:</strong> {{ auth()->user()->email }}</p>
 
         <!-- Role Information -->
-        <p class="text-center"><strong>Role:</strong> {{ auth()->user()->role->name }}</p>
+        <p class="text-center"><strong>Role:</strong> {{ auth()->user()->name }}</p>
     </div>
 </div>
 @endsection

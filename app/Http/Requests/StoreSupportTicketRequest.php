@@ -2,17 +2,16 @@
 
 namespace App\Http\Requests;
 
-use App\Rules\UserStatusRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserUpdateRequest extends FormRequest
+class StoreSupportTicketRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -23,9 +22,7 @@ class UserUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255',
-            'status' => [new UserStatusRule],
-            'avatar'=> 'image|mimes:jpeg,png,jpg|max:1048'
+            //
         ];
     }
 }

@@ -8,8 +8,7 @@ use Illuminate\Database\Seeder;
 class DatabaseSeeder extends Seeder
 {
     /**
-     * This method runs the database seeders to populate the database
-     * with initial data for users and roles.
+     * Seed the application's database.
      */
     public function run(): void
     {
@@ -19,5 +18,4 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
         ]);
     }
-
 }

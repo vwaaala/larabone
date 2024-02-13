@@ -2,103 +2,130 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\RolesDataTable;
-use App\Models\Role;
-use App\Models\User;
+
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
 {
-    public function index(RolesDataTable $dataTable)
+    public function __construct()
     {
-        return $dataTable->render('role.index');
+        $this->middleware('auth');
+        $this->middleware('permission:role_create|role_create|edit|delete', ['only' => ['index','show']]);
+        $this->middleware('permission:role_create', ['only' => ['create','store']]);
+        $this->middleware('permission:role_edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:role_delete', ['only' => ['destroy']]);
     }
 
-    public function store(Request $request)
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
     {
-        $request->validate(['name' => 'required|string|unique:roles']);
-        if (auth()->user()->isAdmin()) {
-            if (Role::create(['name' => $request->input('name')])) {
-                return redirect()->route('role.index')->with('success', 'Role created.');
-            }
-            return redirect()->route('role.index')->with('error', 'Unable to create role');
-        }
-        abort(403, 'Unauthorized action');
+        //
+        return view('roles.index', [
+            'roles' => Role::orderBy('id','DESC')->paginate(3)
+        ]);
     }
 
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create()
     {
-        if (auth()->user()->isAdmin()) {
-            return view('role.create');
-        }
-        abort(403, 'Unauthorized action');
+        //
+        return view('roles.create', [
+            'permissions' => Permission::get()
+        ]);
     }
 
-    public function edit(int $roleId)
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
     {
-        $role = Role::findOrFail($roleId);
-        if (auth()->user()->isAdmin() && $role->id != auth()->user()->role->id && !$role->nonRemovableRole()) {
-            return view('role.edit', compact('role'));
-        }
-        abort(403, 'Unauthorized action');
+        //
+        $role = Role::create(['name' => $request->name]);
+
+        $permissions = Permission::whereIn('id', $request->permissions)->get(['name'])->toArray();
+        
+        $role->syncPermissions($permissions);
+
+        return redirect()->route('roles.index')
+                ->withSuccess('New role is added successfully.');
     }
 
-    public function update(Request $request, int $roleId)
+    /**
+     * Display the specified resource.
+     */
+    public function show(Role $role)
     {
-        $request->validate(['name' => 'required|string|unique:roles']);
-
-        $role = Role::findOrFail($roleId);
-        if (auth()->user()->isAdmin() && $role->id != auth()->user()->role->id && !$role->nonRemovableRole()) {
-            if ($role->update(['name' => $request->input('name')])) {
-                return redirect()->route('role.index')->with('success', 'Role updated.');
-            }
-            return redirect()->route('role.index')->with('error', 'Unable to update role');
-        }
-        abort(403, 'Unauthorized action');
+        //
+        $rolePermissions = Permission::join("role_has_permissions","permission_id","=","id")
+            ->where("role_id",$role->id)
+            ->select('name')
+            ->get();
+        return view('roles.show', [
+            'role' => $role,
+            'rolePermissions' => $rolePermissions
+    ]);
     }
 
-    // Remove the specified resource from storage.
-    public function destroy($roleId)
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Role $role)
     {
-        $role = Role::findOrFail($roleId);
-        if (auth()->user()->isAdmin() && !$role->nonRemovableRole()) {
-            // Delete role
-            if ($role->delete()) {
-                return redirect()->route('role.index')->with('success', 'Role deleted successfully');
-            }
-            return redirect()->back()->with('error', 'Failed to delete.');
+        //
+        if($role->name=='Super Admin'){
+            abort(403, 'SUPER ADMIN ROLE CAN NOT BE EDITED');
         }
-        abort(403, 'Unauthorized action.');
+
+        $rolePermissions = DB::table("role_has_permissions")->where("role_id",$role->id)
+            ->pluck('permission_id')
+            ->all();
+
+        return view('roles.edit', [
+            'role' => $role,
+            'permissions' => Permission::get(),
+            'rolePermissions' => $rolePermissions
+        ]);
     }
 
-    // Restore the specified soft deleted resource.
-    public function retrieveDeleted($roleId)
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, Role $role)
     {
-        if (auth()->user()->isAdmin()) {
-            // Restore soft deleted role
-            if (Role::withTrashed()->findOrFail($roleId)->restore()) {
-                return redirect()->route('role.index')->with('success', 'Role retrieved successfully');
-            }
-            return redirect()->back()->with('error', 'User can not retrieved');
-        }
-        abort(403, 'Unauthorized action.');
+        //
+        $input = $request->only('name');
+
+        $role->update($input);
+
+        $permissions = Permission::whereIn('id', $request->permissions)->get(['name'])->toArray();
+
+        $role->syncPermissions($permissions);    
+        
+        return redirect()->back()
+                ->withSuccess('Role is updated successfully.');
+ 
     }
 
-    // Permanently remove the specified resource from storage.
-    public function forceDelete($roleId)
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Role $role)
     {
-        // Find soft deleted role
-        $role = Role::onlyTrashed()->findOrFail($roleId);
-        if (auth()->user()->isAdmin()) {
-            // Update users with the role to be deleted to the default role
-            User::where('role_id', $role->id)->update(['role_id' => config('panel.user_role_id')]);
-
-            // Permanently delete role
-            if ($role->forceDelete()) {
-                redirect()->route('role.index')->with('success', 'Role deleted successfully!');
-            }
-            return redirect()->route('role.index')->with('error', 'Role can not be force deleted');
+        //
+        if($role->name=='Super Admin'){
+            abort(403, 'SUPER ADMIN ROLE CAN NOT BE DELETED');
         }
-        abort(403, 'Unauthorized action.');
+        if(auth()->user()->hasRole($role->name)){
+            abort(403, 'CAN NOT DELETE SELF ASSIGNED ROLE');
+        }
+        $role->delete();
+        return redirect()->route('roles.index')
+                ->withSuccess('Role is deleted successfully.');
     }
 }

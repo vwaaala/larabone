@@ -169,6 +169,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Spatie\Menu\Laravel\MenuServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
         App\Providers\MenuServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,

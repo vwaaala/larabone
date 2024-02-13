@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Rules\UserStatusRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserUpdateRequest extends FormRequest
+class UpdateUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,9 +22,10 @@ class UserUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255',
-            'status' => [new UserStatusRule],
-            'avatar'=> 'image|mimes:jpeg,png,jpg|max:1048'
+            'name' => 'required|string|max:250',
+            'email' => 'required|string|email:rfc,dns|max:250|unique:users,email,'.$this->user->id,
+            'password' => 'nullable|string|min:8|confirmed',
+            'roles' => 'required'
         ];
     }
 }
