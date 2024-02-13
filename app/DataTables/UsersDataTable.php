@@ -18,8 +18,6 @@ class UsersDataTable extends DataTable
         // Create a new EloquentDataTable instance, set row ID to 'id'
         return (new EloquentDataTable($query))->setRowId('id')->editColumn('status', function ($user) {
             return ucfirst($user->status); // Use ucfirst to capitalize the first letter of 'status'
-        })->editColumn('role_id', function ($user) {
-            return $user->role->name; // Get the name of the role associated with the user
         })->addColumn('action', 'user.action'); // Add a column for actions using the 'user.action' view
     }
 
@@ -27,7 +25,7 @@ class UsersDataTable extends DataTable
     public function query(User $model): QueryBuilder
     {
         // Use Eloquent's newQuery method to get a new ticket builder instance
-        $query = $model->newQuery()->with('role'); // Eager load the 'role' relationship
+        $query = $model->newQuery();
 
         // Check if deleted items should be included
         if (request()->input('show_deleted')) {
@@ -70,7 +68,6 @@ class UsersDataTable extends DataTable
             Column::make('id'), // Column for 'id'
             Column::make('name'), // Column for 'name'
             Column::make('email'), // Column for 'email'
-            Column::make('role_id'), // Column for 'role_id'
             Column::make('status'), // Column for 'status'
             Column::make('created_at'), // Column for 'created_at'
             Column::make('updated_at'), // Column for 'updated_at'

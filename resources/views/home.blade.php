@@ -13,9 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    @can('edit user')
                     {{ __('You vsn edit user!') }}
-                    @endcan
                 </div>
             </div>
         </div>

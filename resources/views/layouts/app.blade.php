@@ -50,22 +50,16 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Dashboard</a>
                         </li>
-                        @if(auth()->user()->hasPermission('manage_permission'))
 
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('permissions.index') }}">Permissions</a>
+                                <a class="nav-link" href="#">Permissions</a>
                             </li>
-                        @endif
-                        @if(auth()->user()->hasPermission('manage_role'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('role.index') }}">Role</a>
+                                <a class="nav-link" href="#">Role</a>
                             </li>
-                        @endif
-                        @if(auth()->user()->hasPermission('manage_user'))
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('user.index') }}">Users</a>
                             </li>
-                        @endif
                     </ul>
                 @endguest
 

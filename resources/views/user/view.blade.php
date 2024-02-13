@@ -13,7 +13,7 @@
             <p class="text-center"><strong>Email:</strong> {{ $user->email }}</p>
 
             <!-- Role Information -->
-            <p class="text-center"><strong>Role:</strong> {{ $user->role->name }}</p>
+            <p class="text-center"><strong>Role:</strong> {{ $user->name }}</p>
         </div>
     </div>
 @endsection

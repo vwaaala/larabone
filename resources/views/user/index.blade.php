@@ -1,7 +1,5 @@
 @extends('layouts.app')
 @section('content')
-    <!-- Display content only if user has admin permission -->
-    @can('admin')
         <!-- User DataTable -->
         <div class="card">
             <div class="card-header d-flex justify-content-between">
@@ -22,7 +20,6 @@
                 {{ $dataTable->table() }}
             </div>
         </div>
-    @endcan
 @endsection
 
 @push('scripts')

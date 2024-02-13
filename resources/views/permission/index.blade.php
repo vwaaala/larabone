@@ -20,7 +20,7 @@
             </div>
 
             <!-- Right side of the card header Search form -->
-            <form action="{{ route('permissions.index') }}" method="GET" class="form-inline">
+            <form action="#" method="GET" class="form-inline">
                 <div class="input-group">
                     <input type="text" name="search" class="form-control" placeholder="Search..." value="{{ $searchQuery ?? '' }}">
                     <div class="input-group-append">
@@ -43,6 +43,9 @@
                 </tr>
                 </thead>
                 <tbody>
+                    @php
+                    $permissions = [];
+                    @endphp
                 <!-- Loop through permissions and display each permission -->
                 @foreach($permissions as $key => $value)
                     <tr>

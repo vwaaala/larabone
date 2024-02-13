@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -29,7 +28,6 @@ class HomeController extends Controller
 //         dd();
          return view('home');
 
-//        abort_if(auth()->user()->roles(), Response::HTTP_FORBIDDEN, '403 Forbidden');
 //
 //        $users = User::paginate(5);
 //

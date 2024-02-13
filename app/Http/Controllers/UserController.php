@@ -36,7 +36,6 @@ class UserController extends Controller
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
-            'role_id' => $request->input('role'),
             'status' => $request->input('status'),
             'avatar' => $imagePath ?? '/assets/images/avatar/avatar.jpg',
         ]);
@@ -81,4 +80,7 @@ class UserController extends Controller
         User::findOrFail($id)->delete();
         return redirect()->route('user.index')->with('success', 'User deleted successfully');
     }
+
+    public function changePassword($id)
+    {}
 }

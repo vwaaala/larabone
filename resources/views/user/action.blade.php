@@ -5,7 +5,7 @@
     <a href="{{ route('user.edit', $id) }}" class="btn btn-sm btn-primary" title="Edit">
         <span class="bi bi-pencil"></span> <!-- Bootstrap pencil icon -->
     </a>
-    <button type="button" class="btn btn-sm btn-danger" title="Delete" onclick="confirmDelete({{ $id }})">
+    <button type="button" class="btn btn-sm btn-danger" title="Delete" onclick="confirmDelete(1)">
         <span class="bi bi-trash"></span> <!-- Bootstrap trash icon -->
     </button>
 </div>
