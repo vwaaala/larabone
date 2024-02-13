@@ -36,6 +36,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('users/{id}/view', [App\Http\Controllers\UserController::class, 'view'])->name('user.view');
     Route::delete('users/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('user.destroy');
     Route::post('users/{id}/change-password', [App\Http\Controllers\UserController::class, 'changePassword'])->name('user.change-pass');
-
+    Route::resources([
+        'roles' => \App\Http\Controllers\RoleController::class,
+    ]);
 });
 
