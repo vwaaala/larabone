@@ -12,7 +12,7 @@ class RoleController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('permission:role_create|role_create|edit|delete', ['only' => ['index','show']]);
+        $this->middleware('permission:role_show|role_create|role_edit|role_delete', ['only' => ['index','show']]);
         $this->middleware('permission:role_create', ['only' => ['create','store']]);
         $this->middleware('permission:role_edit', ['only' => ['edit','update']]);
         $this->middleware('permission:role_delete', ['only' => ['destroy']]);
@@ -21,11 +21,11 @@ class RoleController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
         //
         return view('pages.roles.index', [
-            'roles' => Role::orderBy('id','DESC')->paginate(3)
+            'roles' => Role::orderBy('id','ASC')->paginate(10)
         ]);
     }
 
@@ -67,7 +67,7 @@ class RoleController extends Controller
             ->select('name')
             ->get();
         return view('pages.roles.show', [
-            'roles' => $role,
+            'role' => $role,
             'rolePermissions' => $rolePermissions
     ]);
     }
