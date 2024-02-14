@@ -24,7 +24,7 @@ class RoleController extends Controller
     public function index()
     {
         //
-        return view('roles.index', [
+        return view('pages.roles.index', [
             'roles' => Role::orderBy('id','DESC')->paginate(3)
         ]);
     }
@@ -35,7 +35,7 @@ class RoleController extends Controller
     public function create()
     {
         //
-        return view('roles.create', [
+        return view('pages.roles.create', [
             'permissions' => Permission::get()
         ]);
     }
@@ -49,11 +49,11 @@ class RoleController extends Controller
         $role = Role::create(['name' => $request->name]);
 
         $permissions = Permission::whereIn('id', $request->permissions)->get(['name'])->toArray();
-        
+
         $role->syncPermissions($permissions);
 
-        return redirect()->route('roles.index')
-                ->withSuccess('New role is added successfully.');
+        return redirect()->route('pages.roles.index')
+                ->withSuccess('New roles is added successfully.');
     }
 
     /**
@@ -66,8 +66,8 @@ class RoleController extends Controller
             ->where("role_id",$role->id)
             ->select('name')
             ->get();
-        return view('roles.show', [
-            'role' => $role,
+        return view('pages.roles.show', [
+            'roles' => $role,
             'rolePermissions' => $rolePermissions
     ]);
     }
@@ -86,8 +86,8 @@ class RoleController extends Controller
             ->pluck('permission_id')
             ->all();
 
-        return view('roles.edit', [
-            'role' => $role,
+        return view('pages.roles.edit', [
+            'roles' => $role,
             'permissions' => Permission::get(),
             'rolePermissions' => $rolePermissions
         ]);
@@ -105,11 +105,11 @@ class RoleController extends Controller
 
         $permissions = Permission::whereIn('id', $request->permissions)->get(['name'])->toArray();
 
-        $role->syncPermissions($permissions);    
-        
+        $role->syncPermissions($permissions);
+
         return redirect()->back()
                 ->withSuccess('Role is updated successfully.');
- 
+
     }
 
     /**
@@ -125,7 +125,7 @@ class RoleController extends Controller
             abort(403, 'CAN NOT DELETE SELF ASSIGNED ROLE');
         }
         $role->delete();
-        return redirect()->route('roles.index')
+        return redirect()->route('pages.roles.index')
                 ->withSuccess('Role is deleted successfully.');
     }
 }

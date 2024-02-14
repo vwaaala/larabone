@@ -82,17 +82,21 @@
                         <div class="card-body">
                             <div class="row mb-0">
                                 <div class="col-md-8 offset-md-4">
-                                    <button type="button" onclick="fillForm('admin@bunk3r.net', 'secret')"
+                                    <button type="button" onclick="fillForm('super@bunk3r.net', 'secret')"
                                             class="btn btn-primary">
                                         Super Admin
                                     </button>
-
-                                    <button type="button" onclick="fillForm('moderator@bunk3r.net', 'secret')"
+                                    <button type="button" onclick="fillForm('admin@bunk3r.net', 'secret')"
                                             class="btn btn-primary">
-                                        Moderator
+                                        Admin
                                     </button>
 
-                                    <button type="button" onclick="fillForm('user@bunk3r.net', 'secret')"
+                                    <button type="button" onclick="fillForm('manager@bunk3r.net', 'secret')"
+                                            class="btn btn-primary">
+                                        Manager
+                                    </button>
+
+                                    <button type="button" onclick="fillForm('users@bunk3r.net', 'secret')"
                                             class="btn btn-primary">
                                         User
                                     </button>

@@ -2,12 +2,14 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\UserStatusRule;
+use App\Rules\ValidRole;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateUserRequest extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
+     * Determine if the users is authorized to make this request.
      */
     public function authorize(): bool
     {
@@ -24,8 +26,9 @@ class UpdateUserRequest extends FormRequest
         return [
             'name' => 'required|string|max:250',
             'email' => 'required|string|email:rfc,dns|max:250|unique:users,email,'.$this->user->id,
-            'password' => 'nullable|string|min:8|confirmed',
-            'roles' => 'required'
+            'password' => 'nullable|string|min:6|confirmed',
+            'status' => ['required', new UserStatusRule], // Use the UserStatusRule custom rule
+            'roles' => ['required', new ValidRole], // Use the ValidRole custom rule
         ];
     }
 }

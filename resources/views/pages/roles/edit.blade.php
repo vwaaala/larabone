@@ -12,14 +12,14 @@
                 <h5 class="card-title">Information</h5> <!-- Card title for basic information -->
             </div>
             <div class="card-body">
-                <!-- Form for updating user basic information -->
-                <form method="POST" action="{{ route('role.update', $role->id) }}">
+                <!-- Form for updating users basic information -->
+                <form method="POST" action="{{ route('roles.update', $role->id) }}">
                     @method('PUT') <!-- Method spoofing to use PUT method -->
                     @csrf <!-- CSRF protection -->
 
                     <div class="row">
                         <div class="col-12">
-                            <!-- Input field for user's name -->
+                            <!-- Input field for users's name -->
                             <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
                                    name="name" value="{{ $role->name }}" required>
@@ -28,7 +28,7 @@
                             @enderror
                         </div>
                         <div class="col-12 mt-2">
-                            <!-- Button to submit user update -->
+                            <!-- Button to submit users update -->
                             <button type="submit" class="btn btn-success">Update role</button>
                         </div>
                     </div>
