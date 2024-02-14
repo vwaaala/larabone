@@ -5,14 +5,12 @@
         <!-- User DataTable -->
         <div class="card">
             <div class="card-header d-flex justify-content-between">
-                <span>Manage Roles</span>
+                <span>{{ $role->name }}</span>
             </div>
 
             <div class="card-body">
-                @can('role_create')
-                    <a href="{{ route('roles.create') }}" class="btn btn-success btn-sm my-2"><i
-                            class="bi bi-plus-circle"></i> Add New Role</a>
-                @endcan
+                <!-- Button to go back to the previous page -->
+                <button onclick="window.history.back();" class="btn btn-warning mb-2"><span class="bi bi-arrow-return-left"></span> Go Back</button>
                 <table class="table table-striped table-bordered">
                     <thead>
                     <tr>
@@ -22,17 +20,15 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @forelse ($roles as $role)
+                    @forelse ($rolePermissions as $role)
                         <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
                             <td>{{ $role->name }}</td>
                             <td>
-                                <a href="{{ route('roles.show', $role->id) }}" class="btn btn-warning btn-sm"><i
-                                        class="bi bi-eye"></i> Show</a>
                                 @can('role_edit')
-                                    <a href="{{ route('roles.edit', $role->id) }}"
-                                       class="btn btn-primary btn-sm"><i
-                                            class="bi bi-pencil-square"></i> Edit</a>
+                                    <a href="#"
+                                       class="btn btn-danger btn-sm"><i
+                                            class="bi bi-trash"></i> Remove</a>
                                 @endcan
                             </td>
                         </tr>
@@ -46,7 +42,7 @@
                     </tbody>
                 </table>
 
-                {{ $roles->links() }}
+{{--                {{ $rolePermissions->links() }}--}}
 
             </div>
         </div>
