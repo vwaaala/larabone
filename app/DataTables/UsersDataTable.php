@@ -18,7 +18,7 @@ class UsersDataTable extends DataTable
         // Create a new EloquentDataTable instance, set row ID to 'id'
         return (new EloquentDataTable($query))->setRowId('id')->editColumn('status', function ($user) {
             return ucfirst($user->status); // Use ucfirst to capitalize the first letter of 'status'
-        })->addColumn('action', 'user.action'); // Add a column for actions using the 'user.action' view
+        })->addColumn('action', 'pages.users.action'); // Add a column for actions using the 'users.action' view
     }
 
     // Function to set the initial ticket for the DataTable
@@ -34,32 +34,58 @@ class UsersDataTable extends DataTable
             $query = $query->withoutTrashed(); // Exclude soft deleted items
         }
 
-        // Exclude the first user based on ID
-        $firstUserId = User::orderBy('id')->value('id'); // Get the ID of the first user
-        $query->where('id', '!=', $firstUserId); // Exclude the user with the first ID
+        // Exclude the first users based on ID
+        $firstUserId = User::orderBy('id')->value('id'); // Get the ID of the first users
+        $query->where('id', '!=', $firstUserId); // Exclude the users with the first ID
 
         return $query;
     }
 
     // Function to define the HTML structure of the DataTable
+//    public function html(): HtmlBuilder
+//    {
+//        return $this->builder()->setTableId('users-table') // Set the table ID to 'users-table'
+//        ->columns($this->getColumns()) // Set columns using the getColumns function
+//        ->minifiedAjax() // Enable minified AJAX for faster loading
+//        ->orderBy(1) // Order the table by the first column
+//        ->selectStyleSingle() // Enable single row selection style
+//        ->responsive(true) // Enable responsive extension
+//        ->buttons([ // Add various DataTable buttons
+//            Button::make('add')->setPermission('user_create'), // Set permission for the "add" button
+//            Button::make('excel'),
+//            Button::make('csv'),
+////            Button::make('pdf'),
+//            Button::make('print'),
+//            Button::make('reset'),
+//            Button::make('reload'),
+//        ]);
+//    }
+
     public function html(): HtmlBuilder
     {
+        $buttons = [
+            Button::make('excel'),
+            Button::make('csv'),
+            // Button::make('pdf'),
+            Button::make('print'),
+            Button::make('reset'),
+            Button::make('reload'),
+        ];
+
+        // Check if the user has permission to create users
+        if (auth()->user()->can('user_create')) {
+            $buttons[] = Button::make('add');
+        }
+
         return $this->builder()->setTableId('users-table') // Set the table ID to 'users-table'
         ->columns($this->getColumns()) // Set columns using the getColumns function
         ->minifiedAjax() // Enable minified AJAX for faster loading
         ->orderBy(1) // Order the table by the first column
         ->selectStyleSingle() // Enable single row selection style
         ->responsive(true) // Enable responsive extension
-        ->buttons([ // Add various DataTable buttons
-            Button::make('add'),
-            Button::make('excel'),
-            Button::make('csv'),
-//            Button::make('pdf'),
-            Button::make('print'),
-            Button::make('reset'),
-            Button::make('reload'),
-        ]);
+        ->buttons($buttons); // Add the buttons array
     }
+
 
     // Function to define the columns of the DataTable
     public function getColumns(): array

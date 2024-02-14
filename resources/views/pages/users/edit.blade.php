@@ -12,14 +12,14 @@
                 <h5 class="card-title">Basic Information</h5> <!-- Card title for basic information -->
             </div>
             <div class="card-body">
-                <!-- Form for updating user basic information -->
-                <form method="POST" action="{{ route('user.update', $user->id) }}" enctype="multipart/form-data">
+                <!-- Form for updating users basic information -->
+                <form method="POST" action="{{ route('users.update', $user->id) }}" enctype="multipart/form-data">
                     @method('PUT') <!-- Method spoofing to use PUT method -->
                     @csrf <!-- CSRF protection -->
 
                     <div class="row">
                         <div class="col-12">
-                            <!-- Input field for user's name -->
+                            <!-- Input field for users's name -->
                             <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
                                    name="name" value="{{ $user->name }}" required>
@@ -29,7 +29,7 @@
                         </div>
 
                         <div class="col-12 mt-2">
-                            <!-- Input field for user's email (disabled) -->
+                            <!-- Input field for users's email (disabled) -->
                             <label for="email" class="form-label">Email address</label>
                             <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
                                    value="{{ $user->email }}" disabled>
@@ -41,7 +41,7 @@
                         </div>
 
                         <div class="col-12 mt-2">
-                            <!-- Input field for user's avatar -->
+                            <!-- Input field for users's avatar -->
                             <label for="avatar" class="form-label">Avatar</label>
                             <div class="row">
                                 <div class="col-10">
@@ -52,7 +52,7 @@
                                     @enderror
                                 </div>
                                 <div class="col-2">
-                                    <!-- Displaying user's avatar -->
+                                    <!-- Displaying users's avatar -->
                                     <img src="{{ asset($user->avatar) }}" alt="Avatar" class="rounded-circle"
                                          height="30">
                                 </div>
@@ -61,10 +61,10 @@
 
                         @if(auth()->user()->id != $user->id)
                         <div class="col-6">
-                            <!-- Dropdown for selecting user's role -->
+                            <!-- Dropdown for selecting users's roles -->
                             <label for="roleSelect" class="form-label">Role <span
                                     class="text-danger">*</span></label>
-                            <select class="form-select @error('role') is-invalid @enderror" id="roleSelect"
+                            <select class="form-select @error('roles') is-invalid @enderror" id="roleSelect"
                                     name="role">
                                     @php $roles = []; @endphp
                                 @foreach($roles as $value)
@@ -73,13 +73,13 @@
                                             @if($value->id == $user->role->id) selected @endif>{{ $value->name }}</option>
                                 @endforeach
                             </select>
-                            @error('role')
-                            <div class="invalid-feedback">{{ $message }}</div> <!-- Error message for role select -->
+                            @error('roles')
+                            <div class="invalid-feedback">{{ $message }}</div> <!-- Error message for roles select -->
                             @enderror
                         </div>
 
                         <div class="col-6 mt-2">
-                            <!-- Dropdown for selecting user's status -->
+                            <!-- Dropdown for selecting users's status -->
                             <label for="statusSelect" class="form-label">Status <span
                                     class="text-danger">*</span></label>
                             <select class="form-select @error('status') is-invalid @enderror" id="statusSelect"
@@ -97,7 +97,7 @@
                         </div>
                         @endif
                         <div class="col-12 mt-2">
-                            <!-- Button to submit user update -->
+                            <!-- Button to submit users update -->
                             <button type="submit" class="btn btn-success">Update user</button>
                         </div>
                     </div>
@@ -112,8 +112,8 @@
                 <h5 class="card-title">Update Password</h5> <!-- Card title for updating password -->
             </div>
             <div class="card-body">
-                <!-- Form for updating user's password -->
-                <form method="POST" action="{{ route('user.change-pass', $user->id) }}">
+                <!-- Form for updating users's password -->
+                <form method="POST" action="{{ route('users.change-pass', $user->id) }}">
                     @method('PUT') <!-- Method spoofing to use PUT method -->
                     @csrf <!-- CSRF protection -->
 

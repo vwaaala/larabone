@@ -27,7 +27,7 @@ class MenuServiceProvider extends ServiceProvider
                 ->addClass('navbar-nav me-auto')
                 ->route('home', 'Dashboard')
                 ->route('ticket', 'Query')
-                ->route('user.index', 'User')
+                ->route('users.index', 'User')
                 ->each(function (Link $item) {
                     $item->addClass('nav-link')->addClass(request()->is($item->url()) ? 'active' : '');
                 })

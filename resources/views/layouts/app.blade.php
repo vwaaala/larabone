@@ -50,16 +50,21 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Dashboard</a>
                         </li>
-
+{{--                        @can('permission_show')--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" href="#">Permissions</a>--}}
+{{--                            </li>--}}
+{{--                        @endcan--}}
+{{--                        @canany(['role_show', 'role_create', 'role_edit', 'role_delete'])--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" href="{{ route('roles.index') }}">Role</a>--}}
+{{--                            </li>--}}
+{{--                        @endcan--}}
+                        @canany(['user_show', 'user_create', 'user_edit', 'user_delete'])
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Permissions</a>
+                                <a class="nav-link" href="{{ route('users.index') }}">Users</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Role</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('user.index') }}">Users</a>
-                            </li>
+                        @endcanany
                     </ul>
                 @endguest
 
@@ -105,7 +110,7 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="userDropdown">
                                     <a class="dropdown-item"
-                                       href="{{ route('user.view', auth()->user()->id) }}">Profile</a>
+                                       href="{{ route('users.view', auth()->user()->id) }}">Profile</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}

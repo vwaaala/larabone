@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    {{ __('You vsn edit user!') }}
+                    {{ __('You vsn edit users!') }}
                 </div>
             </div>
         </div>

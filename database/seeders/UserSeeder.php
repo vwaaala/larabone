@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
     {
         // Creating Super Admin User
         $superAdmin = User::create([
-            'name' => 'Javed Ur Rehman', 
+            'name' => 'Syed Ahsan Kamal',
             'email' => 'super@bunk3r.net',
             'password' => bcrypt('secret')
         ]);
@@ -24,16 +24,24 @@ class UserSeeder extends Seeder
 
         // Creating Admin User
         $admin = User::create([
-            'name' => 'Syed Ahsan Kamal', 
+            'name' => 'Javed Ur Rehman',
             'email' => 'admin@bunk3r.net',
             'password' => bcrypt('secret')
         ]);
         $admin->assignRole('Admin');
 
+        // Creating Manager User
+        $manager = User::create([
+            'name' => 'Khairul Morhsed',
+            'email' => 'manager@bunk3r.net',
+            'password' => bcrypt('secret')
+        ]);
+        $manager->assignRole('Manager');
+
         // Creating Product Manager User
         $user = User::create([
-            'name' => 'Abdul Muqeet', 
-            'email' => 'user@bunk3r.net',
+            'name' => 'Abdul Muqeet',
+            'email' => 'users@bunk3r.net',
             'password' => bcrypt('secret')
         ]);
         $user->assignRole('User');

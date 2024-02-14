@@ -11,7 +11,7 @@
             <h5 class="card-title">Basic Information</h5>
         </div>
         <div class="card-body">
-            <form method="POST" action="{{ route('role.store') }}">
+            <form method="POST" action="{{ route('roles.store') }}">
                 @csrf
                 <div class="row">
                     <div class="col-6">
