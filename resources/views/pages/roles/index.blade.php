@@ -27,18 +27,20 @@
                             <th scope="row">{{ $loop->iteration }}</th>
                             <td>{{ $role->name }}</td>
                             <td>
-                                <a href="{{ route('roles.show', $role->id) }}" class="btn btn-warning btn-sm"><i
-                                        class="bi bi-eye"></i> Show</a>
+                                <div class="btn-group">
+                                <a href="{{ route('roles.show', $role->id) }}" class="btn btn-success btn-sm"><i
+                                        class="bi bi-eye"></i></a>
                                 @can('role_edit')
                                     <a href="{{ route('roles.edit', $role->id) }}"
                                        class="btn btn-primary btn-sm"><i
-                                            class="bi bi-pencil-square"></i> Edit</a>
+                                            class="bi bi-pencil"></i></a>
                                 @endcan
                                 @can('role_delete')
                                     <a href="{{ route('croles.destroy', $role->id) }}"
                                        class="btn btn-danger btn-sm"><i
-                                            class="bi bi-pencil-square"></i> Delete</a>
+                                            class="bi bi-trash"></i></a>
                                 @endcan
+                                </div>
                             </td>
                         </tr>
                     @empty
