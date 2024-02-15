@@ -27,7 +27,17 @@ class UserController extends Controller
         return $dataTable->render('pages.users.index');
     }
 
-    public function store(StoreUserRequest $request)
+    public function create(): View|\Illuminate\Foundation\Application|Factory|Application
+    {
+        if(auth()->user()->hasRole('Super Admin')){
+            $roles = Role::all()->pluck('name');
+        }else{
+            $roles = Role::whereNotIn('name', ['Super Admin', 'Admin'])->pluck('name');
+        }
+        return view('pages.users.create', compact('roles'));
+    }
+
+    public function store(StoreUserRequest $request): \Illuminate\Http\RedirectResponse
     {
         $newUser = User::create([
             'name' => $request->input('name'),
@@ -52,34 +62,56 @@ class UserController extends Controller
 
                 // Move the file to the desired location
                 $image->move(public_path(config('panel.avatar_path')), $image_name);
-
+                $pathAndName = config('panel.avatar_path') .  $image_name;
                 // Update user avatar
-                $newUser->update(['avatar' => $image_name]);
+                $newUser->update(['avatar' => $pathAndName]);
             } else {
                 // Update user avatar
                 $newUser->update(['avatar' => config('panel.avatar')]);
             }
-            return redirect()->route('user.index')->with('success', 'User created successfully');
+            return redirect()->route('users.index')->with('success', 'User created successfully');
         }
-        return redirect()->route('user.index')->with('error', 'Failed to create user.');
+        return redirect()->route('users.index')->with('error', 'Failed to create user.');
     }
 
-    public function create(): View|\Illuminate\Foundation\Application|Factory|Application
+    public function edit($id)
     {
-        $roles = Role::all()->pluck('name');
-        return view('pages.users.create', compact('roles'));
-    }
-
-    public function update(UpdateUserRequest $request, $id)
-    {
-        // Validate and update the users
-        $this->validate($request, ['name' => 'required|string|max:255', 'email' => 'required|email|unique:users.email,' . $id,// Add other fields as needed
-        ]);
-
+        if(auth()->user()->hasRole('Super Admin')){
+            $roles = Role::all()->pluck('name');
+        }else{
+            $roles = Role::whereNotIn('name', ['Super Admin', 'Admin'])->pluck('name');
+        }
         $user = User::findOrFail($id);
-        $user->update($request->all());
 
-        return redirect()->route('pages.users.index')->with('success', 'User updated successfully');
+        return view('pages.users.edit', compact('user', 'roles'));
+    }
+
+    public function update(UpdateUserRequest $request, $id): \Illuminate\Http\RedirectResponse
+    {
+        $user = User::findOrFail($id);
+        // If user created successfully
+        if ($user) {
+            $user->update($request->all());
+            // Check if avatar file exists in request
+            if ($request->hasFile('avatar') && $user->avatar != config('panel.avatar')) {
+                $request->validate([
+                        'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048']
+                );
+                $image = $request->file('avatar');
+
+                // Generate a unique filename using the original file extension
+                $image_name = uniqid() . '.' . $image->getClientOriginalExtension();
+
+                // Move the file to the desired location
+                $image->move(public_path(config('panel.avatar_path')), $image_name);
+                $pathAndName = config('panel.avatar_path') . '/' . $image_name;
+                // Update user avatar
+                $user->update(['avatar' => $pathAndName]);
+            }
+            $user->syncRoles([$request->role]);
+            return redirect()->route('users.index')->with('success', 'User created successfully');
+        }
+        return redirect()->route('users.index')->with('error', 'Can not find user!');
     }
 
     public function view($id)
@@ -91,12 +123,6 @@ class UserController extends Controller
     public function profile()
     {
         return view('pages.users.profile');
-    }
-
-    public function edit($id)
-    {
-        $user = User::findOrFail($id);
-        return view('pages.users.edit', compact('user'));
     }
 
     public function destroy($id)
@@ -123,9 +149,8 @@ class UserController extends Controller
     }
 
     // Restore the specified soft deleted resource.
-    public function retrieveDeleted($userId)
+    public function retrieveDeleted($userId): \Illuminate\Http\RedirectResponse
     {
-//        dd(User::withTrashed()->findOrFail($userId));
         // Restore soft deleted user
         if (User::withTrashed()->findOrFail($userId)->restore()) {
             return redirect()->back()->with('success', 'User retrieved successfully');
@@ -134,7 +159,7 @@ class UserController extends Controller
     }
 
     // Permanently remove the specified resource from storage.
-    public function forceDelete($userId)
+    public function forceDelete($userId): \Illuminate\Http\RedirectResponse
     {
         // Find soft deleted user
         $restoreUser = User::onlyTrashed()->findOrFail($userId);
