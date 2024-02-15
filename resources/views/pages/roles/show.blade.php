@@ -10,13 +10,12 @@
 
             <div class="card-body">
                 <!-- Button to go back to the previous page -->
-                <button onclick="window.history.back();" class="btn btn-warning mb-2"><span class="bi bi-arrow-return-left"></span> Go Back</button>
+                <a href="{{ route('roles.index') }}" class="btn btn-warning mb-2"><span class="bi bi-arrow-return-left"></span> Go Back</a>
                 <table class="table table-striped table-bordered">
                     <thead>
                     <tr>
                         <th scope="col">S#</th>
                         <th scope="col">Name</th>
-                        <th scope="col" style="width: 250px;">Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -24,13 +23,6 @@
                         <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
                             <td>{{ $role->name }}</td>
-                            <td>
-                                @can('role_edit')
-                                    <a href="#"
-                                       class="btn btn-danger btn-sm"><i
-                                            class="bi bi-trash"></i> Remove</a>
-                                @endcan
-                            </td>
                         </tr>
                     @empty
                         <td colspan="3">
@@ -41,9 +33,6 @@
                     @endforelse
                     </tbody>
                 </table>
-
-{{--                {{ $rolePermissions->links() }}--}}
-
             </div>
         </div>
     @endcan

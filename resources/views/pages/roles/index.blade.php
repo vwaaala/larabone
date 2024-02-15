@@ -34,6 +34,11 @@
                                        class="btn btn-primary btn-sm"><i
                                             class="bi bi-pencil-square"></i> Edit</a>
                                 @endcan
+                                @can('role_delete')
+                                    <a href="{{ route('croles.destroy', $role->id) }}"
+                                       class="btn btn-danger btn-sm"><i
+                                            class="bi bi-pencil-square"></i> Delete</a>
+                                @endcan
                             </td>
                         </tr>
                     @empty
