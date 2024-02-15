@@ -40,6 +40,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('users/{id}/destroy', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy');
     Route::post('users/{id}/force-delete', [App\Http\Controllers\UserController::class, 'forceDelete'])->name('users.forceDelete');
     Route::get('users/{id}/retrieve', [App\Http\Controllers\UserController::class, 'retrieveDeleted'])->name('users.retrieveDeleted');
+
+    Route::get('roles/{role}/destroy', [App\Http\Controllers\RoleController::class, 'destroy'])->name('croles.destroy');
     Route::resources([
         'roles' => \App\Http\Controllers\RoleController::class,
     ]);

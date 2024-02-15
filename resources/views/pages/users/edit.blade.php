@@ -66,11 +66,9 @@
                                     class="text-danger">*</span></label>
                             <select class="form-select @error('roles') is-invalid @enderror" id="roleSelect"
                                     name="role">
-                                    @php $roles = []; @endphp
                                 @foreach($roles as $value)
-
-                                    <option value="{{ $value->id }}"
-                                            @if($value->id == $user->role->id) selected @endif>{{ $value->name }}</option>
+                                    <option value="{{ $value }}"
+                                            @if($user->hasRole($value)) selected @endif>{{ $value }}</option>
                                 @endforeach
                             </select>
                             @error('roles')

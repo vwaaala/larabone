@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
@@ -34,9 +35,8 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
         return view('pages.roles.create', [
-            'permissions' => Permission::get()
+            'permissions' => Permission::orderby('id', 'ASC')->get()->toArray()
         ]);
     }
 
@@ -52,8 +52,8 @@ class RoleController extends Controller
 
         $role->syncPermissions($permissions);
 
-        return redirect()->route('pages.roles.index')
-                ->withSuccess('New roles is added successfully.');
+        return redirect()->route('roles.index')
+                ->with('success','New roles is added successfully.');
     }
 
     /**
@@ -87,8 +87,8 @@ class RoleController extends Controller
             ->all();
 
         return view('pages.roles.edit', [
-            'roles' => $role,
-            'permissions' => Permission::get(),
+            'role' => $role,
+            'permissions' => Permission::orderby('id', 'ASC')->get()->toArray(),
             'rolePermissions' => $rolePermissions
         ]);
     }
@@ -98,7 +98,7 @@ class RoleController extends Controller
      */
     public function update(Request $request, Role $role)
     {
-        //
+
         $input = $request->only('name');
 
         $role->update($input);
@@ -108,7 +108,7 @@ class RoleController extends Controller
         $role->syncPermissions($permissions);
 
         return redirect()->back()
-                ->withSuccess('Role is updated successfully.');
+                ->with('success', 'Role is updated successfully.');
 
     }
 
@@ -124,8 +124,13 @@ class RoleController extends Controller
         if(auth()->user()->hasRole($role->name)){
             abort(403, 'CAN NOT DELETE SELF ASSIGNED ROLE');
         }
+        if($role->users->isNotEmpty())
+        {
+            abort(403, 'First remove users who have this ROLE!');
+        }
         $role->delete();
-        return redirect()->route('pages.roles.index')
-                ->withSuccess('Role is deleted successfully.');
+        return redirect()->route('roles.index')
+                ->with('success', 'Role is deleted successfully.');
     }
+
 }
