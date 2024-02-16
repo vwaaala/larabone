@@ -52,7 +52,7 @@
                         </li>
                         @can('permission_show')
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Permissions</a>
+                                <a class="nav-link" href="{{ route('permissions.index') }}">Permissions</a>
                             </li>
                         @endcan
                         @canany(['role_show', 'role_create', 'role_edit', 'role_delete'])
