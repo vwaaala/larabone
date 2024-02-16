@@ -10,7 +10,7 @@
 
             <div class="card-body">
                 @can('role_create')
-                    <a href="{{ route('roles.create') }}" class="btn btn-success btn-sm my-2"><i
+                    <a href="{{ route('roles.create') }}" class="btn btn-secondary btn-sm my-2"><i
                             class="bi bi-plus-circle"></i> Add New Role</a>
                 @endcan
                 <table class="table table-striped table-bordered">
@@ -28,11 +28,11 @@
                             <td>{{ $role->name }}</td>
                             <td>
                                 <div class="btn-group">
-                                <a href="{{ route('roles.show', $role->id) }}" class="btn btn-success btn-sm"><i
+                                <a href="{{ route('roles.show', $role->id) }}" class="btn btn-info btn-sm"><i
                                         class="bi bi-eye"></i></a>
                                 @can('role_edit')
                                     <a href="{{ route('roles.edit', $role->id) }}"
-                                       class="btn btn-primary btn-sm"><i
+                                       class="btn btn-warning btn-sm"><i
                                             class="bi bi-pencil"></i></a>
                                 @endcan
                                 @can('role_delete')

@@ -22,11 +22,14 @@
     @vite(['resources/sass/app.scss'])
 </head>
 
-<body>
-<div id="app">
+<body onload="myFunction()">
+<div id="loader" class="page-loader">
+    <span class="loader"></span>
+</div>
+<div id="app" style="display:none;">
 
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <!-- Brand Logo and Name -->
             <a class="navbar-brand" href="{{ url('/') }}">
@@ -155,6 +158,17 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 @vite(['resources/js/app.js'])
 <script>
+    let pageLoader;
+
+    function myFunction() {
+        pageLoader = setTimeout(showPage, 2000);
+    }
+
+    function showPage() {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("app").style.display = "block";
+    }
+
     // Hide success message after 5 seconds
     setTimeout(function () {
         $('#successMessage').fadeOut('fast');

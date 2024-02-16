@@ -10,7 +10,7 @@
 
             <div class="card-body">
                 <!-- Button to go back to the previous page -->
-                <a href="{{ route('roles.index') }}" class="btn btn-warning mb-2"><span class="bi bi-arrow-return-left"></span> Go Back</a>
+                <a href="{{ route('roles.index') }}" class="btn btn-secondary mb-2"><span class="bi bi-arrow-return-left"></span> Go Back</a>
                 <table class="table table-striped table-bordered">
                     <thead>
                     <tr>

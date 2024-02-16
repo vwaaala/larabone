@@ -4,7 +4,7 @@
 @section('content')
     <div class="mb-2">
         <!-- Button to go back to the previous page -->
-        <a href="{{ route('permissions.index') }}" class="btn btn-warning">
+        <a href="{{ route('permissions.index') }}" class="btn btn-secondary">
             <span class="bi bi-arrow-return-left"></span>
             Go Back
         </a>
@@ -25,7 +25,7 @@
                     <input type="text" name="search" class="form-control" placeholder="Search..."
                            value="{{ $searchQuery ?? '' }}">
                     <div class="input-group-append">
-                        <button type="submit" class="btn btn-primary">Search</button>
+                        <button type="submit" class="btn btn-secondary btn-sm">Search</button>
                     </div>
                 </div>
             </form>
@@ -39,8 +39,6 @@
                     <th scope="col">#</th>
                     <!-- Column headers -->
                     <th scope="col">Permission name</th>
-                    <th scope="col">Permission description</th>
-                    <th scope="col">Action</th>
                 </tr>
                 </thead>
                 <tbody>

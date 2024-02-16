@@ -1,12 +1,12 @@
 <div class="btn-group">
     @if(Route::currentRouteName() == 'users.index' && !request()->has('show_deleted'))
         @can('user_show')
-            <a href="{{ route('users.show', $id ?? $user->id) }}" class="btn btn-sm btn-success" title="View">
+            <a href="{{ route('users.show', $id ?? $user->id) }}" class="btn btn-sm btn-info" title="View">
                 <span class="bi bi-eye"></span> <!-- Bootstrap eye icon -->
             </a>
         @endcan
         @can('user_edit')
-            <a href="{{ route('users.edit', $id ?? $user->id) }}" class="btn btn-sm btn-primary" title="Edit">
+            <a href="{{ route('users.edit', $id ?? $user->id) }}" class="btn btn-sm btn-warning" title="Edit">
                 <span class="bi bi-pencil"></span> <!-- Bootstrap pencil icon -->
             </a>
         @endcan

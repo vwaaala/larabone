@@ -1,26 +1,28 @@
-// Body
-$body-bg: #f8fafc;
+$white: #ffffff;
 
-// Typography
-$font-family-sans-serif: 'Nunito', sans-serif;
-$font-size-base: 0.9rem;
-$line-height-base: 1.6;
-
-$background-color: #f0f0f0; /* Cool background color */
-$primary-color: #333333; /* Dark gray primary color */
-$secondary-color: #ffc107; /* Yellow secondary color */
-
+$theme-colors: (
+    "light":      #e7fafa,
+    "dark":       #19242b,
+    "primary":    #c5cf00,
+    "secondary":  #594a4c,
+    "info":       #675ae9,
+    "success":    #38ae00,
+    "warning":    #ffc42b,
+    "danger":     #f60056,
+);
 :root {
-    --bs-primary: #{$primary-color};
-    --bs-secondary: #{$secondary-color};
+    --primary-color: #c5cf00;
+    --secondary-color: #594a4c;
+    --light-color: #e7fafa;
 }
 
 body {
-    background-color: $background-color;
+    background-color: var(--light-color);
 }
+
 /* Override Bootstrap bg-primary */
 .navbar.bg-primary {
-    background-color: $primary-color !important;
+    background-color: var(--primary-color) !important;
 }
 
 /* Override Bootstrap primary and secondary colors */
@@ -30,9 +32,9 @@ body {
 .btn-primary:focus,
 .btn-primary.disabled,
 .btn-primary:disabled {
-    color: $primary-color;
-    background-color: $secondary-color;
-    border-color: $secondary-color;
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
 }
 
 /* Override Bootstrap primary and secondary button color */
@@ -42,23 +44,23 @@ body {
 .btn-secondary:focus,
 .btn-secondary.disabled,
 .btn-secondary:disabled {
-    color: $secondary-color;
-    background-color: $primary-color;
-    border-color: $primary-color;
+    color: var(--secondary-color);
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
 }
 
 /* Override Bootstrap pagination color */
 .pagination .page-link {
-    color: $primary-color;
-    background-color: $background-color;
-    border-color: $primary-color;
+    color: var(--primary-color);
+    background-color: var(--light-color);
+    border-color: var(--primary-color);
 }
 
 .pagination .page-item.active .page-link {
     z-index: 1;
     color: #fff;
-    background-color: $primary-color;
-    border-color: $primary-color;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
 }
 
 // Define variables for easier customization
@@ -76,3 +78,60 @@ footer {
 
     // Optionally, nest further styles if needed
 }
+
+/* resources/sass/components/_page-loader.scss */
+.page-loader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999; // Ensure the loader is above other content
+}
+
+.page-loader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999; /* Ensure the loader is above other content */
+}
+
+.loader {
+    width: 48px;
+    height: 48px;
+    display: inline-block;
+    position: relative;
+    border-width: 3px 2px 3px 2px;
+    border-style: solid dotted solid dotted;
+    border-color: var(--primary-color) rgba(255, 255, 255, 0.3) var(--secondary-color) rgba(151, 107, 93, 0.3);
+    border-radius: 50%;
+    box-sizing: border-box;
+    animation: 1s rotate linear infinite;
+
+    &:before,
+    &:after {
+        content: '';
+        top: 0;
+        left: 0;
+        position: absolute;
+        border: 10px solid transparent;
+        border-bottom-color: var(--secondary-color);
+        transform: translate(-10px, 19px) rotate(-35deg);
+    }
+
+    &:after {
+        border-color: var(--primary-color) transparent transparent transparent;
+        transform: translate(32px, 3px) rotate(-35deg);
+    }
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+
+

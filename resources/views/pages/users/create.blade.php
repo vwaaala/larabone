@@ -3,7 +3,7 @@
     @can('user_edit')
         <div class="mb-2">
             <!-- Button to go back to the previous page -->
-            <button onclick="window.history.back();" class="btn btn-warning"><span
+            <button onclick="window.history.back();" class="btn btn-secondary"><span
                     class="bi bi-arrow-return-left"></span>
                 Go Back
             </button>
