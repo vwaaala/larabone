@@ -9,7 +9,7 @@ class PermissionController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permissions:permission_show', ['only' => ['index']]);
+        $this->middleware('permission:permission_show', ['only' => ['index']]);
     }
 
     public function index(Request $request): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
