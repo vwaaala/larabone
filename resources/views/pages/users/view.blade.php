@@ -14,6 +14,7 @@
 
             <!-- Role Information -->
             <p class="text-center"><strong>Role:</strong> {{ $user->name }}</p>
+            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning">Edit profile</a>
         </div>
     </div>
 @endsection

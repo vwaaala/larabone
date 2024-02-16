@@ -45,7 +45,7 @@
                             @enderror
                         </div>
                         <div class="col-6">
-                            <label for="password_confirmation" class="form-label">Confirm Password</label>
+                            <label for="password_confirmation" class="form-label">Confirm Password <span class="text-danger">*</span></label>
                             <input type="password"
                                    class="form-control @error('password_confirmation') is-invalid @enderror"
                                    id="password_confirmation" name="password_confirmation" required>
@@ -54,7 +54,7 @@
                             @enderror
                         </div>
                         <div class="col-6">
-                            <label for="roleSelect" class="form-label">Role:</label>
+                            <label for="roleSelect" class="form-label">Role <span class="text-danger">*</span></label>
                             <select class="form-select @error('roles') is-invalid @enderror" id="roleSelect"
                                     name="role">
                                 @foreach($roles as $role)
@@ -67,7 +67,7 @@
                         </div>
 
                         <div class="col-6">
-                            <label for="statusSelect" class="form-label">Status:</label>
+                            <label for="statusSelect" class="form-label">Status <span class="text-danger">*</span></label>
                             <select class="form-select @error('status') is-invalid @enderror" id="statusSelect"
                                     name="status">
                                 <option value="pending">Pending</option>
