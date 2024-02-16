@@ -27,14 +27,14 @@ Route::get('/locale/{locale}', function ($locale) {
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+    Route::get('permissions', [App\Http\Controllers\PermissionController::class, 'index'])->name('permissions.index');
+    Route::get('roles/{role}/destroy', [App\Http\Controllers\RoleController::class, 'destroy'])->name('croles.destroy');
+
     Route::post('users/{user}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy');
     Route::post('users/{id}/force-delete', [App\Http\Controllers\UserController::class, 'forceDelete'])->name('users.forceDelete');
     Route::get('users/{id}/retrieve', [App\Http\Controllers\UserController::class, 'retrieveDeleted'])->name('users.retrieveDeleted');
-
-    Route::get('roles/{role}/destroy', [App\Http\Controllers\RoleController::class, 'destroy'])->name('croles.destroy');
-
-    Route::get('/profile/{user}', [App\Http\Controllers\UserController::class, 'profile'])->name('users.profile');
     Route::put('users/{id}/change-password', [App\Http\Controllers\UserController::class, 'changePassword'])->name('users.changePassword');
+
     Route::resources([
         'users' => \App\Http\Controllers\UserController::class,
         'roles' => \App\Http\Controllers\RoleController::class,

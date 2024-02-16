@@ -4,10 +4,10 @@
 @section('content')
     <div class="mb-2">
         <!-- Button to go back to the previous page -->
-        <button onclick="window.history.back();" class="btn btn-warning">
+        <a href="{{ route('permissions.index') }}" class="btn btn-warning">
             <span class="bi bi-arrow-return-left"></span>
             Go Back
-        </button>
+        </a>
     </div>
 
     <div class="card">
@@ -22,7 +22,8 @@
             <!-- Right side of the card header Search form -->
             <form action="#" method="GET" class="form-inline">
                 <div class="input-group">
-                    <input type="text" name="search" class="form-control" placeholder="Search..." value="{{ $searchQuery ?? '' }}">
+                    <input type="text" name="search" class="form-control" placeholder="Search..."
+                           value="{{ $searchQuery ?? '' }}">
                     <div class="input-group-append">
                         <button type="submit" class="btn btn-primary">Search</button>
                     </div>
@@ -43,21 +44,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                    @php
-                    $permissions = [];
-                    @endphp
-                <!-- Loop through permissions and display each permission -->
+                <!-- Loop through permissions and display each permissions -->
                 @foreach($permissions as $key => $value)
                     <tr>
                         <!-- Output the row number -->
                         <th scope="row">{{ $loop->iteration }}</th>
-                        <!-- Display permission name and description -->
+                        <!-- Display permissions name and description -->
                         <td>{{ $value->name }}</td>
-                        <td>{{ $value->description }}</td>
-                        <!-- Include action buttons for the permission -->
-                        <td>
-                            @include('permission.action')
-                        </td>
                     </tr>
                 @endforeach
                 </tbody>
@@ -65,7 +58,8 @@
                 <!-- Pagination links -->
                 <tfoot>
                 <tr>
-                    <td colspan="3" class="text-center">{{ $permissions->appends(['search' => $searchQuery])->onEachSide(5)->links() }}</td>
+                    <td colspan="3"
+                        class="text-center">{{ $permissions->appends(['search' => $searchQuery])->onEachSide(5)->links() }}</td>
                 </tr>
                 </tfoot>
             </table>
