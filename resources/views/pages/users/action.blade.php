@@ -1,7 +1,7 @@
 <div class="btn-group">
     @if(Route::currentRouteName() == 'users.index' && !request()->has('show_deleted'))
         @can('user_show')
-            <a href="{{ route('users.view', $id ?? $user->id) }}" class="btn btn-sm btn-success" title="View">
+            <a href="{{ route('users.show', $id ?? $user->id) }}" class="btn btn-sm btn-success" title="View">
                 <span class="bi bi-eye"></span> <!-- Bootstrap eye icon -->
             </a>
         @endcan

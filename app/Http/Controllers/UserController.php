@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\UsersDataTable;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use App\Models\User;
-use App\DataTables\UsersDataTable;
+use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
@@ -16,17 +17,24 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('permission:user_create|user_show|user_edit|user_delete', ['only' => ['index', 'show']]);
+        $this->middleware('permission:user_create|user_delete', ['only' => ['index']]);
         $this->middleware('permission:user_create', ['only' => ['create', 'store']]);
-        $this->middleware('permission:user_edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:user_access|user_edit', ['only' => ['edit', 'update','changePassword']]);
         $this->middleware('permission:user_delete', ['only' => ['destroy', 'retrieveDeleted', 'forceDelete']]);
+        $this->middleware('permission:user_access|user_show|user_create|user_edit|user_delete', ['only' => ['show']]);
     }
 
+    /**
+     * Display a listing of the resource.
+     */
     public function index(UsersDataTable $dataTable)
     {
         return $dataTable->render('pages.users.index');
     }
 
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create(): View|\Illuminate\Foundation\Application|Factory|Application
     {
         if(auth()->user()->hasRole('Super Admin')){
@@ -37,6 +45,9 @@ class UserController extends Controller
         return view('pages.users.create', compact('roles'));
     }
 
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(StoreUserRequest $request): \Illuminate\Http\RedirectResponse
     {
         $newUser = User::create([
@@ -74,24 +85,43 @@ class UserController extends Controller
         return redirect()->route('users.index')->with('error', 'Failed to create user.');
     }
 
-    public function edit($id)
+    /**
+     * Display the specified resource.
+     */
+    public function show(User $user): Factory|\Illuminate\Foundation\Application|View|Application|\Illuminate\Http\RedirectResponse
     {
+        if(auth()->user()->hasPermissionTo('user_show') || (auth()->user()->hasPermissionTo('user_access') && auth()->user()->id == $user->id)){
+            return view('pages.users.view', compact('user'));
+        }
+        return redirect()->back()->with('error', 'You are not authorized to view the user');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(User $user): View|\Illuminate\Foundation\Application|Factory|Application
+    {
+        if(auth()->user()->id != $user->id && !auth()->user()->hasPermissionTo('user_edit')){
+            abort(403, 'You are not authorized');
+        }
         if(auth()->user()->hasRole('Super Admin')){
             $roles = Role::all()->pluck('name');
         }else{
             $roles = Role::whereNotIn('name', ['Super Admin', 'Admin'])->pluck('name');
         }
-        $user = User::findOrFail($id);
-
+        if(auth()->user()->id == $user->id && auth()->user()->hasPermissionTo('user_edit')){
+            $roles = [];
+        }
         return view('pages.users.edit', compact('user', 'roles'));
     }
 
-    public function update(UpdateUserRequest $request, $id): \Illuminate\Http\RedirectResponse
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(UpdateUserRequest $request, User $user): \Illuminate\Http\RedirectResponse
     {
-        $user = User::findOrFail($id);
         // If user created successfully
-        if ($user) {
-            $user->update($request->all());
+        if ($user->update($request->all())) {
             // Check if avatar file exists in request
             if ($request->hasFile('avatar') && $user->avatar != config('panel.avatar')) {
                 $request->validate([
@@ -111,51 +141,16 @@ class UserController extends Controller
             $user->syncRoles([$request->role]);
             return redirect()->route('users.index')->with('success', 'User created successfully');
         }
-        return redirect()->route('users.index')->with('error', 'Can not find user!');
+        return redirect()->route('users.index')->with('error', 'Can not update user!');
     }
 
-    public function view($id)
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(User $user): \Illuminate\Http\RedirectResponse
     {
-        $user = User::findOrFail($id);
-        return view('pages.users.view', compact('user'));
-    }
-
-    public function profile()
-    {
-        return view('pages.users.profile');
-    }
-
-    public function destroy($id)
-    {
-        User::findOrFail($id)->delete();
+        $user->delete();
         return redirect()->route('users.index')->with('success', 'User deleted successfully');
-    }
-
-    public function changePassword($id)
-    {
-        // Validate the request
-//        $request->validate(['password' => 'required|min:6|confirmed',]);
-//        $user = User::findOrFail($userId);
-//        // Check if authenticated user is authorized to change password for the user
-//        if (auth()->user()->id == $user->id || auth()->user()->isSuperAdmin() || (auth()->user()->isAdmin() &&  $user->isNotSuperAdmin())) {
-//
-//            // Update user's password
-//            $user->update(['password' => bcrypt($request->input('password'))]);
-//
-//            // Redirect back or show a success message
-//            return redirect()->route('user.view', auth()->user()->id)->with('success', 'Password changed successfully.');
-//        }
-//        abort(403, 'Unauthorized action.');
-    }
-
-    // Restore the specified soft deleted resource.
-    public function retrieveDeleted($userId): \Illuminate\Http\RedirectResponse
-    {
-        // Restore soft deleted user
-        if (User::withTrashed()->findOrFail($userId)->restore()) {
-            return redirect()->back()->with('success', 'User retrieved successfully');
-        }
-        return redirect()->back()->with('error', 'User can not be retrieved');
     }
 
     // Permanently remove the specified resource from storage.
@@ -177,4 +172,28 @@ class UserController extends Controller
         }
         return redirect()->route('users.index')->with('error', 'User not found');
     }
+
+    // Restore the specified soft deleted resource.
+    public function retrieveDeleted($userId): \Illuminate\Http\RedirectResponse
+    {
+        // Restore soft deleted user
+        if (User::withTrashed()->findOrFail($userId)->restore()) {
+            return redirect()->back()->with('success', 'User retrieved successfully');
+        }
+        return redirect()->back()->with('error', 'User can not be retrieved');
+    }
+
+    public function changePassword(Request $request, $userId): \Illuminate\Http\RedirectResponse
+    {
+        // Validate the request
+        $request->validate(['password' => 'required|min:6|confirmed']);
+        $user = User::findOrFail($userId);
+        // Check if authenticated user is authorized to change password for the user
+        if ($user->update(['password' => bcrypt($request->input('password'))])) {
+            // Redirect back or show a success message
+            return redirect()->route('users.show', $user->id)->with('success', 'Password changed successfully.');
+        }
+        return redirect()->route('users.show', $user->id)->with('error', 'Password can not be changed.');
+    }
+
 }
