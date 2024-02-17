@@ -73,18 +73,21 @@
 
                 <!-- Language Dropdown -->
                 <ul class="navbar-nav">
+                    @if(count(config('panel.available_languages', [])) > 1)
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button"
                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Language
+                            {{ strtoupper(app()->getLocale()) }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="languageDropdown">
-                            <a class="dropdown-item" href="{{ route('locale', 'en') }}">English</a>
-                            <a class="dropdown-item" href="{{ route('locale', 'fr') }}">French</a>
-                            <!-- Add more language options as needed -->
+                            @foreach(config('panel.available_languages') as $langLocale => $langName)
+                            <a class="dropdown-item {{ app()->getLocale() == $langLocale ? 'd-none': '' }}" href="{{ url()->current() }}?lang={{ $langLocale }}">{{ $langName }}</a>
+                            @endforeach
                         </div>
                     </li>
-                </ul>                    <!-- Conditional Rendering based on Authentication -->
+                    @endif
+                </ul>
+                <!-- Conditional Rendering based on Authentication -->
                 <div class="d-flex flex-column flex-md-row align-items-center">
                     <!-- If Unauthorized -->
                     @guest
