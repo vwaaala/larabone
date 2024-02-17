@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Cookie;
 
 class SetLocale
 {
@@ -11,9 +11,9 @@ class SetLocale
     {
         if ($request->has('lang')) {
             $language = $request->input('lang');
-            Cache::put('language', $language);
-        } elseif (Cache::has('language')) {
-            $language = Cache::get('language');
+            Cookie::queue('language', $language, 60 * 24 * 365 * 10); // Lifetime cookie (10 years)
+        } elseif (Cookie::has('language')) {
+            $language = Cookie::get('language');
         } elseif (config('panel.primary_language')) {
             $language = config('panel.primary_language');
         }
