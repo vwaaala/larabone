@@ -119,3 +119,12 @@
         </div>
     </div>
 @endsection
+@push('scripts')
+    <script>
+        function fillForm(email, password) {
+            // Set values for email and password fields
+            document.getElementById('email').value = email;
+            document.getElementById('password').value = password;
+        }
+    </script>
+@endpush
