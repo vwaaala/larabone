@@ -22,11 +22,14 @@
     @vite(['resources/sass/app.scss'])
 </head>
 
-<body>
-<div id="app">
+<body onload="myFunction()">
+<div id="loader" class="page-loader">
+    <span class="loader"></span>
+</div>
+<div id="app" style="display:none;">
 
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <!-- Brand Logo and Name -->
             <a class="navbar-brand" href="{{ url('/') }}">
@@ -70,18 +73,21 @@
 
                 <!-- Language Dropdown -->
                 <ul class="navbar-nav">
+                    @if(count(config('panel.available_languages', [])) > 1)
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button"
                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Language
+                            {{ strtoupper(app()->getLocale()) }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="languageDropdown">
-                            <a class="dropdown-item" href="{{ route('locale', 'en') }}">English</a>
-                            <a class="dropdown-item" href="{{ route('locale', 'fr') }}">French</a>
-                            <!-- Add more language options as needed -->
+                            @foreach(config('panel.available_languages') as $langLocale => $langName)
+                            <a class="dropdown-item {{ app()->getLocale() == $langLocale ? 'd-none': '' }}" href="{{ url()->current() }}?lang={{ $langLocale }}">{{ $langName }}</a>
+                            @endforeach
                         </div>
                     </li>
-                </ul>                    <!-- Conditional Rendering based on Authentication -->
+                    @endif
+                </ul>
+                <!-- Conditional Rendering based on Authentication -->
                 <div class="d-flex flex-column flex-md-row align-items-center">
                     <!-- If Unauthorized -->
                     @guest
@@ -155,6 +161,17 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 @vite(['resources/js/app.js'])
 <script>
+    let pageLoader;
+
+    function myFunction() {
+        pageLoader = setTimeout(showPage, 2000);
+    }
+
+    function showPage() {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("app").style.display = "block";
+    }
+
     // Hide success message after 5 seconds
     setTimeout(function () {
         $('#successMessage').fadeOut('fast');

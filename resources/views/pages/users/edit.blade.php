@@ -4,7 +4,7 @@
     <!-- Opening the content section -->
     <div class="mb-2">
         <!-- Button to go back to the previous page -->
-        <button onclick="window.history.back();" class="btn btn-warning"><span class="bi bi-arrow-return-left"></span>
+        <button onclick="window.history.back();" class="btn btn-secondary"><span class="bi bi-arrow-return-left"></span>
             Go Back
         </button>
     </div>
@@ -108,7 +108,7 @@
                             @endif
                             <div class="col-12 mt-2">
                                 <!-- Button to submit users update -->
-                                <button type="submit" class="btn btn-success">Update user</button>
+                                <button type="submit" class="btn btn-primary">Update user</button>
                             </div>
                         </div>
                     </form>
@@ -142,7 +142,7 @@
                         </div>
 
                         <!-- Button to submit password update -->
-                        <button type="submit" class="btn btn-success">Update Password</button>
+                        <button type="submit" class="btn btn-primary">Update Password</button>
                     </form>
                 </div>
             </div>
