@@ -24,6 +24,8 @@ class RoleSeeder extends Seeder
             'user_delete',
             'user_show',
             'user_access',
+            'message_show',
+            'message_create',
          ];
         $super = Role::create(['name' => 'Super Admin']);
         $admin = Role::create(['name' => 'Admin']);
@@ -36,14 +38,20 @@ class RoleSeeder extends Seeder
             'user_delete',
             'user_show',
             'user_access',
+            'message_show',
+            'message_create',
         ]);
 
         $manager->givePermissionTo([
             'user_show',
+            'message_show',
+            'message_create',
         ]);
 
         $user->givePermissionTo([
             'user_access',
+            'message_show',
+            'message_create',
         ]);
     }
 }

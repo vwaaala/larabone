@@ -24,6 +24,8 @@ class PermissionSeeder extends Seeder
             'user_delete',
             'user_show',
             'user_access',
+            'message_show',
+            'message_create',
          ];
 
         // Looping and Inserting Array's Permissions into Permission Table

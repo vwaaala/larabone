@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PublicMessage;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -22,16 +23,17 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
+
     {
+        $messages = PublicMessage::select('message', 'created_at')->paginate(20);
 
-//         dd();
-         return view('home');
+        if ($request->ajax()) {
+            return response()->json(['html' =>$messages]);
 
-//
-//        $users = User::paginate(5);
-//
-//        return view('pages.users.index', compact('users'));
+        }
+        return view('home', compact('messages'));
+
     }
 
 
