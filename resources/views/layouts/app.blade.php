@@ -18,7 +18,7 @@
     {{--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">--}}
     <!-- DataTables CSS -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
-
+    @stack('styles')
     @vite(['resources/sass/app.scss'])
 </head>
 
@@ -164,7 +164,7 @@
     let pageLoader;
 
     function myFunction() {
-        pageLoader = setTimeout(showPage, 2000);
+        pageLoader = setTimeout(showPage, 1);
     }
 
     function showPage() {

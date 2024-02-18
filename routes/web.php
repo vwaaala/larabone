@@ -26,6 +26,7 @@ Route::get('/locale/{locale}', function ($locale) {
 // Auth middleware for authenticated users
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::post('/message/store', [App\Http\Controllers\PublicMessageController::class, 'store'])->name('messages.store');
 
     Route::get('permissions', [App\Http\Controllers\PermissionController::class, 'index'])->name('permissions.index');
     Route::get('roles/{role}/destroy', [App\Http\Controllers\RoleController::class, 'destroy'])->name('croles.destroy');
