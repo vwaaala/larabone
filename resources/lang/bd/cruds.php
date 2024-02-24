@@ -53,6 +53,7 @@ return [
             'email_verified_at'        => 'ইমেল যাচাই করা হয়েছে',
             'email_verified_at_helper' => 'ব্যাবহারকারির ইমেইল যাচাই হয়েছে',
             'password'                 => 'পাসওয়ার্ড',
+            'password_confirm'         => 'পাসওয়ার্ড নিশ্চিত করুন',
             'password_helper'          => '',
             'roles'                    => 'ভূমিকা',
             'roles_helper'             => '',
