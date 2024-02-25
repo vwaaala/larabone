@@ -51,11 +51,12 @@
                 @else
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{ route('home') }}">{{ __('global.dashboard') }}</a>
-                        </li>
+                            <a class="nav-link active" aria-current="page"
+                               href="{{ route('home') }}">{{ __('global.dashboard') }}</a>
                         @can('permission_show')
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('permissions.index') }}">{{ __('cruds.permission.title') }}</a>
+                                <a class="nav-link"
+                                   href="{{ route('permissions.index') }}">{{ __('cruds.permission.title') }}</a>
                             </li>
                         @endcan
                         @canany(['role_show', 'role_create', 'role_edit', 'role_delete'])
@@ -65,7 +66,8 @@
                         @endcan
                         @canany(['user_show', 'user_create', 'user_edit', 'user_delete'])
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('users.index') }}">{{ __('cruds.userManagement.header') }}</a>
+                                <a class="nav-link"
+                                   href="{{ route('users.index') }}">{{ __('cruds.userManagement.header') }}</a>
                             </li>
                         @endcanany
                     </ul>
@@ -74,17 +76,18 @@
                 <!-- Language Dropdown -->
                 <ul class="navbar-nav">
                     @if(count(config('panel.available_languages', [])) > 1)
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button"
-                           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="bi bi-globe"></i> {{ __('global.language') }}
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="languageDropdown">
-                            @foreach(config('panel.available_languages') as $langLocale => $langName)
-                            <a class="dropdown-item {{ app()->getLocale() == $langLocale ? 'd-none': '' }}" href="{{ url()->current() }}?lang={{ $langLocale }}">{{ $langName }}</a>
-                            @endforeach
-                        </div>
-                    </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button"
+                               data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="bi bi-globe"></i> {{ __('global.language') }}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="languageDropdown">
+                                @foreach(config('panel.available_languages') as $langLocale => $langName)
+                                    <a class="dropdown-item {{ app()->getLocale() == $langLocale ? 'd-none': '' }}"
+                                       href="{{ url()->current() }}?lang={{ $langLocale }}">{{ $langName }}</a>
+                                @endforeach
+                            </div>
+                        </li>
                     @endif
                 </ul>
                 <!-- Conditional Rendering based on Authentication -->
@@ -94,13 +97,15 @@
 
                         <ul id="unauthorized" class="navbar-nav me-auto">
                             @if (Route::has('login'))
-                            <li class="nav-item">
-                                <a class="nav-link text-warning" href="{{ route('login') }}">{{ __('global.login') }}</a>
-                            </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-warning"
+                                       href="{{ route('login') }}">{{ __('global.login') }}</a>
+                                </li>
                             @endif
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link text-primary" href="{{ route('register') }}">{{ __('global.register') }}</a>
+                                    <a class="nav-link text-primary"
+                                       href="{{ route('register') }}">{{ __('global.register') }}</a>
                                 </li>
                             @endif
                         </ul>
@@ -109,7 +114,8 @@
                         <!-- If Authenticated -->
                         <ul id="authenticated navbar-nav" class="mb-2 mb-md-0">
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-white-50" href="#" role="button" id="userDropdown"
+                                <a class="nav-link dropdown-toggle text-white-50" href="#" role="button"
+                                   id="userDropdown"
                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <img src="{{ asset(auth()->user()->avatar) }}" alt="Avatar" class="rounded-circle"
                                          height="30">
