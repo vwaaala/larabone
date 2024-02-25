@@ -23,8 +23,9 @@ return [
         ],
     ],
     'role'           => [
-        'title'          => 'ভূমিকা',
-        'title_singular' => 'ভূমিকা',
+        'title'          => 'ব্যবহারকারী ভূমিকা',
+        'title_singular' => 'ব্যবহারকারী ভূমিকা',
+        'not_found' => 'কোন ভূমিকা পাওয়া যায়নি!',
         'fields'         => [
             'id'                => 'আইডি',
             'id_helper'         => '',
@@ -53,6 +54,7 @@ return [
             'email_verified_at'        => 'ইমেল যাচাই করা হয়েছে',
             'email_verified_at_helper' => 'ব্যাবহারকারির ইমেইল যাচাই হয়েছে',
             'password'                 => 'পাসওয়ার্ড',
+            'password_confirm'         => 'পাসওয়ার্ড নিশ্চিত করুন',
             'password_helper'          => '',
             'roles'                    => 'ভূমিকা',
             'roles_helper'             => '',

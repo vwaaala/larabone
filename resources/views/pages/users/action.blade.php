@@ -1,12 +1,12 @@
 <div class="btn-group">
     @if(Route::currentRouteName() == 'users.index' && !request()->has('show_deleted'))
         @can('user_show')
-            <a href="{{ route('users.show', $id ?? $user->id) }}" class="btn btn-sm btn-info" title="View">
+            <a href="{{ route('users.show', $id ?? $user->id) }}" class="btn btn-sm btn-info" title="{{ __('global.show') }}">
                 <span class="bi bi-eye"></span> <!-- Bootstrap eye icon -->
             </a>
         @endcan
         @can('user_edit')
-            <a href="{{ route('users.edit', $id ?? $user->id) }}" class="btn btn-sm btn-warning" title="Edit">
+            <a href="{{ route('users.edit', $id ?? $user->id) }}" class="btn btn-sm btn-warning" title="{{ __('global.edit') }}">
                 <span class="bi bi-pencil"></span> <!-- Bootstrap pencil icon -->
             </a>
         @endcan
@@ -14,14 +14,14 @@
         <!-- Display "Retrieve" button if show_deleted parameter is set -->
         @can('user_delete')
             <a href="{{ route('users.retrieveDeleted', $id ?? $user->id) }}" class="btn btn-sm btn-success"
-               title="Retrieve">
+               title="{{ __('global.restore') }}">
                 <span class="bi bi-arrow-return-left"></span> <!-- Bootstrap arrow-return-left icon -->
             </a>
         @endcan
     @endif
 
     @can('user_delete')
-        <button type="button" class="btn btn-sm btn-danger" title="Delete" onclick="confirmDelete()">
+        <button type="button" class="btn btn-sm btn-danger" title="{{ __('global.delete') }}" onclick="confirmDelete()">
             <span class="bi bi-trash"></span> <!-- Bootstrap trash icon -->
         </button>
     @endcan

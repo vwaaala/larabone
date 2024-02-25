@@ -6,8 +6,8 @@
             <div class="col-md-8 mt-5">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <span>{{ __('Login') }}</span>
-                        <a href="{{ route('register') }}" class="btn btn-sm btn-secondary">{{ __('Sign Up') }}</a>
+                        <span>{{ __('global.login') }}</span>
+                        <a href="{{ route('register') }}" class="btn btn-sm btn-secondary">{{ __('global.register') }}</a>
                     </div>
 
                     <div class="card-body">
@@ -16,7 +16,7 @@
 
                             <div class="row mb-3">
                                 <label for="email"
-                                       class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                                       class="col-md-4 col-form-label text-md-end">{{ __('cruds.user.fields.email') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email"
@@ -33,7 +33,7 @@
 
                             <div class="row mb-3">
                                 <label for="password"
-                                       class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                                       class="col-md-4 col-form-label text-md-end">{{ __('cruds.user.fields.password') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password"
@@ -55,7 +55,7 @@
                                                id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                         <label class="form-check-label" for="remember">
-                                            {{ __('Remember Me') }}
+                                            {{ __('global.remember_me') }}
                                         </label>
                                     </div>
                                 </div>
@@ -64,12 +64,12 @@
                             <div class="row mb-3">
                                 <div class="col-md-8 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                        {{ __('Login') }}
+                                        {{ __('global.login') }}
                                     </button>
 
                                     @if (Route::has('password.request'))
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
-                                            {{ __('Forgot Your Password?') }}
+                                        <a class="btn btn-link text-danger" href="{{ route('password.request') }}">
+                                            {{ __('global.forgot_password') }}
                                         </a>
                                     @endif
                                 </div>
@@ -78,8 +78,8 @@
                         <div class="row mb-3">
                             <div class="col-md-8 offset-md-4">
                                 <!-- Add button to login with Google -->
-                                <a href="#" class="btn btn-danger">
-                                    Login with Google
+                                <a href="#" class="btn btn-secondary">
+                                    {{ __('global.google_login') }}
                                 </a>
                             </div>
                         </div>

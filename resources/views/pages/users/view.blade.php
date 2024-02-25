@@ -4,8 +4,8 @@
     <div class="card">
         <div class="card-header">
             <div class="d-flex justify-content-between align-items-center">
-                <span>My Profile</span>
-                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-secondary">Edit Profile</a>
+                <span>{{ __('global.profile') }}</span>
+                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-secondary"><span class="bi bi-pencil"></span> {{ __('global.edit') }}</a>
             </div>
         </div>
 

@@ -51,21 +51,21 @@
                 @else
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Dashboard</a>
+                            <a class="nav-link active" aria-current="page" href="{{ route('home') }}">{{ __('global.dashboard') }}</a>
                         </li>
                         @can('permission_show')
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('permissions.index') }}">Permissions</a>
+                                <a class="nav-link" href="{{ route('permissions.index') }}">{{ __('cruds.permission.title') }}</a>
                             </li>
                         @endcan
                         @canany(['role_show', 'role_create', 'role_edit', 'role_delete'])
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('roles.index') }}">Role</a>
+                                <a class="nav-link" href="{{ route('roles.index') }}">{{ __('cruds.role.title') }}</a>
                             </li>
                         @endcan
                         @canany(['user_show', 'user_create', 'user_edit', 'user_delete'])
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('users.index') }}">Users</a>
+                                <a class="nav-link" href="{{ route('users.index') }}">{{ __('cruds.userManagement.header') }}</a>
                             </li>
                         @endcanany
                     </ul>
@@ -77,7 +77,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button"
                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ strtoupper(app()->getLocale()) }}
+                            <i class="bi bi-globe"></i> {{ __('global.language') }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="languageDropdown">
                             @foreach(config('panel.available_languages') as $langLocale => $langName)
@@ -91,24 +91,25 @@
                 <div class="d-flex flex-column flex-md-row align-items-center">
                     <!-- If Unauthorized -->
                     @guest
-                        <div class="d-flex">
-                            <div id="unauthorized" class="mb-2 me-2">
-                                @if (Route::has('login'))
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                @endif
-                            </div>
-                            <div id="unauthorized" class="mb-2">
-                                @if (Route::has('register'))
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                @endif
-                            </div>
-                        </div>
+
+                        <ul id="unauthorized" class="navbar-nav me-auto">
+                            @if (Route::has('login'))
+                            <li class="nav-item">
+                                <a class="nav-link text-warning" href="{{ route('login') }}">{{ __('global.login') }}</a>
+                            </li>
+                            @endif
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link text-primary" href="{{ route('register') }}">{{ __('global.register') }}</a>
+                                </li>
+                            @endif
+                        </ul>
 
                     @else
                         <!-- If Authenticated -->
-                        <div id="authenticated" class="mb-2 mb-md-0">
-                            <div class="dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" id="userDropdown"
+                        <ul id="authenticated navbar-nav" class="mb-2 mb-md-0">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-white-50" href="#" role="button" id="userDropdown"
                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <img src="{{ asset(auth()->user()->avatar) }}" alt="Avatar" class="rounded-circle"
                                          height="30">
@@ -116,18 +117,18 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="userDropdown">
                                     <a class="dropdown-item"
-                                       href="{{ route('users.show', auth()->user()->id) }}">Profile</a>
+                                       href="{{ route('users.show', auth()->user()->id) }}">{{ __('global.profile') }}</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('global.logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
                                 </div>
-                            </div>
-                        </div>
+                            </li>
+                        </ul>
                     @endguest
                 </div>
 

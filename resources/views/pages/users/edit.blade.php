@@ -5,14 +5,14 @@
     <div class="mb-2">
         <!-- Button to go back to the previous page -->
         <button onclick="window.history.back();" class="btn btn-secondary"><span class="bi bi-arrow-return-left"></span>
-            Go Back
+            {{ __('global.back_to_list') }}
         </button>
     </div>
     <div class="row">
         <div class="col-lg-6 col-md-12 col-12">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title">Basic Information</h5> <!-- Card title for basic information -->
+                    <h5 class="card-title">{{ __('cruds.userManagement.header') }}</h5> <!-- Card title for basic information -->
                 </div>
                 <div class="card-body">
                     <!-- Form for updating users basic information -->
@@ -21,9 +21,9 @@
                         @csrf <!-- CSRF protection -->
 
                         <div class="row">
-                            <div class="col-12">
-                                <!-- Input field for users's name -->
-                                <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
+                            <div class="col-12 mb-2">
+                                <!-- Input field for user's name -->
+                                <label for="name" class="form-label">{{ __('cruds.user.fields.title') }} <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
                                        name="name" value="{{ $user->name }}" required>
                                 @error('name')
@@ -31,9 +31,9 @@
                                 @enderror
                             </div>
 
-                            <div class="col-12 mt-2">
-                                <!-- Input field for users's email (disabled) -->
-                                <label for="email" class="form-label">Email address</label>
+                            <div class="col-12 mb-2">
+                                <!-- Input field for user's email (disabled) -->
+                                <label for="email" class="form-label">{{ __('cruds.user.fields.email') }}</label>
                                 <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
                                        value="{{ $user->email }}" disabled>
                                 <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
@@ -44,9 +44,9 @@
                                 @enderror
                             </div>
 
-                            <div class="col-12 mt-2">
+                            <div class="col-12 mb-2">
                                 <!-- Input field for users's avatar -->
-                                <label for="avatar" class="form-label">Avatar</label>
+                                <label for="avatar" class="form-label">{{ __('global.photo') }}</label>
                                 <div class="row">
                                     <div class="col-10">
                                         <input type="file" class="form-control @error('avatar') is-invalid @enderror"
@@ -67,9 +67,9 @@
                             @if(count($roles) >= 1)
 
                                 @canany(['user_create', 'user_delete'])
-                                    <div class="col-6">
-                                        <!-- Dropdown for selecting users's roles -->
-                                        <label for="roleSelect" class="form-label">Role <span
+                                    <div class="col-6 mb-2">
+                                        <!-- Dropdown for selecting user's roles -->
+                                        <label for="roleSelect" class="form-label">{{ __('cruds.user.fields.roles') }} <span
                                                 class="text-danger">*</span></label>
                                         <select class="form-select @error('roles') is-invalid @enderror" id="roleSelect"
                                                 name="role">
@@ -84,9 +84,9 @@
                                         @enderror
                                     </div>
 
-                                    <div class="col-6 mt-2">
-                                        <!-- Dropdown for selecting users's status -->
-                                        <label for="statusSelect" class="form-label">Status <span
+                                    <div class="col-6 mb-2">
+                                        <!-- Dropdown for selecting user's status -->
+                                        <label for="statusSelect" class="form-label">{{ __('global.status') }} <span
                                                 class="text-danger">*</span></label>
                                         <select class="form-select @error('status') is-invalid @enderror"
                                                 id="statusSelect"
@@ -108,7 +108,7 @@
                             @endif
                             <div class="col-12 mt-2">
                                 <!-- Button to submit users update -->
-                                <button type="submit" class="btn btn-primary">Update user</button>
+                                <button type="submit" class="btn btn-primary">{{ __('global.update') }} {{ __('cruds.user.title_singular') }}</button>
                             </div>
                         </div>
                     </form>
@@ -119,30 +119,30 @@
         <div class="col-lg-6 col-md-12 col-12">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title">Update Password</h5> <!-- Card title for updating password -->
+                    <h5 class="card-title">{{ __('global.update') }} {{ __('cruds.user.title_singular') }} {{ __('cruds.user.fields.password') }}</h5> <!-- Card title for updating password -->
                 </div>
                 <div class="card-body">
-                    <!-- Form for updating users's password -->
+                    <!-- Form for updating user's password -->
                     <form method="POST" action="{{ route('users.changePassword', $user->id) }}">
                         @method('PUT') <!-- Method spoofing to use PUT method -->
                         @csrf <!-- CSRF protection -->
 
                         <div class="mb-3">
                             <!-- Input field for new password -->
-                            <label for="password" class="form-label">New Password</label>
+                            <label for="password" class="form-label">{{ __('cruds.user.fields.password') }}</label>
                             <input type="password" class="form-control" id="password" name="password" required>
                         </div>
 
                         <div class="mb-3">
                             <!-- Input field for confirming new password -->
-                            <label for="password_confirmation" class="form-label">Confirm New Password</label>
+                            <label for="password_confirmation" class="form-label">{{ __('cruds.user.fields.password_confirm') }}</label>
                             <input type="password" class="form-control" id="password_confirmation"
                                    name="password_confirmation"
                                    required>
                         </div>
 
                         <!-- Button to submit password update -->
-                        <button type="submit" class="btn btn-primary">Update Password</button>
+                        <button type="submit" class="btn btn-primary">{{ __('global.update') }} {{ __('cruds.user.fields.password') }}</button>
                     </form>
                 </div>
             </div>

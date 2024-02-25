@@ -25,6 +25,7 @@ return [
     'role'           => [
         'title'          => 'Roles',
         'title_singular' => 'Role',
+        'not_found' => 'No Role Found!',
         'fields'         => [
             'id'                 => 'ID',
             'id_helper'          => '',
@@ -53,6 +54,7 @@ return [
             'email_verified_at'        => 'Email verified at',
             'email_verified_at_helper' => '',
             'password'                 => 'Password',
+            'password_confirm'         => 'Confirm Password',
             'password_helper'          => '',
             'roles'                    => 'Roles',
             'roles_helper'             => '',
