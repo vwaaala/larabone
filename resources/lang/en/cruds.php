@@ -25,6 +25,7 @@ return [
     'role'           => [
         'title'          => 'Roles',
         'title_singular' => 'Role',
+        'not_found' => 'No Role Found!',
         'fields'         => [
             'id'                 => 'ID',
             'id_helper'          => '',

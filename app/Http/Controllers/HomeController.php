@@ -26,13 +26,7 @@ class HomeController extends Controller
     public function index(Request $request)
 
     {
-        $messages = PublicMessage::select('message', 'created_at')->paginate(20);
-
-        if ($request->ajax()) {
-            return response()->json(['html' =>$messages]);
-
-        }
-        return view('home', compact('messages'));
+        return view('home');
 
     }
 

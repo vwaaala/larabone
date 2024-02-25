@@ -15,18 +15,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.app');
 });
 
 Auth::routes(['verify' => false]);
 
-Route::get('/locale/{locale}', function ($locale) {
-
-})->name('locale');
 // Auth middleware for authenticated users
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::post('/message/store', [App\Http\Controllers\PublicMessageController::class, 'store'])->name('messages.store');
 
     Route::get('permissions', [App\Http\Controllers\PermissionController::class, 'index'])->name('permissions.index');
     Route::get('roles/{role}/destroy', [App\Http\Controllers\RoleController::class, 'destroy'])->name('croles.destroy');

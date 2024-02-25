@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'language'                              => 'ভাষা',
     'actions'                              => 'অ্যাকশন',
     'add'                                  => 'যোগ করুন',
     'allRightsReserved'                    => 'সমস্ত অধিকার সংরক্ষিত।',
@@ -18,6 +19,8 @@ return [
     'home'                                 => 'Home',
     'list'                                 => 'তালিকা',
     'login'                                => 'প্রবেশ করুন',
+    'ready_to_login'                       => 'ইতিমধ্যে সদস্য? প্রবেশ করুন',
+    'google_login'                         => 'গুগল দিয়ে লগইন করুন',
     'login_email'                          => 'ইমেইল',
     'login_password'                       => 'পাসওয়ার্ড',
     'login_password_confirmation'          => 'পাসওয়ার্ড নিশ্চিতকরণ',
@@ -43,6 +46,10 @@ return [
     'toggleNavigation'                     => 'নেভিগেশন টগল করুন',
     'user_name'                            => 'ইউজারনেম',
     'verifyYourEmail'                      => 'আপনার ইমেল যাচাই করুন',
+    'freshVerificationLink'                => 'আপনার ইমেল ঠিকানায় একটি নতুন যাচাইকরণ লিঙ্ক পাঠানো হয়েছে৷',
+    'checkVerificationLink'                => 'এগিয়ে যাওয়ার আগে, একটি যাচাইকরণ লিঙ্কের জন্য আপনার ইমেল চেক করুন.',
+    'ifNotVerificationLink'                => 'ইমেইল না পেলে',
+    'clickForAnotherLink'                  => 'অন্য অনুরোধ করতে এখানে ক্লিক করুন',
     'verifyYourUser'                       => 'আপনার নিবন্ধন শেষ করতে - আপনার ইমেল যাচাই করুন',
     'view'                                 => 'দেখুন',
     'view_file'                            => 'নথি দেখ',

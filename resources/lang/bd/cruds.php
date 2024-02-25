@@ -23,8 +23,9 @@ return [
         ],
     ],
     'role'           => [
-        'title'          => 'ভূমিকা',
-        'title_singular' => 'ভূমিকা',
+        'title'          => 'ব্যবহারকারী ভূমিকা',
+        'title_singular' => 'ব্যবহারকারী ভূমিকা',
+        'not_found' => 'কোন ভূমিকা পাওয়া যায়নি!',
         'fields'         => [
             'id'                => 'আইডি',
             'id_helper'         => '',

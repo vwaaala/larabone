@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'password_confirm_notice'              => 'Please confirm your password before continuing.',
+    'language'                             => 'Language',
     'actions'                              => 'Actions',
     'add'                                  => 'Add',
     'allRightsReserved'                    => 'All rights reserved.',
@@ -18,6 +20,8 @@ return [
     'home'                                 => 'Home',
     'list'                                 => 'List',
     'login'                                => 'Login',
+    'ready_to_login'                       => 'Already member? Login now',
+    'google_login'                         => 'Login with Google',
     'login_email'                          => 'Email',
     'login_password'                       => 'Password',
     'login_password_confirmation'          => 'Password confirmation',
@@ -43,6 +47,10 @@ return [
     'toggleNavigation'                     => 'Toggle navigation',
     'user_name'                            => 'Name',
     'verifyYourEmail'                      => 'Please verify your email',
+    'freshVerificationLink'                => 'A fresh verification link has been sent to your email address.',
+    'checkVerificationLink'                => 'Before proceeding, please check your email for a verification link.',
+    'ifNotVerificationLink'                => 'If you did not receive the email',
+    'clickForAnotherLink'                => 'click here to request another',
     'verifyYourUser'                       => 'To finish your registration - site asks you to verify your email',
     'view'                                 => 'View',
     'view_file'                            => 'View file',

@@ -2,6 +2,13 @@
 @section('content')
 
     @can('role_show')
+        <div class="mb-2">
+            <!-- Button to go back to the previous page -->
+            <button onclick="window.history.back();" class="btn btn-secondary"><span
+                    class="bi bi-arrow-return-left"></span>
+                {{ __('global.back_to_list') }}
+            </button>
+        </div>
         <!-- User DataTable -->
         <div class="card">
             <div class="card-header d-flex justify-content-between">
@@ -9,13 +16,11 @@
             </div>
 
             <div class="card-body">
-                <!-- Button to go back to the previous page -->
-                <a href="{{ route('roles.index') }}" class="btn btn-secondary mb-2"><span class="bi bi-arrow-return-left"></span> Go Back</a>
                 <table class="table table-striped table-bordered">
                     <thead>
                     <tr>
                         <th scope="col">S#</th>
-                        <th scope="col">Name</th>
+                        <th scope="col">{{ __('cruds.role.title') }}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -27,7 +32,7 @@
                     @empty
                         <td colspan="3">
                         <span class="text-danger">
-                            <strong>No Role Found!</strong>
+                            <strong>{{ __('cruds.role.not_found') }}</strong>
                         </span>
                         </td>
                     @endforelse

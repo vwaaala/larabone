@@ -22,7 +22,7 @@
 
                         <div class="row">
                             <div class="col-12 mb-2">
-                                <!-- Input field for users's name -->
+                                <!-- Input field for user's name -->
                                 <label for="name" class="form-label">{{ __('cruds.user.fields.title') }} <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
                                        name="name" value="{{ $user->name }}" required>
@@ -68,7 +68,7 @@
 
                                 @canany(['user_create', 'user_delete'])
                                     <div class="col-6 mb-2">
-                                        <!-- Dropdown for selecting users's roles -->
+                                        <!-- Dropdown for selecting user's roles -->
                                         <label for="roleSelect" class="form-label">{{ __('cruds.user.fields.roles') }} <span
                                                 class="text-danger">*</span></label>
                                         <select class="form-select @error('roles') is-invalid @enderror" id="roleSelect"
@@ -85,7 +85,7 @@
                                     </div>
 
                                     <div class="col-6 mb-2">
-                                        <!-- Dropdown for selecting users's status -->
+                                        <!-- Dropdown for selecting user's status -->
                                         <label for="statusSelect" class="form-label">{{ __('global.status') }} <span
                                                 class="text-danger">*</span></label>
                                         <select class="form-select @error('status') is-invalid @enderror"
@@ -122,7 +122,7 @@
                     <h5 class="card-title">{{ __('global.update') }} {{ __('cruds.user.title_singular') }} {{ __('cruds.user.fields.password') }}</h5> <!-- Card title for updating password -->
                 </div>
                 <div class="card-body">
-                    <!-- Form for updating users's password -->
+                    <!-- Form for updating user's password -->
                     <form method="POST" action="{{ route('users.changePassword', $user->id) }}">
                         @method('PUT') <!-- Method spoofing to use PUT method -->
                         @csrf <!-- CSRF protection -->
