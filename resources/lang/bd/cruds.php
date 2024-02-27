@@ -3,8 +3,8 @@
 return [
     'userManagement' => [
         'header'          => 'ব্যবহারকারী ব্যবস্থাপনা',
-        'title'          => 'ব্যবহারকারী এবং ভূমিকা',
-        'title_singular' => 'ব্যবহারকারী এবং ভূমিকা',
+        'title'          => 'ব্যবহারকারী',
+        'title_singular' => 'ব্যবহারকারী',
     ],
     'permission'     => [
         'title'          => 'অনুমতি',

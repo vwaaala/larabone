@@ -33,7 +33,7 @@
         <div class="container">
             <!-- Brand Logo and Name -->
             <a class="navbar-brand" href="{{ url('/') }}">
-                <img src="" alt="Logo" height="30" class="d-inline-block align-top">
+                <img src="{{ config('app.APP_LOGO') }}" alt="Logo" height="30" class="d-inline-block align-top">
                 {{ config('app.name', 'Laravel') }}
             </a>
 
@@ -67,7 +67,7 @@
                         @canany(['user_show', 'user_create', 'user_edit', 'user_delete'])
                             <li class="nav-item">
                                 <a class="nav-link"
-                                   href="{{ route('users.index') }}">{{ __('cruds.userManagement.header') }}</a>
+                                   href="{{ route('users.index') }}">{{ __('cruds.userManagement.title') }}</a>
                             </li>
                         @endcanany
                     </ul>

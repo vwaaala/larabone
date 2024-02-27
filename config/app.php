@@ -172,7 +172,8 @@ return [
         Spatie\Permission\PermissionServiceProvider::class,
         App\Providers\MenuServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
-        Yajra\DataTables\DataTablesServiceProvider::class
+        Yajra\DataTables\DataTablesServiceProvider::class,
+        Bunker\SupportTicket\TicketServiceProvider::class
     ])->toArray(),
 
     /*

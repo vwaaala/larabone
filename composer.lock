@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d6998483b3b2e2d5fc8926d0efdcaaaa",
+    "content-hash": "ad9877197383f2cdff422ad3f4611377",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -259,6 +259,50 @@
                 "source": "https://github.com/vwaaala/laravel-localization/tree/v1.0.0"
             },
             "time": "2024-02-25T01:59:01+00:00"
+        },
+        {
+            "name": "bunker/support-ticket",
+            "version": "v1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vwaaala/support-ticket.git",
+                "reference": "b511ef9817ca7c00379f6ecdac24f60dd4f5a4a5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vwaaala/support-ticket/zipball/b511ef9817ca7c00379f6ecdac24f60dd4f5a4a5",
+                "reference": "b511ef9817ca7c00379f6ecdac24f60dd4f5a4a5",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Bunker\\SupportTicket\\TicketServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Bunker\\SupportTicket\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Rafiqul Islam Shawn",
+                    "email": "vwaaala@gmail.com"
+                }
+            ],
+            "description": "It can create ticket from both auth and guest.",
+            "support": {
+                "issues": "https://github.com/vwaaala/support-ticket/issues",
+                "source": "https://github.com/vwaaala/support-ticket/tree/v1.0.3"
+            },
+            "time": "2024-02-27T03:24:03+00:00"
         },
         {
             "name": "carbonphp/carbon-doctrine-types",
@@ -9472,16 +9516,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "10.5.10",
+            "version": "10.5.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "50b8e314b6d0dd06521dc31d1abffa73f25f850c"
+                "reference": "0d968f6323deb3dbfeba5bfd4929b9415eb7a9a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/50b8e314b6d0dd06521dc31d1abffa73f25f850c",
-                "reference": "50b8e314b6d0dd06521dc31d1abffa73f25f850c",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/0d968f6323deb3dbfeba5bfd4929b9415eb7a9a4",
+                "reference": "0d968f6323deb3dbfeba5bfd4929b9415eb7a9a4",
                 "shasum": ""
             },
             "require": {
@@ -9553,7 +9597,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.10"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.11"
             },
             "funding": [
                 {
@@ -9569,7 +9613,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-02-04T09:07:51+00:00"
+            "time": "2024-02-25T14:05:00+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -10920,7 +10964,8 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^8.1"
+        "php": "^8.1",
+        "ext-pdo": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "2.3.0"

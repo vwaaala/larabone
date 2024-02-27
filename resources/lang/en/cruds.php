@@ -3,8 +3,8 @@
 return [
     'userManagement' => [
         'header'          => 'USER MANAGEMENT',
-        'title'          => 'Users & Roles',
-        'title_singular' => 'User & Role',
+        'title'          => 'Users',
+        'title_singular' => 'User',
     ],
     'permission'     => [
         'title'          => 'Permissions',
