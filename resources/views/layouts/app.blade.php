@@ -33,8 +33,7 @@
         <div class="container">
             <!-- Brand Logo and Name -->
             <a class="navbar-brand" href="{{ url('/') }}">
-                <img src="{{ config('app.APP_LOGO') }}" alt="Logo" height="30" class="d-inline-block align-top">
-                {{ config('app.name', 'Laravel') }}
+                <img src="" alt="Logo" class="d-inline-block align-top">{{ config('app.name') }}
             </a>
 
             <!-- Responsive Toggle Button -->
@@ -53,7 +52,12 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page"
                                href="{{ route('home') }}">{{ __('global.dashboard') }}</a>
-                        @can('permission_show')
+                        @can('support_ticket_show')
+                            <li class="nav-item">
+                                <a class="nav-link"
+                                   href="{{ route('support_ticket.index') }}">{{ __('support_ticket.title') }}</a>
+                            </li>
+                        @endcan                        @can('permission_show')
                             <li class="nav-item">
                                 <a class="nav-link"
                                    href="{{ route('permissions.index') }}">{{ __('cruds.permission.title') }}</a>
@@ -171,7 +175,7 @@
     let pageLoader;
 
     function myFunction() {
-        pageLoader = setTimeout(showPage, 1);
+        pageLoader = setTimeout(showPage, 1000);
     }
 
     function showPage() {
