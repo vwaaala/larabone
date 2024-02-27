@@ -262,16 +262,16 @@
         },
         {
             "name": "bunker/support-ticket",
-            "version": "v1.0.3",
+            "version": "v1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vwaaala/support-ticket.git",
-                "reference": "b511ef9817ca7c00379f6ecdac24f60dd4f5a4a5"
+                "reference": "83047464c15d19811a28cd3f4d3f948a61c6aed3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vwaaala/support-ticket/zipball/b511ef9817ca7c00379f6ecdac24f60dd4f5a4a5",
-                "reference": "b511ef9817ca7c00379f6ecdac24f60dd4f5a4a5",
+                "url": "https://api.github.com/repos/vwaaala/support-ticket/zipball/83047464c15d19811a28cd3f4d3f948a61c6aed3",
+                "reference": "83047464c15d19811a28cd3f4d3f948a61c6aed3",
                 "shasum": ""
             },
             "type": "library",
@@ -300,9 +300,9 @@
             "description": "It can create ticket from both auth and guest.",
             "support": {
                 "issues": "https://github.com/vwaaala/support-ticket/issues",
-                "source": "https://github.com/vwaaala/support-ticket/tree/v1.0.3"
+                "source": "https://github.com/vwaaala/support-ticket/tree/v1.0.4"
             },
-            "time": "2024-02-27T03:24:03+00:00"
+            "time": "2024-02-27T09:49:43+00:00"
         },
         {
             "name": "carbonphp/carbon-doctrine-types",
