@@ -175,7 +175,7 @@
     let pageLoader;
 
     function myFunction() {
-        pageLoader = setTimeout(showPage, 1);
+        pageLoader = setTimeout(showPage, 1000);
     }
 
     function showPage() {
