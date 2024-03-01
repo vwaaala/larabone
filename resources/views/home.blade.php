@@ -5,27 +5,23 @@
 @endpush
 
 @section('content')
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+    <div class="card">
+        <div class="card-header">{{ __('Dashboard') }}</div>
 
-                <div class="card-body">
-                    <div id="chat-messages" class="mb-4">
-                        <!-- Sample chat messages -->
+        <div class="card-body">
+            <div id="chat-messages" class="mb-4">
+                <!-- Sample chat messages -->
 
-                    </div>
-
-                    <!-- Message input form -->
-                    <form id="message-form" class="mb-4">
-                        <div class="input-group">
-                            <input type="text" id="message-input" class="form-control"
-                                   placeholder="Type your message here" required>
-                            <button type="submit" class="btn btn-primary">Send</button>
-                        </div>
-                    </form>
-                </div>
             </div>
+
+            <!-- Message input form -->
+            <form id="message-form" class="mb-4">
+                <div class="input-group">
+                    <input type="text" id="message-input" class="form-control"
+                           placeholder="Type your message here" required>
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </div>
+            </form>
         </div>
     </div>
 @endsection

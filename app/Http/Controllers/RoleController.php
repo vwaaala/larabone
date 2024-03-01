@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
@@ -10,34 +13,29 @@ use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
 {
+    /**
+     * Construct the RoleController class with middleware and permissions.
+     */
     public function __construct()
     {
+        // Middleware to ensure user authentication
         $this->middleware('auth');
-        $this->middleware('permission:role_show|role_create|role_edit|role_delete', ['only' => ['index','show']]);
-        $this->middleware('permission:role_create', ['only' => ['create','store']]);
-        $this->middleware('permission:role_edit', ['only' => ['edit','update']]);
+
+        // Middleware to authorize access based on permissions for specific methods
+        $this->middleware('permission:role_show|role_create|role_edit|role_delete', ['only' => ['index', 'show']]);
+        $this->middleware('permission:role_create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:role_edit', ['only' => ['edit', 'update']]);
         $this->middleware('permission:role_delete', ['only' => ['destroy']]);
     }
+
 
     /**
      * Display a listing of the resource.
      */
-    public function index(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    public function index(Role $role): View|\Illuminate\Foundation\Application|Factory|Application
     {
-        //
-        return view('pages.roles.index', [
-            'roles' => Role::orderBy('id','ASC')->paginate(10)
-        ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return view('pages.roles.create', [
-            'permissions' => Permission::orderby('id', 'ASC')->get()->toArray()
-        ]);
+        // Return view with paginated roles
+        return view('pages.roles.index', ['roles' => $role->orderBy('id', 'ASC')->paginate(10)]);
     }
 
     /**
@@ -45,31 +43,34 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Store a new role and sync its permissions
         $role = Role::create(['name' => $request->name]);
 
         $permissions = Permission::whereIn('id', $request->permissions)->get(['name'])->toArray();
 
         $role->syncPermissions($permissions);
 
-        return redirect()->route('roles.index')
-                ->with('success','New roles is added successfully.');
+        return redirect()->route('roles.index')->with('success', 'New roles is added successfully.');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        // Return view with permissions for role creation
+        return view('pages.roles.create', ['permissions' => Permission::orderby('id', 'ASC')->get()->toArray()]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Role $role)
+    public function show(Role $role): View|\Illuminate\Foundation\Application|Factory|Application
     {
-        //
-        $rolePermissions = Permission::join("role_has_permissions","permission_id","=","id")
-            ->where("role_id",$role->id)
-            ->select('name')
-            ->get();
-        return view('pages.roles.show', [
-            'role' => $role,
-            'rolePermissions' => $rolePermissions
-    ]);
+        // Show role details with its associated permissions
+        $rolePermissions = $role->permissions()->select('name')->get();
+
+        return view('pages.roles.show', ['role' => $role, 'rolePermissions' => $rolePermissions]);
     }
 
     /**
@@ -77,38 +78,29 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        //
+        // Prevent editing of the 'Super Admin' role
         if($role->name=='Super Admin'){
             abort(403, 'SUPER ADMIN ROLE CAN NOT BE EDITED');
         }
 
-        $rolePermissions = DB::table("role_has_permissions")->where("role_id",$role->id)
-            ->pluck('permission_id')
-            ->all();
+        // Retrieve role permissions for editing
+        $rolePermissions = $role->permissions()->pluck('id')->all();
 
-        return view('pages.roles.edit', [
-            'role' => $role,
-            'permissions' => Permission::orderby('id', 'ASC')->get()->toArray(),
-            'rolePermissions' => $rolePermissions
-        ]);
+        return view('pages.roles.edit', ['role' => $role, 'permissions' => Permission::orderby('id', 'ASC')->get()->toArray(), 'rolePermissions' => $rolePermissions]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Role $role)
+    public function update(Request $request, Role $role): \Illuminate\Http\RedirectResponse
     {
-
+        // Update role information and sync permissions
         $input = $request->only('name');
-
         $role->update($input);
-
-        $permissions = Permission::whereIn('id', $request->permissions)->get(['name'])->toArray();
-
+        $permissions = Permission::whereIn('id', $request->input('permissions'))->get(['name'])->toArray();
         $role->syncPermissions($permissions);
 
-        return redirect()->back()
-                ->with('success', 'Role is updated successfully.');
+        return redirect()->back()->with('success', 'Role is updated successfully.');
 
     }
 
@@ -117,20 +109,19 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        //
-        if($role->name=='Super Admin'){
+        // Prevent deletion of 'Super Admin' role, self-assigned role, or roles with associated users
+        if ($role->name == 'Super Admin') {
             abort(403, 'SUPER ADMIN ROLE CAN NOT BE DELETED');
         }
-        if(auth()->user()->hasRole($role->name)){
+        if (auth()->user()->hasRole($role->name)) {
             abort(403, 'CAN NOT DELETE SELF ASSIGNED ROLE');
         }
-        if($role->users->isNotEmpty())
-        {
+        if ($role->users->isNotEmpty()) {
             abort(403, 'First remove users who have this ROLE!');
         }
         $role->delete();
-        return redirect()->route('roles.index')
-                ->with('success', 'Role is deleted successfully.');
+
+        return redirect()->route('roles.index')->with('success', 'Role is deleted successfully.');
     }
 
 }

@@ -1,7 +1,7 @@
 <div class="btn-group">
     @if(Route::currentRouteName() == 'users.index' && !request()->has('show_deleted'))
         @can('user_show')
-            <a href="{{ route('users.show', $id ?? $user->id) }}" class="btn btn-sm btn-info" title="{{ __('global.show') }}">
+            <a href="{{ route('users.show', $id ?? $user->id) }}" class="btn btn-sm btn-primary" title="{{ __('global.show') }}">
                 <span class="bi bi-eye"></span> <!-- Bootstrap eye icon -->
             </a>
         @endcan
@@ -21,9 +21,10 @@
     @endif
 
     @can('user_delete')
-        <button type="button" class="btn btn-sm btn-danger" title="{{ __('global.delete') }}" onclick="confirmDelete()">
-            <span class="bi bi-trash"></span> <!-- Bootstrap trash icon -->
-        </button>
+        <a onclick="confirmDelete()" href="#" class="btn btn-sm btn-danger"
+           title="{{ __('global.delete') }}">
+            <span class="bi bi-trash"></span> <!-- Bootstrap arrow-return-left icon -->
+        </a>
     @endcan
 </div>
 

@@ -10,7 +10,7 @@
 
             <div class="card-body">
                 @can('role_create')
-                    <a href="{{ route('roles.create') }}" class="btn btn-secondary btn-sm my-2"><i
+                    <a href="{{ route('roles.create') }}" class="btn btn-primary btn-sm my-2"><i
                             class="bi bi-plus-circle"></i> {{ __('global.add') }} {{ __('cruds.role.title_singular') }}</a>
                 @endcan
                 <table class="table table-striped table-bordered">
@@ -29,7 +29,7 @@
                             <td>
                                 <div class="btn-group">
                                 <a href="{{ route('roles.show', $role->id) }}"
-                                   class="btn btn-info btn-sm"
+                                   class="btn btn-primary btn-sm"
                                    title="{{ __('global.show') }}">
                                     <i class="bi bi-eye" data-bs-title="Default tooltip"></i>
                                 </a>

@@ -39,17 +39,17 @@ $(function () {
     $('#drop-area').on('drop', function (e) {
         e.preventDefault();
         $(this).removeClass('dragover');
-        var file = e.originalEvent.dataTransfer.files[0];
+        let file = e.originalEvent.dataTransfer.files[0];
         displayImage(file);
     });
 
     $('#fileInput').on('change', function () {
-        var file = this.files[0];
+        let file = this.files[0];
         displayImage(file);
     });
 
     function displayImage(file) {
-        var reader = new FileReader();
+        let reader = new FileReader();
         reader.onload = function (e) {
             $('#preview').html('<img src="' + e.target.result + '" alt="Preview" style="width: 100%;">');
         }
@@ -57,7 +57,7 @@ $(function () {
     }
 
     $(document).on('click', '#testdb', function (e) {
-        $('#testdb').html('Testing... <i class="fa fa-spinner faa-spin animated "></i>');
+        $('#testdb').html('Testing... <i class="bi bi-arrow-repeat"></i>');
         $('#testdb').removeClass('btn-success').removeClass('btn-danger').addClass('btn-dark');
         e.preventDefault();
         $.ajax({
@@ -67,11 +67,11 @@ $(function () {
                     $('#errorMessage').addClass('danger').addClass('alert-danger');
                     $('#testdb').removeClass('btn-dark').addClass('btn-danger');
                     $('.next_step').removeClass('d-block').addClass('d-none');
-                    $('#testdb').html('Test Connection <i class="fa fa-times "></i>');
+                    $('#testdb').html('Test Connection failed  <i class="fa fa-times "></i>');
                 } else {
                     $('#errorMessage').html(data.Success);
                     $('#errorMessage').addClass('success').addClass('alert-success');
-                    $('#testdb').removeClass('btn-dark').addClass('btn-success');
+                    $('#testdb').removeClass('btn-dark').addClass('d-none');
                     $('.next_step').removeClass('d-none').addClass('d-block');
                     $('#testdb').html('Test Connection <i class="fa fa-check-circle-o "></i>');
                 }

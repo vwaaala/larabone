@@ -74,16 +74,19 @@ class UsersDataTable extends DataTable
 
         // Check if the user has permission to create users
         if (auth()->user()->can('user_create')) {
-            $buttons[] = Button::make('add');
+            $buttons[] = Button::make('add')->attr(['class' => 'btn btn-primary']);
         }
 
-        return $this->builder()->setTableId('users-table') // Set the table ID to 'users-table'
-        ->columns($this->getColumns()) // Set columns using the getColumns function
-        ->minifiedAjax() // Enable minified AJAX for faster loading
-        ->orderBy(1) // Order the table by the first column
-        ->selectStyleSingle() // Enable single row selection style
-        ->responsive(true) // Enable responsive extension
-        ->buttons($buttons); // Add the buttons array
+
+
+        return $this->builder()
+            ->setTableId('users-table') // Set the table ID to 'users-table'
+            ->columns($this->getColumns()) // Set columns using the getColumns function
+            ->minifiedAjax() // Enable minified AJAX for faster loading
+            ->orderBy(1) // Order the table by the first column
+            ->selectStyleSingle() // Enable single row selection style
+            ->buttons($buttons); // Add the buttons array
+
     }
 
 

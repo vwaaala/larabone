@@ -10,30 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href=" https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css " rel="stylesheet">
-<style>
-    #drop-area {
-        border: 2px dashed #ccc;
-        border-radius: 5px;
-        padding: 20px;
-        text-align: center;
-        cursor: pointer;
-    }
 
-    #preview {
-        margin-top: 20px;
-    }
-
-    .icon-shape {
-        width: 100px;
-        height: 100px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: 2px solid #ccc;
-        border-radius: 5px;
-        overflow: hidden;
-    }
-</style>
 </head>
 <body class="background">
 <div class="container-progress container">

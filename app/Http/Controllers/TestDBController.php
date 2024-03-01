@@ -10,8 +10,6 @@ use PDOException;
 
 class TestDBController extends Controller
 {
-//    protected $mydb;
-
     public function testDB(Request $request): JsonResponse
     {
 

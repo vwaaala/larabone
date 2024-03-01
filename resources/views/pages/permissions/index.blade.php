@@ -15,7 +15,7 @@
                     <input type="text" name="search" class="form-control" placeholder="{{ __('global.search') }}..."
                            value="{{ $searchQuery ?? '' }}">
                     <div class="input-group-append">
-                        <button type="submit" class="btn btn-secondary btn-sm">{{ __('global.search') }}</button>
+                        <button type="submit" class="btn btn-success btn-sm">{{ __('global.search') }}</button>
                     </div>
                 </div>
             </form>
