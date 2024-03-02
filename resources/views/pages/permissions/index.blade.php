@@ -1,6 +1,7 @@
 @extends('layouts.app', ['pageName' => config('pages.permissions.index')])
 @section('content')
-    <div class="d-flex mb-2 justify-content-end">
+    <div class="d-flex mb-2 justify-content-between">
+        <h4>{{ __('pages.permissions.title') }}</h4>
         <form action="#" method="GET" class="form-inline">
             <div class="input-group">
                 <input type="text" name="search" class="form-control" placeholder="{{ __('global.search') }}..."
