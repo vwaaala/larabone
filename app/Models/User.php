@@ -27,6 +27,7 @@ implements MustVerifyEmail {
      * @var array<int, string>
      */
     protected $fillable = [
+        'uuid',
         'name',
         'email',
         'avatar',

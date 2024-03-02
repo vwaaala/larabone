@@ -6,7 +6,7 @@
 }
 
 .icon-ok {
-    color: #27ae60;
+    color: #594a4c;
 }
 
 .icon-remove {
@@ -31,7 +31,7 @@ input {
 }
 
 .container-progress .section-setup {
-    background: #f4645f;
+    background: #c5cf00;
     color: white;
 }
 
@@ -90,7 +90,7 @@ input::placeholder {
 }
 
 .tip {
-    color: #f4645f;
+    color: #c5cf00;
 }
 
 .progressbar li.active,
@@ -103,14 +103,14 @@ li a {
 }
 
 .progressbar li.active:before {
-    border-color: #31d02a;
-    background: #31d02a;
+    border-color: #594a4c;
+    background: #594a4c;
     color: white;
 }
 
 .btn-success {
-    background-color: #31d02a;
-    border-color: #31d02a;
+    background-color: #38ae00;
+    border-color: #38ae00;
 }
 
 .background {
@@ -187,4 +187,27 @@ li a {
         box-shadow: 0 -2em;
         height: 5em;
     }
+}
+
+#drop-area {
+    border: 2px dashed #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+#preview {
+    margin-top: 20px;
+}
+
+.icon-shape {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
 }

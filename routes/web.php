@@ -20,22 +20,29 @@ use Illuminate\Support\Facades\Storage;
 */
 $installed = Storage::disk('public')->exists('installed');
 if ($installed === true) {
+    // Define a route for the homepage, returning the 'app' layout view
     Route::get('/', function () {
         return view('layouts.app');
     });
 
+    // Define authentication routes with email verification disabled
     Auth::routes(['verify' => false]);
 
-// Auth middleware for authenticated users
+    // Group routes that require authentication middleware
     Route::middleware(['auth'])->group(function () {
-        Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+        // Define route for the home page after authentication
+        Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+
+        // Define routes for managing permissions
         Route::get('permissions', [App\Http\Controllers\PermissionController::class, 'index'])->name('permissions.index');
 
-        Route::post('users/{id}/force-delete', [App\Http\Controllers\UserController::class, 'forceDelete'])->name('users.forceDelete');
+        // Define routes for specific user operations
+        Route::delete('users/{id}/force-delete', [App\Http\Controllers\UserController::class, 'forceDelete'])->name('users.forceDelete');
         Route::get('users/{id}/retrieve', [App\Http\Controllers\UserController::class, 'retrieveDeleted'])->name('users.retrieveDeleted');
         Route::put('users/{id}/change-password', [App\Http\Controllers\UserController::class, 'changePassword'])->name('users.changePassword');
 
+        // Define resourceful routes for users and roles
         Route::resources(['users' => UserController::class, 'roles' => RoleController::class,]);
     });
 

@@ -2,17 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Http\Controllers\TestDbController;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Hash;
 use App\Models\User;
-use Illuminate\Support\Str;
 
 class SetupController extends Controller
 {
@@ -147,13 +143,10 @@ class SetupController extends Controller
     public function lastStep(): View|\Illuminate\Foundation\Application|Factory|string|Application
     {
         ini_set('max_execution_time', 600); //600 seconds = 10 minutes
-        $admin_user = [
-            'uuid' => Str::uuid(),
+        $super_admin = [
             'name' => session('env.ADMIN_NAME'),
             'email'=> session('env.ADMIN_EMAIL'),
-            'password'=> Hash::make(str_ireplace('"', '', session('env.ADMIN_PASSWORD'))),
-            'role' => 'admin',
-            'avatar' => 'images/avatar/avatar.jpg'
+            'password'=> bcrypt(str_ireplace('"', '', session('env.ADMIN_PASSWORD'))),
         ];
 
         try {
@@ -180,13 +173,13 @@ class SetupController extends Controller
                 'COUNTRY' => session('env.COUNTRY'),
             ]);
 
-            Artisan::call('migrate:fresh --force');
+            Artisan::call('migrate:fresh --force --seed');
 
-            Artisan::call('optimize');
-
-            User::where('id', 1)->update(['name' => session('env.ADMIN_NAME'), 'email' => session('env.ADMIN_EMAIL'), 'password' => bcrypt(session('env.ADMIN_PASSWORD'),)]);
+            User::where('id', 1)->update($super_admin);
 
             Storage::disk('public')->put('installed', 'Contents');
+
+            Artisan::call('optimize');
 
 
         } catch (\Exception $e) {

@@ -18,6 +18,10 @@ class UsersDataTable extends DataTable
         // Create a new EloquentDataTable instance, set row ID to 'id'
         return (new EloquentDataTable($query))->setRowId('id')->editColumn('status', function ($user) {
             return ucfirst($user->status); // Use ucfirst to capitalize the first letter of 'status'
+        })->editColumn('created_at', function ($user){
+            return $user->created_at->format("m/d/Y");
+        })->editColumn('updated_at', function ($user){
+            return $user->updated_at->format("m/d/Y");
         })->addColumn('action', 'pages.users.action'); // Add a column for actions using the 'users.action' view
     }
 
@@ -74,16 +78,19 @@ class UsersDataTable extends DataTable
 
         // Check if the user has permission to create users
         if (auth()->user()->can('user_create')) {
-            $buttons[] = Button::make('add');
+            $buttons[] = Button::make('add')->attr(['class' => 'btn btn-primary']);
         }
 
-        return $this->builder()->setTableId('users-table') // Set the table ID to 'users-table'
-        ->columns($this->getColumns()) // Set columns using the getColumns function
-        ->minifiedAjax() // Enable minified AJAX for faster loading
-        ->orderBy(1) // Order the table by the first column
-        ->selectStyleSingle() // Enable single row selection style
-        ->responsive(true) // Enable responsive extension
-        ->buttons($buttons); // Add the buttons array
+
+
+        return $this->builder()
+            ->setTableId('users-table') // Set the table ID to 'users-table'
+            ->columns($this->getColumns()) // Set columns using the getColumns function
+            ->minifiedAjax() // Enable minified AJAX for faster loading
+            ->orderBy(1) // Order the table by the first column
+            ->selectStyleSingle() // Enable single row selection style
+            ->buttons($buttons); // Add the buttons array
+
     }
 
 
@@ -97,7 +104,6 @@ class UsersDataTable extends DataTable
             Column::make('status'), // Column for 'status'
             Column::make('created_at'), // Column for 'created_at'
             Column::make('updated_at'), // Column for 'updated_at'
-            Column::make('deleted_at'), // Column for 'deleted_at'
             Column::computed('action') // Column for actions
             ->exportable(false)
                 ->printable(false)

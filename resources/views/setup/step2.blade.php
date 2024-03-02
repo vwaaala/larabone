@@ -64,7 +64,7 @@
                     <a id="testdb" data-url="{{ route('testDB') }}" class="btn btn-dark mb-2 mt-3">Test Connection <i
                             class="bi bi-question-circle"></i></a>
 
-                    <div class="row">
+                    <div class="row mt-2">
                         <div class="col-12 col-md-6">
                             <a href="{{ route('viewStep1') }}" class="btn btn-outline-danger mb-2"><i
                                     class="bi bi-arrow-left"></i> Previous Step </a>

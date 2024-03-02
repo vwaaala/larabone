@@ -1,7 +1,7 @@
 <div class="btn-group">
     @if(Route::currentRouteName() == 'users.index' && !request()->has('show_deleted'))
         @can('user_show')
-            <a href="{{ route('users.show', $id ?? $user->id) }}" class="btn btn-sm btn-info" title="{{ __('global.show') }}">
+            <a href="{{ route('users.show', $id ?? $user->id) }}" class="btn btn-sm btn-primary" title="{{ __('global.show') }}">
                 <span class="bi bi-eye"></span> <!-- Bootstrap eye icon -->
             </a>
         @endcan
@@ -21,9 +21,10 @@
     @endif
 
     @can('user_delete')
-        <button type="button" class="btn btn-sm btn-danger" title="{{ __('global.delete') }}" onclick="confirmDelete()">
-            <span class="bi bi-trash"></span> <!-- Bootstrap trash icon -->
-        </button>
+        <a onclick="confirmDelete()" href="#" class="btn btn-sm btn-danger"
+           title="{{ __('global.delete') }}">
+            <span class="bi bi-trash"></span> <!-- Bootstrap arrow-return-left icon -->
+        </a>
     @endcan
 </div>
 
@@ -43,13 +44,14 @@
                 if (result.isConfirmed) {
                     // Create a form dynamically
                     let form = document.createElement('form');
+
+                    form.method = 'POST'; // Use POST method for delete to comply with RESTful conventions
                     @if(request()->has('show_deleted'))
                         form.action = '{{ route('users.forceDelete', $id) }}'
                     @else
                         form.action = '{{ route('users.destroy', $id) }}'
                     @endif
-                    form.method = 'POST'; // Use POST method for delete to comply with RESTful conventions
-                    form.innerHTML = '<input type="hidden" name="_token" value="{{ csrf_token() }}">';
+                    form.innerHTML = '<input type="hidden" name="method" value="DELETE">' + '<input type="hidden" name="_token" value="{{ csrf_token() }}">';
 
                     document.body.appendChild(form);
 

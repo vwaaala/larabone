@@ -1,14 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.app', ['pageName' => config('pages.roles.show'))
 @section('content')
-
     @can('role_show')
-        <div class="mb-2">
-            <!-- Button to go back to the previous page -->
-            <button onclick="window.history.back();" class="btn btn-secondary"><span
-                    class="bi bi-arrow-return-left"></span>
-                {{ __('global.back_to_list') }}
-            </button>
-        </div>
         <!-- User DataTable -->
         <div class="card">
             <div class="card-header d-flex justify-content-between">
@@ -19,8 +11,8 @@
                 <table class="table table-striped table-bordered">
                     <thead>
                     <tr>
-                        <th scope="col">S#</th>
-                        <th scope="col">{{ __('cruds.role.title') }}</th>
+                        <th scope="col">#</th>
+                        <th scope="col">{{ __('pages.roles.title') }}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -32,7 +24,7 @@
                     @empty
                         <td colspan="3">
                         <span class="text-danger">
-                            <strong>{{ __('cruds.role.not_found') }}</strong>
+                            <strong>{{ __('pages.roles.not_found') }}</strong>
                         </span>
                         </td>
                     @endforelse
