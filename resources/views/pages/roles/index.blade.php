@@ -2,7 +2,8 @@
 @section('content')
 
     @can('role_create')
-        <div class="d-flex justify-content-end">
+        <div class="d-flex mb-2 justify-content-between">
+            <h4>{{ __('pages.roles.title') }}</h4>
             <a href="{{ route('roles.create') }}" class="btn btn-success">
                 <i class="bi bi-plus-circle"></i> {{ __('global.add') }} {{ __('pages.roles.title_singular') }}</a>
         </div>

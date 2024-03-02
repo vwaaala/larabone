@@ -24,7 +24,7 @@
                            aria-expanded="false">
                             <i class="bi bi-globe"></i>
                         </a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu dropdown-menu-end">
                             @foreach(config('panel.available_languages') as $langLocale => $langName)
                                 <li>
                                     <a class="dropdown-item {{ app()->getLocale() == $langLocale ? 'd-none': '' }}"
@@ -56,7 +56,7 @@
                                  height="30">
                             {{ auth()->user()->name }}
                         </a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu dropdown-menu-end">
                             <li>
                                 <a class="dropdown-item {{ request()->routeIs('users.show') ? 'active' : '' }}"
                                    href="{{ route('users.show', auth()->user()->id) }}">
