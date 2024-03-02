@@ -33,31 +33,34 @@
     <script>
         function confirmDelete() {
             Swal.fire({
-                title: 'Are you sure?',
-                text: 'You won\'t be able to revert this!',
+                title: '{{ __('global.areYouSure') }}',
+                text: "{{ __('global.willNotBeAbleToRevert') }}",
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#d33',
-                cancelButtonColor: '#3085d6',
+                confirmButtonColor: 'var(--bs-danger)',
+                cancelButtonColor: 'var(--bs-primary)',
                 confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
                 if (result.isConfirmed) {
                     // Create a form dynamically
                     let form = document.createElement('form');
 
-                    form.method = 'POST'; // Use POST method for delete to comply with RESTful conventions
-                    @if(request()->has('show_deleted'))
-                        form.action = '{{ route('users.forceDelete', $id) }}'
-                    @else
-                        form.action = '{{ route('users.destroy', $id) }}'
-                    @endif
-                    form.innerHTML = '<input type="hidden" name="method" value="DELETE">' + '<input type="hidden" name="_token" value="{{ csrf_token() }}">';
+                    // Use DELETE method
+                    form.method = 'POST';
+
+                    // Add a hidden input field to specify the method override
+                    form.innerHTML = '<input type="hidden" name="_method" value="DELETE">' +
+                        '<input type="hidden" name="_token" value="{{ csrf_token() }}">';
+
+                    // Determine action based on show_deleted query parameter
+                    form.action = '{{ request()->has('show_deleted') ? route('users.forceDelete', $id) : route('users.destroy', $id) }}';
 
                     document.body.appendChild(form);
 
                     // Submit the form
                     form.submit();
                 }
+
             });
         }
     </script>
