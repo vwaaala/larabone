@@ -44,13 +44,14 @@
                 if (result.isConfirmed) {
                     // Create a form dynamically
                     let form = document.createElement('form');
+
+                    form.method = 'POST'; // Use POST method for delete to comply with RESTful conventions
                     @if(request()->has('show_deleted'))
                         form.action = '{{ route('users.forceDelete', $id) }}'
                     @else
                         form.action = '{{ route('users.destroy', $id) }}'
                     @endif
-                    form.method = 'POST'; // Use POST method for delete to comply with RESTful conventions
-                    form.innerHTML = '<input type="hidden" name="_token" value="{{ csrf_token() }}">';
+                    form.innerHTML = '<input type="hidden" name="method" value="DELETE">' + '<input type="hidden" name="_token" value="{{ csrf_token() }}">';
 
                     document.body.appendChild(form);
 

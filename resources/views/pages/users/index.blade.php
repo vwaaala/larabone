@@ -1,13 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.app', ['pageName' => config('pages.users.index')])
 @section('content')
     @canany(['user_show', 'user_create', 'user_edit', 'user_delete'])
         <div class="d-flex justify-content-between">
-            <span class="text-muted">{{ __('cruds.userManagement.header') }}</span>
-            @can('user_delete')
+            @can('user_no')
                 <!-- Conditional link based on whether show_deleted parameter is present in the request -->
                 @if(request()->has('show_deleted'))
                     <!-- Link to return to main users index -->
-                    <a class="btn btn-sm btn-secondary" href="{{ route('users.index') }}"><span
+                    <a class="btn btn-sm btn-outline-primary" href="{{ route('users.index') }}"><span
                             class="bi bi-arrow-return-left"></span> {{ __('global.back_to_list') }}</a>
                 @else
                     <!-- Link to view deleted users -->

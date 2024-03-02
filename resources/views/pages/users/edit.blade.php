@@ -1,18 +1,12 @@
-@extends('layouts.app') <!-- Extending the layout from the 'app.blade.php' file -->
+@extends('layouts.app', ['pageName' => config('pages.users.edit')]) <!-- Extending the layout from the 'app.blade.php' file -->
 
 @section('content')
-    <!-- Opening the content section -->
-    <div class="mb-2">
-        <!-- Button to go back to the previous page -->
-        <button onclick="window.history.back();" class="btn btn-secondary"><span class="bi bi-arrow-return-left"></span>
-            {{ __('global.back_to_list') }}
-        </button>
-    </div>
+
     <div class="row">
         <div class="col-lg-6 col-md-12 col-12">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title">{{ __('cruds.userManagement.header') }}</h5> <!-- Card title for basic information -->
+                    <h5 class="card-title">{{ __('global.edit') }} {{ __('pages.users.title_singular') }}</h5> <!-- Card title for basic information -->
                 </div>
                 <div class="card-body">
                     <!-- Form for updating users basic information -->
@@ -23,7 +17,7 @@
                         <div class="row">
                             <div class="col-12 mb-2">
                                 <!-- Input field for user's name -->
-                                <label for="name" class="form-label">{{ __('cruds.user.fields.title') }} <span class="text-danger">*</span></label>
+                                <label for="name" class="form-label">{{ __('pages.users.fields.title') }} <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
                                        name="name" value="{{ $user->name }}" required>
                                 @error('name')
@@ -33,7 +27,7 @@
 
                             <div class="col-12 mb-2">
                                 <!-- Input field for user's email (disabled) -->
-                                <label for="email" class="form-label">{{ __('cruds.user.fields.email') }}</label>
+                                <label for="email" class="form-label">{{ __('pages.users.fields.email') }}</label>
                                 <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
                                        value="{{ $user->email }}" disabled>
                                 <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
@@ -69,7 +63,7 @@
                                 @canany(['user_create', 'user_delete'])
                                     <div class="col-6 mb-2">
                                         <!-- Dropdown for selecting user's roles -->
-                                        <label for="roleSelect" class="form-label">{{ __('cruds.user.fields.roles') }} <span
+                                        <label for="roleSelect" class="form-label">{{ __('pages.users.fields.roles') }} <span
                                                 class="text-danger">*</span></label>
                                         <select class="form-select @error('roles') is-invalid @enderror" id="roleSelect"
                                                 name="role">
@@ -108,7 +102,7 @@
                             @endif
                             <div class="col-12 mt-2">
                                 <!-- Button to submit users update -->
-                                <button type="submit" class="btn btn-primary">{{ __('global.update') }} {{ __('cruds.user.title_singular') }}</button>
+                                <button type="submit" class="btn btn-primary">{{ __('global.update') }} {{ __('pages.users.title_singular') }}</button>
                             </div>
                         </div>
                     </form>
@@ -119,7 +113,7 @@
         <div class="col-lg-6 col-md-12 col-12">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title">{{ __('global.update') }} {{ __('cruds.user.title_singular') }} {{ __('cruds.user.fields.password') }}</h5> <!-- Card title for updating password -->
+                    <h5 class="card-title">{{ __('global.update') }} {{ __('pages.users.title_singular') }} {{ __('pages.users.fields.password') }}</h5> <!-- Card title for updating password -->
                 </div>
                 <div class="card-body">
                     <!-- Form for updating user's password -->
@@ -129,20 +123,20 @@
 
                         <div class="mb-3">
                             <!-- Input field for new password -->
-                            <label for="password" class="form-label">{{ __('cruds.user.fields.password') }}</label>
+                            <label for="password" class="form-label">{{ __('pages.users.fields.password') }}</label>
                             <input type="password" class="form-control" id="password" name="password" required>
                         </div>
 
                         <div class="mb-3">
                             <!-- Input field for confirming new password -->
-                            <label for="password_confirmation" class="form-label">{{ __('cruds.user.fields.password_confirm') }}</label>
+                            <label for="password_confirmation" class="form-label">{{ __('pages.users.fields.password_confirm') }}</label>
                             <input type="password" class="form-control" id="password_confirmation"
                                    name="password_confirmation"
                                    required>
                         </div>
 
                         <!-- Button to submit password update -->
-                        <button type="submit" class="btn btn-primary">{{ __('global.update') }} {{ __('cruds.user.fields.password') }}</button>
+                        <button type="submit" class="btn btn-primary">{{ __('global.update') }} {{ __('pages.users.fields.password') }}</button>
                     </form>
                 </div>
             </div>

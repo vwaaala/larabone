@@ -6,7 +6,7 @@ return [
         'title'          => 'Users',
         'title_singular' => 'User',
     ],
-    'permission'     => [
+    'permissions'     => [
         'title'          => 'Permissions',
         'title_singular' => 'Permission',
         'fields'         => [
@@ -22,7 +22,7 @@ return [
             'deleted_at_helper' => '',
         ],
     ],
-    'role'           => [
+    'roles'           => [
         'title'          => 'Roles',
         'title_singular' => 'Role',
         'not_found' => 'No Role Found!',
@@ -41,7 +41,7 @@ return [
             'deleted_at_helper'  => '',
         ],
     ],
-    'user'           => [
+    'users'           => [
         'title'          => 'Users',
         'title_singular' => 'User',
         'fields'         => [
@@ -68,4 +68,9 @@ return [
             'deleted_at_helper'        => '',
         ],
     ],
+
+    'dashboard' => [
+        'title'          => 'Dashboard',
+        'title_singular' => 'Dashboard',
+    ]
 ];

@@ -1,34 +1,25 @@
-@extends('layouts.app')
-<!-- Extends the layout from 'layouts.app' -->
-
+@extends('layouts.app', ['pageName' => config('pages.permissions.index')])
 @section('content')
-    <div class="card">
-        <div class="card-header d-flex justify-content-between align-items-center">
-            <!-- Left side of the card header -->
-            <div>
-                <h5 class="card-title mb-0">{{ __('cruds.permission.title') }}</h5>
-            </div>
-
-            <!-- Right side of the card header Search form -->
-            <form action="#" method="GET" class="form-inline">
-                <div class="input-group">
-                    <input type="text" name="search" class="form-control" placeholder="{{ __('global.search') }}..."
-                           value="{{ $searchQuery ?? '' }}">
-                    <div class="input-group-append">
-                        <button type="submit" class="btn btn-success btn-sm">{{ __('global.search') }}</button>
-                    </div>
+    <div class="d-flex mb-2 justify-content-end">
+        <form action="#" method="GET" class="form-inline">
+            <div class="input-group">
+                <input type="text" name="search" class="form-control" placeholder="{{ __('global.search') }}..."
+                       value="{{ $searchQuery ?? '' }}">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-success">{{ __('global.search') }}</button>
                 </div>
-            </form>
-        </div>
-
+            </div>
+        </form>
+    </div>
+    <div class="card">
         <div class="card-body">
             <!-- Table to display permissions -->
             <table class="table">
                 <thead>
                 <tr>
-                    <th scope="col">#</th>
+                    <th scope="col">Id</th>
                     <!-- Column headers -->
-                    <th scope="col">{{ __('cruds.permission.title') }} {{ __('cruds.permission.fields.title') }}</th>
+                    <th scope="col">{{ __('pages.permissions.title') }} {{ __('pages.permissions.fields.title') }}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -42,7 +33,6 @@
                     </tr>
                 @endforeach
                 </tbody>
-
                 <!-- Pagination links -->
                 <tfoot>
                 <tr>

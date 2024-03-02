@@ -16,7 +16,7 @@
 
                             <div class="row mb-3">
                                 <label for="email"
-                                       class="col-md-4 col-form-label text-md-end">{{ __('cruds.user.fields.email') }}</label>
+                                       class="col-md-4 col-form-label text-md-end">{{ __('pages.users.fields.email') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email"
@@ -33,7 +33,7 @@
 
                             <div class="row mb-3">
                                 <label for="password"
-                                       class="col-md-4 col-form-label text-md-end">{{ __('cruds.user.fields.password') }}</label>
+                                       class="col-md-4 col-form-label text-md-end">{{ __('pages.users.fields.password') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password"

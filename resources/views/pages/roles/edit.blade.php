@@ -1,16 +1,9 @@
-@extends('layouts.app') <!-- Extending the layout from the 'app.blade.php' file -->
+@extends('layouts.app', ['pageName' => config('pages.roles.edit')]) <!-- Extending the layout from the 'app.blade.php' file -->
 
 @section('content')
-    <!-- Opening the content section -->
-    <div class="mb-2">
-        <!-- Button to go back to the previous page -->
-        <button onclick="window.history.back();" class="btn btn-secondary"><span class="bi bi-arrow-return-left"></span>
-            {{ __('global.back_to_list') }}
-        </button>
-    </div>
     <div class="card">
         <div class="card-header">
-            <h5 class="card-title">{{ __('cruds.role.title_singular') }} {{ __('global.edit') }}</h5> <!-- Card title for basic information -->
+            <h5 class="card-title">{{ __('pages.roles.title_singular') }} {{ __('global.edit') }}</h5> <!-- Card title for basic information -->
         </div>
         <div class="card-body">
             <!-- Form for updating users basic information -->
@@ -21,7 +14,7 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-12 col-12">
                         <!-- Input field for users's name -->
-                        <label for="name" class="form-label">{{ __('cruds.role.fields.title') }} <span class="text-danger">*</span></label>
+                        <label for="name" class="form-label">{{ __('pages.roles.fields.title') }} <span class="text-danger">*</span></label>
                         <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
                                name="name" value="{{ $role->name }}" required>
                         @error('name')
@@ -29,7 +22,7 @@
                         @enderror
                     </div>
                     <div class="col-lg-6 col-md-12 col-sm-12">
-                        <strong>{{ __('cruds.permission.title') }}: <span class="text-danger">*</span></strong>
+                        <strong>{{ __('pages.permissions.title') }}: <span class="text-danger">*</span></strong>
                             <div class="form-group">
                                 @foreach ($permissions as $permission)
                                     <label>
@@ -42,7 +35,7 @@
 
                     <div class="col-12 mt-2">
                         <!-- Button to submit users update -->
-                        <button type="submit" class="btn btn-primary">{{ __('global.update') }} {{ __('cruds.role.title_singular') }}</button>
+                        <button type="submit" class="btn btn-primary">{{ __('global.update') }} {{ __('pages.roles.title_singular') }}</button>
                     </div>
                 </div>
             </form>

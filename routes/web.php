@@ -32,13 +32,13 @@ if ($installed === true) {
     Route::middleware(['auth'])->group(function () {
 
         // Define route for the home page after authentication
-        Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+        Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
         // Define routes for managing permissions
         Route::get('permissions', [App\Http\Controllers\PermissionController::class, 'index'])->name('permissions.index');
 
         // Define routes for specific user operations
-        Route::post('users/{id}/force-delete', [App\Http\Controllers\UserController::class, 'forceDelete'])->name('users.forceDelete');
+        Route::delete('users/{id}/force-delete', [App\Http\Controllers\UserController::class, 'forceDelete'])->name('users.forceDelete');
         Route::get('users/{id}/retrieve', [App\Http\Controllers\UserController::class, 'retrieveDeleted'])->name('users.retrieveDeleted');
         Route::put('users/{id}/change-password', [App\Http\Controllers\UserController::class, 'changePassword'])->name('users.changePassword');
 

@@ -1,23 +1,20 @@
-@extends('layouts.app')
+@extends('layouts.app', ['pageName' => config('pages.roles.index')])
 @section('content')
 
+    @can('role_create')
+        <div class="d-flex justify-content-end">
+            <a href="{{ route('roles.create') }}" class="btn btn-success">
+                <i class="bi bi-plus-circle"></i> {{ __('global.add') }} {{ __('pages.roles.title_singular') }}</a>
+        </div>
+    @endcan
     @can('role_show')
-        <!-- User DataTable -->
-        <div class="card">
-            <div class="card-header d-flex justify-content-between">
-                <span>{{ __('cruds.role.title') }}</span>
-            </div>
-
+        <div class="card mt-2">
             <div class="card-body">
-                @can('role_create')
-                    <a href="{{ route('roles.create') }}" class="btn btn-primary btn-sm my-2"><i
-                            class="bi bi-plus-circle"></i> {{ __('global.add') }} {{ __('cruds.role.title_singular') }}</a>
-                @endcan
                 <table class="table table-striped table-bordered">
                     <thead>
                     <tr>
-                        <th scope="col">S#</th>
-                        <th scope="col">{{ __('cruds.role.title_singular') }}</th>
+                        <th scope="col">Id</th>
+                        <th scope="col">{{ __('pages.roles.title_singular') }}</th>
                         <th scope="col" style="width: 250px;">{{ __('global.action') }}</th>
                     </tr>
                     </thead>
@@ -28,32 +25,32 @@
                             <td>{{ $role->name }}</td>
                             <td>
                                 <div class="btn-group">
-                                <a href="{{ route('roles.show', $role->id) }}"
-                                   class="btn btn-primary btn-sm"
-                                   title="{{ __('global.show') }}">
-                                    <i class="bi bi-eye" data-bs-title="Default tooltip"></i>
-                                </a>
-                                @can('role_edit')
-                                    <a href="{{ route('roles.edit', $role->id) }}"
-                                       class="btn btn-warning btn-sm"
-                                       title="{{ __('global.edit') }}">
-                                        <i class="bi bi-pencil"></i>
+                                    <a href="{{ route('roles.show', $role->id) }}"
+                                       class="btn btn-primary btn-sm"
+                                       title="{{ __('global.show') }}">
+                                        <i class="bi bi-eye" data-bs-title="Default tooltip"></i>
                                     </a>
-                                @endcan
-                                @can('role_delete')
-                                    <a href="{{ route('roles.destroy', $role->id) }}"
-                                       class="btn btn-danger btn-sm"
-                                       title="{{ __('global.delete') }}">
-                                        <i class="bi bi-trash"></i>
-                                    </a>
-                                @endcan
+                                    @can('role_edit')
+                                        <a href="{{ route('roles.edit', $role->id) }}"
+                                           class="btn btn-warning btn-sm"
+                                           title="{{ __('global.edit') }}">
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+                                    @endcan
+                                    @can('role_delete')
+                                        <a href="{{ route('roles.destroy', $role->id) }}"
+                                           class="btn btn-danger btn-sm"
+                                           title="{{ __('global.delete') }}">
+                                            <i class="bi bi-trash"></i>
+                                        </a>
+                                    @endcan
                                 </div>
                             </td>
                         </tr>
                     @empty
                         <td colspan="3">
                         <span class="text-danger">
-                            <strong>{{ __('cruds.role.not_found') }}</strong>
+                            <strong>{{ __('pages.roles.not_found') }}</strong>
                         </span>
                         </td>
                     @endforelse

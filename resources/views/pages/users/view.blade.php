@@ -1,11 +1,19 @@
-@extends('layouts.app')
+@extends('layouts.app', ['pageName' => config('pages.users.show')])
 
 @section('content')
+    <div class="mb-2">
+        <!-- Button to go back to the previous page -->
+        <button onclick="window.history.back();" class="btn btn-sm btn-outline-primary"><span
+                class="bi bi-arrow-return-left"></span>
+            {{ __('global.back_to_list') }}
+        </button>
+    </div>
     <div class="card">
         <div class="card-header">
             <div class="d-flex justify-content-between align-items-center">
                 <span>{{ __('global.profile') }}</span>
-                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-secondary"><span class="bi bi-pencil"></span> {{ __('global.edit') }}</a>
+                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning"><span
+                        class="bi bi-pencil"></span> </a>
             </div>
         </div>
 

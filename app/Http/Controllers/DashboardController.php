@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PublicMessage;
-use App\Models\User;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -26,7 +24,7 @@ class HomeController extends Controller
     public function index(Request $request)
 
     {
-        return view('home');
+        return view('pages.dashboard');
 
     }
 

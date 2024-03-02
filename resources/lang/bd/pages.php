@@ -6,7 +6,7 @@ return [
         'title'          => 'ব্যবহারকারী',
         'title_singular' => 'ব্যবহারকারী',
     ],
-    'permission'     => [
+    'permissions'     => [
         'title'          => 'অনুমতি',
         'title_singular' => 'অনুমতি',
         'fields'         => [
@@ -22,7 +22,7 @@ return [
             'deleted_at_helper' => '',
         ],
     ],
-    'role'           => [
+    'roles'           => [
         'title'          => 'ব্যবহারকারী ভূমিকা',
         'title_singular' => 'ব্যবহারকারী ভূমিকা',
         'not_found' => 'কোন ভূমিকা পাওয়া যায়নি!',
@@ -41,7 +41,7 @@ return [
             'deleted_at_helper' => '',
         ],
     ],
-    'user'           => [
+    'users'           => [
         'title'          => 'ব্যবহারকারী',
         'title_singular' => 'ব্যবহারকারী',
         'fields'         => [
@@ -68,4 +68,8 @@ return [
             'deleted_at_helper' => '',
         ],
     ],
+    'dashboard' => [
+        'title'          => 'ড্যাশবোর্ড',
+        'title_singular' => 'ড্যাশবোর্ড',
+    ]
 ];
