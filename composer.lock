@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2c2255c4e921ab6dacff16f22935ea80",
+    "content-hash": "ad9877197383f2cdff422ad3f4611377",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -259,6 +259,50 @@
                 "source": "https://github.com/vwaaala/laravel-localization/tree/v1.0.0"
             },
             "time": "2024-02-25T01:59:01+00:00"
+        },
+        {
+            "name": "bunker/support-ticket",
+            "version": "v1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vwaaala/support-ticket.git",
+                "reference": "e5621aca29adba6d90ed27bd9491d3e34d6b35b6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vwaaala/support-ticket/zipball/e5621aca29adba6d90ed27bd9491d3e34d6b35b6",
+                "reference": "e5621aca29adba6d90ed27bd9491d3e34d6b35b6",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Bunker\\SupportTicket\\TicketServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Bunker\\SupportTicket\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Rafiqul Islam Shawn",
+                    "email": "vwaaala@gmail.com"
+                }
+            ],
+            "description": "It can create ticket from both auth and guest.",
+            "support": {
+                "issues": "https://github.com/vwaaala/support-ticket/issues",
+                "source": "https://github.com/vwaaala/support-ticket/tree/v1.0.5"
+            },
+            "time": "2024-03-02T02:46:13+00:00"
         },
         {
             "name": "carbonphp/carbon-doctrine-types",
@@ -10924,5 +10968,5 @@
         "ext-pdo": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
