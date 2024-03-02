@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['pageName' => config('pages.dashboard')])
 <!-- include summernote css/js -->
 @push('styles')
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="card">
-        <div class="card-header">{{ __('Dashboard') }}</div>
+        <div class="card-header">{{ __(config('pages.dashboard.trans')) }}</div>
 
         <div class="card-body">
             <div id="chat-messages" class="mb-4">
