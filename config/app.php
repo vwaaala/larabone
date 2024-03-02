@@ -17,7 +17,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'Larabone'),
-    'logo' => env('APP_LOGO', 'Logo'),
+    'logo' => env('APP_LOGO', '/logo.png'),
 
     /*
     |--------------------------------------------------------------------------
