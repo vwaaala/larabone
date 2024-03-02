@@ -10,9 +10,6 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    {{--    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">--}}
     @stack('styles')
     @vite(['resources/sass/app.scss'])
     <style>
@@ -109,12 +106,15 @@
         .btn span, .btn i {
             vertical-align: middle;
         }
+
         .navbar-collapse {
             flex-grow: unset;
         }
+
         #app .content {
             margin-bottom: 100px;
         }
+
         select[name="users-table_length"] {
             border-radius: 20px;
         }
@@ -137,6 +137,25 @@
             @auth()
                 @include('layouts.partials.breadcrumb')
             @endauth
+            <!--begin::Session Message-->
+            @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            @if(session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
+
+            @if($errors->count() > 0)
+                <div class="alert alert-danger">
+                    {{ $error }}
+                </div>
+            @endif
+            <!--begin::Dynamic content-->
             @yield('content')
         </div>
 
