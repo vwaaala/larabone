@@ -26,7 +26,6 @@
         .sidebar {
             border-right: 1px solid #0d6efd2e;
             color: whitesmoke !important;
-            background: #0d6efd00;
         }
 
         .nav > a, nav.navbar {
@@ -64,7 +63,6 @@
 
         .navbar .container-fluid {
             z-index: 99999;
-            background: #fff;
             justify-content: flex-end;
             height: 100%;
         }
