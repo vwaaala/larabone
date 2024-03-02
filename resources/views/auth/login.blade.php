@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <span>{{ __('global.login') }}</span>
-                        <a href="{{ route('register') }}" class="btn btn-sm btn-secondary">{{ __('global.register') }}</a>
+                        <a href="{{ route('register') }}" class="btn btn-sm btn-success">{{ __('global.register') }}</a>
                     </div>
 
                     <div class="card-body">
@@ -68,8 +68,8 @@
                                     </button>
 
                                     @if (Route::has('password.request'))
-                                        <a class="btn btn-link text-danger" href="{{ route('password.request') }}">
-                                            {{ __('global.forgot_password') }}
+                                        <a href="#" class="btn btn-success">
+                                            {{ __('global.google_login') }}
                                         </a>
                                     @endif
                                 </div>
@@ -78,8 +78,8 @@
                         <div class="row mb-3">
                             <div class="col-md-8 offset-md-4">
                                 <!-- Add button to login with Google -->
-                                <a href="#" class="btn btn-secondary">
-                                    {{ __('global.google_login') }}
+                                <a class="btn btn-link text-danger" href="{{ route('password.request') }}">
+                                    {{ __('global.forgot_password') }}
                                 </a>
                             </div>
                         </div>

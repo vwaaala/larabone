@@ -39,6 +39,8 @@
 
         nav.navbar {
             justify-content: flex-end;
+            padding-top: 0px;
+            padding-bottom: 0px;
         }
 
         button.btn, a.btn, .card {
@@ -66,6 +68,8 @@
         .navbar .container-fluid {
             z-index: 99999;
             background: #fff;
+            justify-content: flex-end;
+            height: 100%;
         }
 
         .active-sidebar-overlay {
@@ -104,6 +108,15 @@
 
         .btn span, .btn i {
             vertical-align: middle;
+        }
+        .navbar-collapse {
+            flex-grow: unset;
+        }
+        #app .content {
+            margin-bottom: 100px;
+        }
+        select[name="users-table_length"] {
+            border-radius: 20px;
         }
     </style>
 </head>

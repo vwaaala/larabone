@@ -1,13 +1,6 @@
 @extends('layouts.app', ['pageName' => config('pages.users.show')])
 
 @section('content')
-    <div class="mb-2">
-        <!-- Button to go back to the previous page -->
-        <button onclick="window.history.back();" class="btn btn-sm btn-outline-primary"><span
-                class="bi bi-arrow-return-left"></span>
-            {{ __('global.back_to_list') }}
-        </button>
-    </div>
     <div class="card">
         <div class="card-header">
             <div class="d-flex justify-content-between align-items-center">

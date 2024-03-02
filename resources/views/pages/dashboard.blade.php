@@ -2,11 +2,19 @@
 <!-- include summernote css/js -->
 @push('styles')
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <style>
+        .card .d-icons i {
+            transition: .3s ease-in-out;
+        }
+        .card:hover .d-icons i {
+            font-size: 2rem;
+        }
+    </style>
 @endpush
 
 @section('content')
         <div class="row g-6 mb-6">
-            <div class="col-xl-3 col-sm-6 col-12">
+            <div class="col-xl-3 col-sm-6 col-12 pb-sm-2">
                 <div class="card shadow border-0">
                     <div class="card-body">
                         <div class="row">
@@ -15,8 +23,8 @@
                                 <span class="h3 font-bold mb-0">$750.90</span>
                             </div>
                             <div class="col-auto">
-                                <div class="icon icon-shape bg-tertiary text-white text-lg rounded-circle">
-                                    <i class="bi bi-credit-card"></i>
+                                <div class="icon icon-shape d-icons rounded-circle">
+                                    <i class="bi bi-credit-card text-primary"></i>
                                 </div>
                             </div>
                         </div>
@@ -29,7 +37,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-sm-6 col-12">
+            <div class="col-xl-3 col-sm-6 col-12 pb-sm-2">
                 <div class="card shadow border-0">
                     <div class="card-body">
                         <div class="row">
@@ -38,8 +46,8 @@
                                 <span class="h3 font-bold mb-0">215</span>
                             </div>
                             <div class="col-auto">
-                                <div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
-                                    <i class="bi bi-people"></i>
+                                <div class="icon icon-shape d-icons rounded-circle">
+                                    <i class="bi bi-people text-primary"></i>
                                 </div>
                             </div>
                         </div>
@@ -52,7 +60,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-sm-6 col-12">
+            <div class="col-xl-3 col-sm-6 col-12 pb-sm-2">
                 <div class="card shadow border-0">
                     <div class="card-body">
                         <div class="row">
@@ -61,8 +69,8 @@
                                 <span class="h3 font-bold mb-0">1.400</span>
                             </div>
                             <div class="col-auto">
-                                <div class="icon icon-shape bg-info text-white text-lg rounded-circle">
-                                    <i class="bi bi-clock-history"></i>
+                                <div class="icon icon-shape d-icons rounded-circle">
+                                    <i class="bi bi-clock-history text-primary"></i>
                                 </div>
                             </div>
                         </div>
@@ -75,7 +83,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-sm-6 col-12">
+            <div class="col-xl-3 col-sm-6 col-12 pb-sm-2">
                 <div class="card shadow border-0">
                     <div class="card-body">
                         <div class="row">
@@ -84,8 +92,8 @@
                                 <span class="h3 font-bold mb-0">95%</span>
                             </div>
                             <div class="col-auto">
-                                <div class="icon icon-shape bg-warning text-white text-lg rounded-circle">
-                                    <i class="bi bi-minecart-loaded"></i>
+                                <div class="icon icon-shape d-icons rounded-circle">
+                                    <i class="bi bi-minecart-loaded text-primary"></i>
                                 </div>
                             </div>
                         </div>

@@ -1,4 +1,4 @@
-@extends('layouts.app', ['pageName' => config('pages.roles.show'))
+@extends('layouts.app', ['pageName' => config('pages.roles.show')])
 @section('content')
     @can('role_show')
         <!-- User DataTable -->

@@ -1,12 +1,6 @@
 @extends('layouts.app', ['pageName' => config('pages.users.create')])
 @section('content')
     @can('user_edit')
-        <div class="mb-2">
-            <!-- Button to go back to the previous page -->
-            <button onclick="window.history.back();" class="btn btn-sm btn-outline-primary"><span class="bi bi-arrow-return-left"></span>
-                {{ __('global.back_to_list') }}
-            </button>
-        </div>
         <div class="card">
             <div class="card-header">
                 <h5 class="card-title">{{ __('global.create') }} {{ __('pages.users.title_singular') }}</h5>
