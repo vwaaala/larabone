@@ -2,14 +2,14 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h5 class="card-title">{{ __('pages.role.title_singular') }} {{ __('global.create') }}</h5>
+            <h5 class="card-title">{{ __('pages.roles.title_singular') }} {{ __('global.create') }}</h5>
         </div>
         <div class="card-body">
             <form method="POST" action="{{ route('roles.store') }}">
                 @csrf
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12">
-                        <label for="name" class="form-label">{{ __('pages.role.fields.title') }} <span class="text-danger">*</span></label>
+                        <label for="name" class="form-label">{{ __('pages.roles.fields.title') }} <span class="text-danger">*</span></label>
                         <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
                                name="name" required>
                         @error('name')
@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div class="col-12 mt-2">
-                        <button type="submit" class="btn btn-primary">{{ __('global.create') }} {{ __('pages.role.title_singular') }}</button>
+                        <button type="submit" class="btn btn-primary">{{ __('global.create') }} {{ __('pages.roles.title_singular') }}</button>
                     </div>
                 </div>
             </form>
