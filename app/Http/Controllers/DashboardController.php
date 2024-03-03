@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Bunker\SupportTicket\Models\Ticket;
+use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -19,14 +21,19 @@ class DashboardController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @param Request $request
+     * @return Renderable
      */
-    public function index(Request $request)
-
+    public function index(Request $request): \Illuminate\Contracts\Support\Renderable
     {
-        return view('pages.dashboard');
+        $packet = [];
+        if(!auth()->user()->hasRole('User')){
+            $packet['cards'][] = Ticket::getAnalyticCard(true, auth()->user()->id);
+        }else{
+            $packet['cards'][] = Ticket::getAnalyticCard(false);
+        }
 
+        return view('pages.dashboard', compact('packet'));
     }
-
 
 }

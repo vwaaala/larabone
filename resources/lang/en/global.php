@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'id' => 'ID',
     'password_confirm_notice'              => 'Please confirm your password before continuing.',
     'language'                             => 'Language',
     'actions'                              => 'Actions',

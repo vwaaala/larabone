@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'id' => 'আইডি',
     'language'                              => 'ভাষা',
     'actions'                              => 'অ্যাকশন',
     'add'                                  => 'যোগ করুন',
