@@ -46,8 +46,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/",
-            "Bunker\\SupportTicket\\": "package/support-ticket/src/"
+            "Tests\\": "tests/"
         }
     },
     "scripts": {
