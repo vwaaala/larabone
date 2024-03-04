@@ -109,6 +109,18 @@
             flex-grow: unset;
         }
 
+        .swal2-container {
+            z-index: 99999 !important;
+        }
+        .swal2-popup {
+            border-radius: 20px !important;
+        }
+
+        .swal2-popup .swal2-actions button{
+            border-radius: 20px !important;
+        }
+
+
         #app .content {
             margin-bottom: 100px;
         }
@@ -116,6 +128,27 @@
         select[name="users-table_length"] {
             border-radius: 20px;
         }
+
+        /* For WebKit based browsers (e.g. Chrome, Safari) */
+        ::-webkit-scrollbar {
+            width: 5px; /* Width of the scrollbar */
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; /* Color of the track (the area behind the scrollbar) */
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--bs-primary); /* Color of the scrollbar thumb (the draggable part) */
+            border-radius: 6px; /* Rounded corners */
+        }
+
+        /* Apply scrollbar color and width */
+        * {
+            scrollbar-color: var(--bs-primary) #f1f1f1; /* thumb color, track color */
+            scrollbar-width: thin; /* width of the scrollbar */
+        }
+
     </style>
 </head>
 
@@ -145,12 +178,6 @@
             @if(session('error'))
                 <div class="alert alert-danger">
                     {{ session('error') }}
-                </div>
-            @endif
-
-            @if($errors->count() > 0)
-                <div class="alert alert-danger">
-                    {{ $error }}
                 </div>
             @endif
             <!--begin::Dynamic content-->

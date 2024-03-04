@@ -97,7 +97,7 @@ return [
     'assigned_user'                        => 'Assigned (user)',
     'attachment'                           => 'Attachment',
     'axis'                                 => 'Axis',
-    'back_to_list'                         => 'Back to list',
+    'back_to_list'                         => 'Go back',
     'basic_crm'                            => 'Basic CRM',
     'budget'                               => 'Budget',
     'calendar_sources'                     => 'Calendar sources',

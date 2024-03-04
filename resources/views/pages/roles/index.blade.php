@@ -1,15 +1,18 @@
 @extends('layouts.app', ['pageName' => config('pages.roles.index')])
 @section('content')
 
-    @can('role_create')
-        <div class="d-flex mb-2 justify-content-between">
-            <h4>{{ __('pages.roles.title') }}</h4>
-            <a href="{{ route('roles.create') }}" class="btn btn-success">
-                <i class="bi bi-plus-circle"></i> {{ __('global.add') }} {{ __('pages.roles.title_singular') }}</a>
-        </div>
-    @endcan
     @can('role_show')
         <div class="card mt-2">
+            <div class="card-header">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h4 class="mb-0">{{ __('pages.roles.title') }}</h4>
+                    @can('role_create')
+                        <a href="{{ route('roles.create') }}" class="btn btn-success">
+                            <i class="bi bi-plus-circle"></i> {{ __('global.add') }} {{ __('pages.roles.title_singular') }}
+                        </a>
+                    @endcan
+                </div>
+            </div>
             <div class="card-body">
                 <table class="table table-striped table-bordered">
                     <thead>
