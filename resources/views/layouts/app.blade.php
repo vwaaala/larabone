@@ -62,7 +62,10 @@
             align-items: center;
         }
 
-        .navbar .container-fluid {
+        .active-content .navbar .container-fluid {
+            justify-content: flex-start;
+        }
+        .active-content .navbar .container-fluid {
             z-index: 99999;
             justify-content: flex-end;
             height: 100%;
@@ -119,6 +122,7 @@
         #app .content {
             margin-bottom: 100px;
         }
+        
 
         select[name="users-table_length"] {
             border-radius: 20px;
