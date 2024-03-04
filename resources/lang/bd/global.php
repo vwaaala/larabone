@@ -97,7 +97,7 @@ return [
     'assigned_user'                        => 'বরাদ্দ (ব্যবহারকারী)',
     'attachment'                           => 'সংযুক্তি',
     'axis'                                 => 'অক্ষ',
-    'back_to_list'                         => 'তালিকায় ফিরে যান',
+    'back_to_list'                         => 'ফিরে যান',
     'basic_crm'                            => 'বেসিক সিআরএম',
     'budget'                               => 'বাজেট',
     'calendar_sources'                     => 'ক্যালেন্ডার সূত্র',
