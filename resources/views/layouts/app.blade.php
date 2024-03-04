@@ -20,9 +20,6 @@
             transition: 0.5s;
         }
 
-        .navbar-collapse.collapse.show {
-        }
-
         .sidebar {
             border-right: 1px solid #0d6efd2e;
             color: whitesmoke !important;
@@ -55,16 +52,25 @@
             border: 1px solid #0d6efd2e;
             border-radius: 20px;
         }
-
+        li.nav-item.dropdown {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
         .dropdown {
             display: flex;
             align-items: center;
         }
 
-        .navbar .container-fluid {
+        .active-content .navbar .container-fluid {
+            justify-content: flex-start;
+        }
+        .active-content .navbar .container-fluid {
             z-index: 99999;
             justify-content: flex-end;
             height: 100%;
+            padding-left: 0px;
+            padding-right: 0px;
         }
 
         .active-sidebar-overlay {
@@ -105,10 +111,6 @@
             vertical-align: middle;
         }
 
-        .navbar-collapse {
-            flex-grow: unset;
-        }
-
         .swal2-container {
             z-index: 99999 !important;
         }
@@ -120,15 +122,21 @@
             border-radius: 20px !important;
         }
 
+        button.navbar-toggler {
+            position: fixed;
+        }
+        button.navbar-toggler:focus {
+            box-shadow: 0px 0px 10px #0d6efd2e;
+        }
 
         #app .content {
             margin-bottom: 100px;
         }
 
+
         select[name="users-table_length"] {
             border-radius: 20px;
         }
-
         /* For WebKit based browsers (e.g. Chrome, Safari) */
         ::-webkit-scrollbar {
             width: 5px; /* Width of the scrollbar */
@@ -148,7 +156,24 @@
             scrollbar-color: var(--bs-primary) #f1f1f1; /* thumb color, track color */
             scrollbar-width: thin; /* width of the scrollbar */
         }
-
+        .navbar-collapse {
+                flex-grow: unset;
+        }
+        @media (max-width: 767px) {
+            .navbar-collapse.show {
+                border-bottom: 1px solid #0d6efd2e;
+            }
+            .navbar-collapse {
+                background: #f8f9fa;
+                padding: 50px 20px 0px 20px;
+                border-bottom-left-radius: 20px;
+                border-bottom-right-radius: 20px;
+            }
+            ul.dropdown-menu.dropdown-menu-end.show {
+                border-radius: 20px;
+                border: 1px solid #0d6efd2e;
+            }
+        }
     </style>
 </head>
 
