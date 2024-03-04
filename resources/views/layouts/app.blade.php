@@ -123,12 +123,15 @@
         select[name="users-table_length"] {
             border-radius: 20px;
         }
+
+        .navbar-collapse {
+                flex-grow: unset;
+        }
         @media (max-width: 767px) {
             .navbar-collapse.show {
                 border-bottom: 1px solid #0d6efd2e;
             }
             .navbar-collapse {
-                flex-grow: unset;
                 background: #f8f9fa;
                 padding: 50px 20px 0px 20px;
                 border-bottom-left-radius: 20px;
