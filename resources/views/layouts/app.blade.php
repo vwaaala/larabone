@@ -40,7 +40,7 @@
             border-radius: 20px;
         }
 
-        button.btnbutton.btn:not(#users-table_wrapper) {
+        button.btn:not(#users-table_wrapper) {
             padding-right: 20px;
             padding-left: 20px;
         }
