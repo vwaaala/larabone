@@ -40,7 +40,7 @@
             border-radius: 20px;
         }
 
-        button.btn {
+        button.btnbutton.btn:not(#users-table_wrapper) {
             padding-right: 20px;
             padding-left: 20px;
         }
@@ -111,7 +111,16 @@
             vertical-align: middle;
         }
 
+        .swal2-container {
+            z-index: 99999 !important;
+        }
+        .swal2-popup {
+            border-radius: 20px !important;
+        }
 
+        .swal2-popup .swal2-actions button{
+            border-radius: 20px !important;
+        }
 
         button.navbar-toggler {
             position: fixed;
@@ -119,15 +128,34 @@
         button.navbar-toggler:focus {
             box-shadow: 0px 0px 10px #0d6efd2e;
         }
+
         #app .content {
             margin-bottom: 100px;
         }
-        
+
 
         select[name="users-table_length"] {
             border-radius: 20px;
         }
+        /* For WebKit based browsers (e.g. Chrome, Safari) */
+        ::-webkit-scrollbar {
+            width: 5px; /* Width of the scrollbar */
+        }
 
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; /* Color of the track (the area behind the scrollbar) */
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--bs-primary); /* Color of the scrollbar thumb (the draggable part) */
+            border-radius: 6px; /* Rounded corners */
+        }
+
+        /* Apply scrollbar color and width */
+        * {
+            scrollbar-color: var(--bs-primary) #f1f1f1; /* thumb color, track color */
+            scrollbar-width: thin; /* width of the scrollbar */
+        }
         .navbar-collapse {
                 flex-grow: unset;
         }
@@ -175,12 +203,6 @@
             @if(session('error'))
                 <div class="alert alert-danger">
                     {{ session('error') }}
-                </div>
-            @endif
-
-            @if($errors->count() > 0)
-                <div class="alert alert-danger">
-                    {{ $error }}
                 </div>
             @endif
             <!--begin::Dynamic content-->
