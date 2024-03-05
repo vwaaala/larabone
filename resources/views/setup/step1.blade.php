@@ -27,7 +27,7 @@
                     <label class="form-label">Logo <small class="text-muted">195p x 60p</small> <span class="text-danger">*</span></label>
                     <div class="icon-shape icon-xxl border rounded position-relative">
                         <span class="position-absolute" id="preview"><i class="bi bi-image fs-3 text-muted"></i></span>
-                        <input id="fileInput" name="logo" class="form-control border-0 opacity-0" type="file" required>
+                        <input id="fileInput" name="logo" class="form-control border-0 opacity-0" type="file" required autofocus>
                     </div>
                 </div>
 
@@ -123,3 +123,17 @@
         </div>
     </div>
 @endsection
+@push('script')
+<script>
+$(document).ready(function(){
+    $(document).on('click', '#next', function(){
+        if (!$('#fileInput')[0].files.length > 0) {
+            $('#drop-area').css('border-color', 'red');
+        } else {
+            $('#drop-area').css('border-color', 'unset');
+        }
+    });
+});
+
+</script>
+@endpush
