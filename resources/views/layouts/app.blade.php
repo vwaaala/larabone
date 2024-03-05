@@ -43,10 +43,11 @@
             border-radius: 20px;
         }
 
-        button.btn:not(#users-table_wrapper) {
+        button.btn:not(.dt-buttons> button.btn) {
             padding-right: 20px;
             padding-left: 20px;
         }
+
 
         .form-control {
             resize: none;
