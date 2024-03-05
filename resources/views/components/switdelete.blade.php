@@ -1,10 +1,8 @@
 
 <!-- Include SweetAlert2 -->
-@can('user_delete')
+
     <script>
-        function confirmDelete(userid=null) {
-            
-            var formaction = '{{ request()->has('show_deleted') ? route('users.forceDelete', '') : route('users.destroy', '') }}'+'/'+userid;
+        function confirmDelete(formaction=null) {
             
             Swal.fire({
                 title: '{{ __('global.areYouSure') }}',
@@ -38,4 +36,3 @@
             });
         }
     </script>
-@endcan

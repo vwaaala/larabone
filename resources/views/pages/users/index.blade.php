@@ -35,5 +35,8 @@
 @push('scripts')
     <!-- Push DataTable scripts -->
     {!! $dataTable->scripts() !!}
-@include('components.switdelete')
+
+    @can('user_delete')
+        @include('components.switdelete')
+    @endcan
 @endpush
