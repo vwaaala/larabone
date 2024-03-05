@@ -3,10 +3,10 @@
 @push('styles')
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <style>
-        .card .d-icons i {
+        .card .card .d-icons i {
             transition: .3s ease-in-out;
         }
-        .card:hover .d-icons i {
+        .card .card:hover .d-icons i {
             font-size: 2rem;
         }
     </style>

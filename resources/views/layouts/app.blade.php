@@ -24,7 +24,10 @@
             border-right: 1px solid #0d6efd2e;
             color: whitesmoke !important;
         }
-
+        ul.navbar-nav {
+            display: flex;
+            align-items: center;
+        }
         .nav > a, nav.navbar {
             border-bottom: 1px solid #0d6efd2e;
             height: 60px;
@@ -40,10 +43,11 @@
             border-radius: 20px;
         }
 
-        button.btn:not(#users-table_wrapper) {
+        button.btn:not(.dt-buttons> button.btn) {
             padding-right: 20px;
             padding-left: 20px;
         }
+
 
         .form-control {
             resize: none;
@@ -55,7 +59,7 @@
         li.nav-item.dropdown {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            align-items: flex-end;
         }
         .dropdown {
             display: flex;
@@ -158,7 +162,15 @@
         .navbar-collapse {
                 flex-grow: unset;
         }
+        ul.dropdown-menu.dropdown-menu-end.show {
+            border-radius: 20px;
+            border: 1px solid #0d6efd2e;
+        }
         @media (max-width: 767px) {
+            ul.navbar-nav {
+                display: flex;
+                align-items: flex-end;
+            }
             .navbar-collapse.show {
                 border-bottom: 1px solid #0d6efd2e;
             }
@@ -168,20 +180,16 @@
                 border-bottom-left-radius: 20px;
                 border-bottom-right-radius: 20px;
             }
-            ul.dropdown-menu.dropdown-menu-end.show {
-                border-radius: 20px;
-                border: 1px solid #0d6efd2e;
-            }
         }
     </style>
 </head>
 
 <body>
-{{--<div id="loader-wrapper">--}}
-{{--    <div id="loader" class="page-loader">--}}
-{{--        <span class="loader"></span>--}}
-{{--    </div>--}}
-{{--</div>--}}
+<div id="loader-wrapper">
+   <div id="loader" class="page-loader">
+       <span class="loader"></span>
+   </div>
+</div>
 
 <!-- Main Wrapper -->
 <div id="app">
@@ -220,26 +228,24 @@
 @vite(['resources/js/app.js'])
 <script>
 
-
-    // let pageLoader;
-    //
-    // function showPage() {
-    //     document.getElementById("loader-wrapper").style.display = "none";
-    //     document.getElementById("app").style.display = "block";
-    // }
-    //
-    // function loader() {
-    //     pageLoader = setTimeout(showPage, 100);
-    // }
-    //
-    // // Hide success message after 5 seconds
-    // setTimeout(function () {
-    //     $('#successMessage').fadeOut('fast');
-    // }, 5000);
-    //
-    // $(document).ready(function () {
-    //     loader();
-    // });
+    let pageLoader;
+    
+    function showPage() {
+        document.getElementById("loader-wrapper").style.display = "none";
+        document.getElementById("app").style.display = "block";
+    }
+    
+    // Hide success message after 5 seconds
+    if($('.alert')){
+        setTimeout(function () {
+            $('.alert').fadeOut('fast');
+        }, 5000);
+    }
+    
+    
+    $(document).ready(function () {
+        showPage();
+    });
     $(function () {
         'use strict';
         let sidebarToggle = document.querySelector(".sidebar-toggle");

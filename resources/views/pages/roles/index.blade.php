@@ -42,7 +42,7 @@
                                         </a>
                                     @endcan
                                     @can('role_delete')
-                                        <a href="{{ route('roles.destroy', $role->id) }}"
+                                        <a href="#" onclick="confirmDelete('{{ route('roles.destroy', $role->id) }}')"
                                            class="btn btn-danger btn-sm"
                                            title="{{ __('global.delete') }}">
                                             <i class="bi bi-trash"></i>
@@ -67,3 +67,8 @@
         </div>
     @endcan
 @endsection
+@push('scripts')
+    @can('user_delete')
+        @include('components.switdelete')
+    @endcan
+@endpush
