@@ -62,12 +62,11 @@
             align-items: center;
         }
 
-        .content .navbar .container-fluid {
-            justify-content: flex-start;
+        .loggedin .navbar .container-fluid {
+            justify-content: flex-end;
         }
         .content .navbar .container-fluid {
             z-index: 99999;
-            justify-content: flex-end;
             height: 100%;
             padding-left: 0px;
             padding-right: 0px;
@@ -187,7 +186,7 @@
 <!-- Main Wrapper -->
 <div id="app">
     @include('layouts.partials.sidebar')
-    <div class="content">
+    <div class="content{{ auth()->check() ? ' loggedin' : '' }}">
         @include('layouts.partials.navbar')
         <div class="p-2 mt-2">
             @auth()
