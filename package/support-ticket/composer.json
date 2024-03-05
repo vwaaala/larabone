@@ -1,0 +1,25 @@
+{
+    "name": "bunker/support-ticket",
+    "description": "It can create ticket from both auth and guest.",
+    "type": "library",
+    "license": "GPL-3.0",
+    "autoload": {
+        "psr-4": {
+            "Bunker\\SupportTicket\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Rafiqul Islam Shawn",
+            "email": "vwaaala@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bunker\\SupportTicket\\TicketServiceProvider"
+            ]
+        }
+    }
+}
