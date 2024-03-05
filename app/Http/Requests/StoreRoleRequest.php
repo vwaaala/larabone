@@ -22,8 +22,12 @@ class StoreRoleRequest extends FormRequest
     public function rules(): array
     {
         return [
+            // Validation rule for the 'name' field: required, string, maximum length 250, and unique in the 'roles' table.
             'name' => 'required|string|max:250|unique:roles,name',
+
+            // Validation rule for the 'permissions' field: required.
             'permissions' => 'required',
         ];
+
     }
 }

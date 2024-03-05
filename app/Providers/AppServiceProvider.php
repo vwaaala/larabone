@@ -12,9 +12,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        // Register the Debugbar service provider if the application is running in the local environment.
         if ($this->app->isLocal()) {
             $this->app->register('Barryvdh\Debugbar\ServiceProvider');
         }
+
     }
 
     /**

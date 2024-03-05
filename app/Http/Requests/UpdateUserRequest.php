@@ -24,9 +24,15 @@ class UpdateUserRequest extends FormRequest
     public function rules(): array
     {
         return [
+            // Validation rule for the 'name' field: required, string, maximum length 250 characters.
             'name' => 'required|string|max:250',
-            'status' => ['required', new UserStatusRule], // Use the UserStatusRule custom rule
-            'role' => ['required', new ValidRole], // Use the ValidRole custom rule
+
+            // Validation rule for the 'status' field: required, using the UserStatusRule custom rule.
+            'status' => ['required', new UserStatusRule],
+
+            // Validation rule for the 'role' field: required, using the ValidRole custom rule.
+            'role' => ['required', new ValidRole],
         ];
+
     }
 }

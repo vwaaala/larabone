@@ -22,8 +22,12 @@ class UpdateRoleRequest extends FormRequest
     public function rules(): array
     {
         return [
+            // Validation rule for the 'name' field: required, string, maximum length 250, and unique in the 'roles' table except for the current role.
             'name' => 'required|string|max:250|unique:roles,name,'.$this->role->id,
+
+            // Validation rule for the 'permissions' field: required.
             'permissions' => 'required',
         ];
+
     }
 }

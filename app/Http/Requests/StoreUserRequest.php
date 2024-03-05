@@ -24,11 +24,21 @@ class StoreUserRequest extends FormRequest
     public function rules(): array
     {
         return [
+            // Validation rule for the 'name' field: required, string, maximum length 250 characters.
             'name' => 'required|string|max:250',
+
+            // Validation rule for the 'email' field: required, string, valid email format, maximum length 250 characters, and unique in the 'users' table.
             'email' => 'required|string|email:rfc,dns|max:250|unique:users,email',
+
+            // Validation rule for the 'password' field: required, string, minimum length 6 characters, and confirmation field must match.
             'password' => 'required|string|min:6|confirmed',
-            'status' => ['required', new UserStatusRule], // Use the UserStatusRule custom rule
-            'role' => ['required', new ValidRole], // Use the ValidRole custom rule
+
+            // Validation rule for the 'status' field: required, using the UserStatusRule custom rule.
+            'status' => ['required', new UserStatusRule],
+
+            // Validation rule for the 'role' field: required, using the ValidRole custom rule.
+            'role' => ['required', new ValidRole],
         ];
+
     }
 }
