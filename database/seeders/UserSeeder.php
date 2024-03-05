@@ -42,6 +42,15 @@ class UserSeeder extends Seeder
         ]);
         $manager->assignRole('Manager');
 
+        // Creating Product Manager User
+        $user = User::create([
+            'uuid' => str()->uuid(),
+            'name' => 'Abdul Muqeet',
+            'email' => 'users@bunk3r.net',
+            'password' => bcrypt('secret')
+        ]);
+        $user->assignRole('User');
+
         // Creating Normal User
         $numberOfUsers = 100;
 

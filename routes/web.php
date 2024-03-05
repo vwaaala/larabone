@@ -32,7 +32,7 @@ if ($installed === true) {
     Route::middleware(['auth'])->group(function () {
 
         // Define route for the home page after authentication
-        Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+        Route::get('dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
         // Define routes for managing permissions
         Route::get('permissions', [App\Http\Controllers\PermissionController::class, 'index'])->name('permissions.index');

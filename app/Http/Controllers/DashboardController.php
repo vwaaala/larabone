@@ -27,12 +27,12 @@ class DashboardController extends Controller
     public function index(Request $request): \Illuminate\Contracts\Support\Renderable
     {
         $packet = [];
-        if(!auth()->user()->hasRole('User')){
-            $packet['cards'][] = Ticket::getAnalyticCard(true, auth()->user()->id);
+        if(auth()->user()->hasRole('User')){
+            $packet['cards'][] = (new \Bunker\SupportTicket\Models\Ticket)->getAnalyticCard(true, auth()->user()->id);
         }else{
-            $packet['cards'][] = Ticket::getAnalyticCard(false);
+            $packet['cards'][] = (new \Bunker\SupportTicket\Models\Ticket)->getAnalyticCard(false);
+//            dd($packet);
         }
-
         return view('pages.dashboard', compact('packet'));
     }
 

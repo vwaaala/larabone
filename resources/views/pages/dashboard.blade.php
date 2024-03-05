@@ -16,6 +16,7 @@
     <div class="card">
         <div class="card-body">
             <div class="row g-6 mb-6">
+{{--                {{ dd($packet) }}--}}
                 @foreach($packet['cards'] as $item)
                 <div class="col-xl-3 col-sm-6 col-12 pb-sm-2">
                     <div class="card shadow border-0">

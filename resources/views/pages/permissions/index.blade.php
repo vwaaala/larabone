@@ -1,18 +1,21 @@
 @extends('layouts.app', ['pageName' => config('pages.permissions.index')])
 @section('content')
-    <div class="d-flex mb-2 justify-content-between">
-        <h4>{{ __('pages.permissions.title') }}</h4>
-        <form action="#" method="GET" class="form-inline">
-            <div class="input-group">
-                <input type="text" name="search" class="form-control" placeholder="{{ __('global.search') }}..."
-                       value="{{ $searchQuery ?? '' }}">
-                <div class="input-group-append">
-                    <button type="submit" class="btn btn-success">{{ __('global.search') }}</button>
-                </div>
-            </div>
-        </form>
-    </div>
+
     <div class="card">
+        <div class="card-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <h4 class="mb-0">{{ __('pages.permissions.title') }}</h4>
+                <form action="#" method="GET" class="form-inline">
+                    <div class="input-group">
+                        <input type="text" name="search" class="form-control" placeholder="{{ __('global.search') }}..."
+                               value="{{ $searchQuery ?? '' }}">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-success">{{ __('global.search') }}</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
         <div class="card-body">
             <!-- Table to display permissions -->
             <table class="table">
