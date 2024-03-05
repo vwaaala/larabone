@@ -35,4 +35,5 @@
 @push('scripts')
     <!-- Push DataTable scripts -->
     {!! $dataTable->scripts() !!}
+@include('components.switdelete')
 @endpush
