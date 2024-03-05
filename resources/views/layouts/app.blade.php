@@ -62,10 +62,10 @@
             align-items: center;
         }
 
-        .active-content .navbar .container-fluid {
+        .content .navbar .container-fluid {
             justify-content: flex-start;
         }
-        .active-content .navbar .container-fluid {
+        .content .navbar .container-fluid {
             z-index: 99999;
             justify-content: flex-end;
             height: 100%;
