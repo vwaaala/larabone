@@ -20,7 +20,7 @@
                 <div class="mb-2">
                     <label class="form-label text-muted" for="app_name">Name your Application <span class="text-danger">*</span></label>
                     <span data-bs-toggle="tooltip" title="This is the name of your Application"><i class="bi bi-question-circle"></i></span>
-                    <input type="text" class="form-control" id="app_name" name="app_name" placeholder="Laravel" value="{{$data['APP_NAME']}}" autofocus required>
+                    <input type="text" class="form-control" id="app_name" name="app_name" placeholder="Larabone" value="{{$data['APP_NAME']}}" autofocus required>
                 </div>
 
                 <div class="mb-2" id="drop-area">

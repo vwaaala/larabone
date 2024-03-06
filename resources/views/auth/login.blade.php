@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8 mt-5">
+            <div class="col-md-6 mt-5">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <span>{{ __('global.login') }}</span>
@@ -67,11 +67,11 @@
                                         {{ __('global.login') }}
                                     </button>
 
-                                    @if (Route::has('password.request'))
-                                        <a href="#" class="btn btn-success">
-                                            {{ __('global.google_login') }}
-                                        </a>
-                                    @endif
+{{--                                    @if (Route::has('password.request'))--}}
+{{--                                        <a href="#" class="btn btn-success">--}}
+{{--                                            {{ __('global.google_login') }}--}}
+{{--                                        </a>--}}
+{{--                                    @endif--}}
                                 </div>
                             </div>
                         </form>
@@ -86,29 +86,29 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-8 mt-5">
+            <div class="col-4 mt-5">
                 <div class="card">
-                    <div class="card-header">{{ __('Click to fill Credentials') }}</div>
+                    <div class="card-header text-center">{{ __('Click to fill Credentials') }}</div>
 
                     <div class="card-body">
-                        <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="button" onclick="fillForm('super@bunk3r.net', 'secret')"
-                                        class="btn btn-dark">
+                        <div class="row text-center justify-content-center">
+                            <div class="col-12 col-md-3 col-lg-5">
+                                <button type="button" onclick="fillForm('super@bunk3r.net', 'secret')" class="btn btn-success btn-block mb-2">
                                     Super Admin
                                 </button>
-                                <button type="button" onclick="fillForm('admin@bunk3r.net', 'secret')"
-                                        class="btn btn-dark">
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-3">
+                                <button type="button" onclick="fillForm('admin@bunk3r.net', 'secret')" class="btn btn-success btn-block mb-2">
                                     Admin
                                 </button>
-
-                                <button type="button" onclick="fillForm('manager@bunk3r.net', 'secret')"
-                                        class="btn btn-dark">
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-3">
+                                <button type="button" onclick="fillForm('manager@bunk3r.net', 'secret')" class="btn btn-success btn-block mb-2">
                                     Manager
                                 </button>
-
-                                <button type="button" onclick="fillForm('users@bunk3r.net', 'secret')"
-                                        class="btn btn-dark">
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-3">
+                                <button type="button" onclick="fillForm('users@bunk3r.net', 'secret')" class="btn btn-success btn-block mb-2">
                                     User
                                 </button>
                             </div>

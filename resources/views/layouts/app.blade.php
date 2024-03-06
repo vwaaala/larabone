@@ -8,269 +8,65 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Larabone') }}</title>
 
-    @stack('styles')
+    <!-- vite styles -->
     @vite(['resources/sass/app.scss'])
-    <style>
-        .sidebar-toggle {
-            position: absolute;
-            left: 50px;
-            top: 13px;
-            transition: 0.5s;
-        }
-
-        .sidebar {
-            border-right: 1px solid #0d6efd2e;
-            color: whitesmoke !important;
-        }
-        ul.navbar-nav {
-            display: flex;
-            align-items: center;
-        }
-        .nav > a, nav.navbar {
-            border-bottom: 1px solid #0d6efd2e;
-            height: 60px;
-        }
-
-        nav.navbar {
-            justify-content: flex-end;
-            padding-top: 0px;
-            padding-bottom: 0px;
-        }
-
-        button.btn, a.btn, .card {
-            border-radius: 20px;
-        }
-
-        button.btn:not(.dt-buttons> button.btn) {
-            padding-right: 20px;
-            padding-left: 20px;
-        }
-
-
-        .form-control {
-            resize: none;
-            background-color: var(--bs-body-bg);
-            background-clip: padding-box;
-            border: 1px solid #0d6efd2e;
-            border-radius: 20px;
-        }
-        li.nav-item.dropdown {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-        }
-        .dropdown {
-            display: flex;
-            align-items: center;
-        }
-
-        .loggedin .navbar .container-fluid {
-            justify-content: flex-end;
-        }
-        .content .navbar .container-fluid {
-            z-index: 99999;
-            height: 100%;
-            padding-left: 0px;
-            padding-right: 0px;
-        }
-
-        .active-sidebar-overlay {
-            background: #ffffff;
-            z-index: 9999999;
-        }
-
-        .active-sidebar-toggle-overlay {
-            left: 300px;
-        }
-
-        .input-group .input-group-append button {
-            border-bottom-left-radius: 0px;
-            border-top-left-radius: 0px;
-            height: 100%;
-        }
-
-        .card {
-            overflow: hidden;
-            border: 1px solid #0d6efd2e;
-        }
-
-        .card .card-header {
-            background-color: #0d6efd;
-            color: whitesmoke;
-        }
-
-        .nav-item ul li a {
-            background: unset;
-            color: #000000;
-        }
-
-        .nav .nav-item .nav-link {
-            border-bottom: 1px solid #0d6efd2e;
-        }
-
-        .btn span, .btn i {
-            vertical-align: middle;
-        }
-
-        .swal2-container {
-            z-index: 99999 !important;
-        }
-        .swal2-popup {
-            border-radius: 20px !important;
-        }
-
-        .swal2-popup .swal2-actions button{
-            border-radius: 20px !important;
-        }
-
-        button.navbar-toggler {
-            position: fixed;
-        }
-        button.navbar-toggler:focus {
-            box-shadow: 0px 0px 10px #0d6efd2e;
-        }
-
-        #app .content {
-            margin-bottom: 100px;
-        }
-
-
-        select[name="users-table_length"] {
-            border-radius: 20px;
-        }
-        /* For WebKit based browsers (e.g. Chrome, Safari) */
-        ::-webkit-scrollbar {
-            width: 5px; /* Width of the scrollbar */
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1; /* Color of the track (the area behind the scrollbar) */
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--bs-primary); /* Color of the scrollbar thumb (the draggable part) */
-            border-radius: 6px; /* Rounded corners */
-        }
-
-        /* Apply scrollbar color and width */
-        * {
-            scrollbar-color: var(--bs-primary) #f1f1f1; /* thumb color, track color */
-            scrollbar-width: thin; /* width of the scrollbar */
-        }
-        .navbar-collapse {
-                flex-grow: unset;
-        }
-        ul.dropdown-menu.dropdown-menu-end.show {
-            border-radius: 20px;
-            border: 1px solid #0d6efd2e;
-        }
-        @media (max-width: 767px) {
-            ul.navbar-nav {
-                display: flex;
-                align-items: flex-end;
-            }
-            .navbar-collapse.show {
-                border-bottom: 1px solid #0d6efd2e;
-            }
-            .navbar-collapse {
-                background: #f8f9fa;
-                padding: 50px 20px 0px 20px;
-                border-bottom-left-radius: 20px;
-                border-bottom-right-radius: 20px;
-            }
-        }
-    </style>
+    <!-- page specific styles -->
+    @stack('styles')
 </head>
 
 <body>
+<!-- page loader -->
 <div id="loader-wrapper">
-   <div id="loader" class="page-loader">
-       <span class="loader"></span>
-   </div>
+    <div id="loader" class="page-loader">
+        <span class="loader"></span>
+    </div>
 </div>
 
-<!-- Main Wrapper -->
+<!-- app wrapper -->
 <div id="app">
-    @include('layouts.partials.sidebar')
+    @auth()
+        <!-- sidebar -->
+        @include('layouts.partials.sidebar')
+    @endauth
     <div class="content{{ auth()->check() ? ' loggedin' : '' }}">
+        <!-- navbar -->
         @include('layouts.partials.navbar')
         <div class="p-2 mt-2">
             @auth()
+                <!-- breadcrumb -->
                 @include('layouts.partials.breadcrumb')
             @endauth
-            <!--begin::Session Message-->
             @if(session('success'))
+                <!-- session message: success -->
                 <div class="alert alert-success">
                     {{ session('success') }}
                 </div>
             @endif
 
             @if(session('error'))
+                <!-- session message: error -->
                 <div class="alert alert-danger">
                     {{ session('error') }}
                 </div>
             @endif
-            <!--begin::Dynamic content-->
+            <!-- app::dynamic content-->
             @yield('content')
         </div>
 
+        <!-- footer -->
         <footer class="bg-light">
             <p>This website uses <a href="https://getbootstrap.com/">Bootstrap</a> under the <a
                     href="https://opensource.org/licenses/MIT">MIT License</a>.</p>
         </footer>
     </div>
 </div>
+<!-- jquery -->
 <script src="{{ asset('assets/libs/jquery/dist/jquery.js') }}"></script>
-<!-- Include SweetAlert2 -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<!-- vite scripts -->
 @vite(['resources/js/app.js'])
-<script>
-
-    let pageLoader;
-    
-    function showPage() {
-        document.getElementById("loader-wrapper").style.display = "none";
-        document.getElementById("app").style.display = "block";
-    }
-    
-    // Hide success message after 5 seconds
-    if($('.alert')){
-        setTimeout(function () {
-            $('.alert').fadeOut('fast');
-        }, 5000);
-    }
-    
-    
-    $(document).ready(function () {
-        showPage();
-    });
-    $(function () {
-        'use strict';
-        let sidebarToggle = document.querySelector(".sidebar-toggle");
-        let sidebar = document.querySelector(".sidebar");
-        let container = document.querySelector(".content");
-        if (sidebarToggle) {
-            if (window.outerWidth > 767) {
-                sidebar.classList.add("active-sidebar");
-                container.classList.add("active-content");
-            }
-            sidebarToggle.addEventListener("click", () => {
-                if (window.outerWidth > 767) {
-                    sidebar.classList.toggle("active-sidebar");
-                    container.classList.toggle("active-content");
-                } else {
-                    sidebar.classList.toggle("active-sidebar");
-                    sidebarToggle.classList.toggle("active-sidebar-toggle-overlay");
-                    sidebar.classList.toggle("active-sidebar-overlay");
-                }
-            });
-
-        }
-    });
-</script>
-
+<!-- page specific js -->
 @stack('scripts')
 </body>
 

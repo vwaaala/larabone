@@ -15,3 +15,4 @@ yarn-error.log
 /.vscode
 .DS_Store
 package/.DS_Store
+node_modules/*

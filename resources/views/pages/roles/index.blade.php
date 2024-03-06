@@ -69,6 +69,6 @@
 @endsection
 @push('scripts')
     @can('user_delete')
-        @include('components.switdelete')
+        @include('components.sweetAlert2')
     @endcan
 @endpush
