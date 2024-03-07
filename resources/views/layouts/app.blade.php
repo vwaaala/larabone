@@ -30,7 +30,7 @@
         <!-- sidebar -->
         @include('layouts.partials.sidebar')
     @endauth
-    <div class="content{{ auth()->check() ? 'logged-in' : '' }}">
+    <div class="content {{ auth()->check() ? 'logged-in' : '' }}">
         <!-- navbar -->
         @include('layouts.partials.navbar')
         <div class="p-2 mt-2">
