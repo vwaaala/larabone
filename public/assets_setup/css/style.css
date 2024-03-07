@@ -6,11 +6,11 @@
 }
 
 .icon-ok {
-    color: #594a4c;
+    color: var(--bs-success);
 }
 
 .icon-remove {
-    color: #c0392b;
+    color: var(--bs-danger);
 }
 
 #tochange {
@@ -31,7 +31,7 @@ input {
 }
 
 .container-progress .section-setup {
-    background: #c5cf00;
+    background: var(--bs-primary);
     color: white;
 }
 
@@ -90,7 +90,7 @@ input::placeholder {
 }
 
 .tip {
-    color: #c5cf00;
+    color: var(--bs-primary);
 }
 
 .progressbar li.active,
@@ -103,14 +103,14 @@ li a {
 }
 
 .progressbar li.active:before {
-    border-color: #594a4c;
-    background: #594a4c;
+    border-color: var(--bs-success);
+    background: var(--bs-success);
     color: white;
 }
 
 .btn-success {
-    background-color: #38ae00;
-    border-color: #38ae00;
+    background-color: var(--bs-success);
+    border-color: var(--bs-success);
 }
 
 .background {

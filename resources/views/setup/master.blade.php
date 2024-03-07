@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Setup | {{ config('app.name') }}</title>
-    <link rel="icon" href="{{ asset('/assets/images/logo.png') }}">
+    <link rel="icon" href="{{ asset('/logo.png') }}">
     <link rel="stylesheet" href="{{ asset('/assets_setup/css/style.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">

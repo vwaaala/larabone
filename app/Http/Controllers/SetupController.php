@@ -48,7 +48,7 @@ class SetupController extends Controller
         return view('setup.step2', ["data" => $data]);
     }
 
-    public function changeEnv($data = array())
+    public function changeEnv($data = array()): bool
     {
         if (count($data) > 0) {
             // Read .env-file
@@ -81,7 +81,7 @@ class SetupController extends Controller
                 }
             }
 
-            // Turn the array back to an String
+            // Turn the array back to a String
             $env = implode("\n", $env);
 
             // And overwrite the .env with the new data
@@ -129,13 +129,6 @@ class SetupController extends Controller
             "ADMIN_PASSWORD" => session('env.ADMIN_PASSWORD'),
 
         );
-
-        $count = 0;
-
-        foreach ($data as $item) {
-
-            $item !== 'old' ? $count++ : false;
-        }
 
         return view('setup.step4', compact('data'));
     }
@@ -247,10 +240,6 @@ class SetupController extends Controller
         $request->session()->put('env.DB_PORT', $request->db_port);
         $request->session()->put('env.DB_DATABASE', $request->db_database);
         $request->session()->put('env.DB_USERNAME', $request->db_username);
-
-        if ($request->db_connection == 'sqlite') {
-            TestDbController::testSqLite();
-        }
 
         return $this->viewStep3();
     }

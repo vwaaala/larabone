@@ -86,7 +86,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-4 mt-5">
+            <div class="col-lg-4 col-md-4 col-sm-12 mt-5">
                 <div class="card">
                     <div class="card-header text-center">{{ __('Click to fill Credentials') }}</div>
 
