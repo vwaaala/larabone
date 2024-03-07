@@ -43,12 +43,12 @@
                 </a>
                 <div class="collapse {{ request()->routeIs('support_ticket.index') || request()->routeIs('support_ticket.create') || request()->routeIs('support_ticket.show') ? 'show' : '' }}" id="support-menu-item-collapse" style="">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li class="nav-item {{ request()->routeIs('support_ticket.index') ? 'active' : '' }}">
-                            <a class="nav-link {{ request()->routeIs('support_ticket.index') ? 'active' : '' }}"
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('support_ticket.index') ? 'current' : '' }}"
                                href="{{ route('support_ticket.index') }}">{{ __('global.all') }} {{ __('support_ticket.title') }}</a>
                         </li>
-                        <li class="nav-item {{ request()->routeIs('support_ticket.create') ? 'active' : '' }}">
-                            <a class="nav-link {{ request()->routeIs('support_ticket.create') ? 'active' : '' }}"
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('support_ticket.create') ? 'current' : '' }}"
                                href="{{ route('support_ticket.create') }}">{{ __('global.add') }} {{ __('support_ticket.title_singular') }}</a>
                         </li>
                     </ul>

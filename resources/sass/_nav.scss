@@ -17,6 +17,11 @@ nav.navbar {
         background-color: var(--bs-primary);
     }
 
+    .nav-item > .current {
+        color: var(--bs-primary);
+        background-color: var(--bs-white);
+    }
+
     > a {
         border-bottom: 1px solid $border-color;
         height: 60px;
