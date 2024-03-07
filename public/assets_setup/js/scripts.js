@@ -97,15 +97,6 @@ $(function () {
     });
 });
 
-
-$(function () {
-    'use strict';
-    $('#lastStep').on("click", function (e) {
-        $('.loader').removeClass('d-none').addClass('d-block');
-        $('#content').removeClass('d-block').addClass('d-none');
-    });
-});
-
 $(function () {
     'use strict';
     $('#update_db').on("click", function (e) {

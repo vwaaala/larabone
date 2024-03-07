@@ -2,8 +2,13 @@
 @section('content')
     <meta name="csrf_token" content="{{ csrf_token() }}"/>
 
+    <div class="row mt-3">
+        <div class="col-12 text-center mt-3">
+            <div class="loader d-none">Loading...</div>
+        </div>
+    </div>
 
-    <div class="row">
+    <div class="row mt-3 p-5 d-block" id="content">
         <div class="col-12 text-center mt-3">
             <ul class="progressbar">
                 <li class="active">Server Requirements</li>
@@ -13,20 +18,12 @@
                 <li class="active"><a href="/setup/step-4">Summary</a></li>
             </ul>
         </div>
-    </div>
-
-    <div class="row mt-3">
-        <div class="loader d-none">Loading...</div>
-    </div>
-
-    <div class="row mt-3 p-5 d-block" id="content">
-
         <div class="col-12">
 
             <form action="{{route('lastStep')}}" method="post">
                 @csrf
 
-                <h2 class="mb-5">Do you want these settings to change?</h2>
+                <h2 class="mt-5 mb-5">Do you want these settings to change?</h2>
 
                 <div id="tochange">
 

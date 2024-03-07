@@ -13,10 +13,11 @@
 
 </head>
 <body class="background">
-<div class="container-progress container">
-    <div class="row text-center section-setup">
+<div class="container-progress container bg-light">
+    <div class="row text-center section-setup ms-4">
         <div class="col-12">
-            <h1>{{ config('app.name')}}</h1>
+{{--            <h1>{{ config('app.name')}}</h1>--}}
+            <img class="pt-2 pb-2" src="{{ asset('/logo.png') }}" alt="{{ config('app.name')}}" >
         </div>
     </div>
     @yield('content')
