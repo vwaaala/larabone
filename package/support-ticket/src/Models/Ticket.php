@@ -19,7 +19,7 @@ class Ticket extends Model
     }
 
     public function replies(): \Illuminate\Database\Eloquent\Relations\HasMany
-    {
+    { 
         return $this->hasMany(Reply::class, 'ticket_id')->orderByDesc('created_at');
     }
 

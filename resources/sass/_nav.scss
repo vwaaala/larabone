@@ -54,9 +54,13 @@ ul.dropdown-menu.dropdown-menu-end.show {
     }
     .navbar-collapse {
         background: var(--bs-white);
-        padding: 50px 20px 0 20px;
+        padding: 20px 20px 0 20px;
         border-bottom-left-radius: 20px;
         border-bottom-right-radius: 20px;
+        position: fixed;
+        right: 0;
+        width: 100%;
+        top: 60px;
     }
 }
 
@@ -85,6 +89,7 @@ li.nav-item.dropdown {
 
 button.navbar-toggler {
     position: fixed;
+    right: 0;
 
     &:focus {
         box-shadow: 0 0 10px $border-color;

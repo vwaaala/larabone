@@ -7,7 +7,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <h4 class="mb-0">{{ __('pages.roles.title') }}</h4>
                     @can('role_create')
-                        <a href="{{ route('roles.create') }}" class="btn btn-success">
+                        <a href="{{ route('roles.create') }}" class="btn btn-sm btn-success">
                             <i class="bi bi-plus-circle"></i> {{ __('global.add') }} {{ __('pages.roles.title_singular') }}
                         </a>
                     @endcan
@@ -35,10 +35,10 @@
                                         <i class="bi bi-eye" data-bs-title="Default tooltip"></i>
                                     </a>
                                     @can('role_edit')
-                                        <a href="{{ route('roles.edit', $role->id) }}"
-                                           class="btn btn-warning btn-sm"
-                                           title="{{ __('global.edit') }}">
-                                            <i class="bi bi-pencil"></i>
+                                        <a href="{{ $role->id ===1 ? '#' : route('roles.edit', $role->id) }}"
+                                            class="{{ $role->id ===1 ? 'disabled' : ''  }} btn btn-warning btn-sm"
+                                            title="{{ __('global.edit') }}">
+                                                <i class="bi bi-pencil"></i>
                                         </a>
                                     @endcan
                                     @can('role_delete')
