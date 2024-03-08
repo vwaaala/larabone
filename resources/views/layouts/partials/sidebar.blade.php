@@ -22,22 +22,50 @@
         @endcan
         <!-- roles -->
         @canany(['role_show', 'role_create', 'role_edit', 'role_delete'])
-            <li class="nav-item {{ request()->routeIs(config('pages.roles.index.route')) ? 'active' : '' }}">
-                <a class="nav-link"
-                   href="{{ route('roles.index') }}">{{ __('pages.roles.title') }}</a>
+            <li class="nav-item {{ in_array(request()->route()->getName(), ['roles.index','roles.show', 'roles.create', 'roles.edit']) ? 'active' : '' }}">
+                <a href="#" class="nav-link dropdown-toggle collapsed d-flex align-items-center justify-content-between" data-bs-toggle="collapse" data-bs-target="#roles-menu-item-collapse"
+                   aria-expanded="true">
+                   {{ __('pages.roles.title') }}
+                </a>
+                <div class="collapse {{ in_array(request()->route()->getName(), ['roles.index','roles.show', 'roles.create', 'roles.edit']) ? 'show' : '' }}" id="roles-menu-item-collapse" style="">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('roles.index') ? 'current' : '' }}"
+                               href="{{ route('roles.index') }}">{{ __('global.all') }} {{ __('pages.roles.title') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('roles.create') ? 'current' : '' }}"
+                               href="{{ route('roles.create') }}">{{ __('global.add') }} {{ __('pages.roles.title_singular') }}</a>
+                        </li>
+                    </ul>
+                </div>
             </li>
         @endcan
         <!-- users -->
         @canany(['user_show', 'user_create', 'user_edit', 'user_delete'])
-            <li class="nav-item {{ request()->routeIs(config('pages.users.index.route')) ? 'active' : '' }}">
-                <a class="nav-link"
-                   href="{{ route('users.index') }}">{{ __('pages.users.title') }}</a>
+            <li class="nav-item {{ in_array(request()->route()->getName(), ['users.index', 'users.edit', 'users.create', 'users.show']) ? 'active' : '' }}">
+                <a href="#" class="nav-link dropdown-toggle collapsed d-flex align-items-center justify-content-between" data-bs-toggle="collapse" data-bs-target="#users-menu-item-collapse"
+                   aria-expanded="true">
+                   {{ __('pages.users.title') }}
+                </a>
+                <div class="collapse {{ in_array(request()->route()->getName(), ['users.index', 'users.edit', 'users.create', 'users.show']) ? 'show' : '' }}" id="users-menu-item-collapse" style="">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('users.index') ? 'current' : '' }}"
+                               href="{{ route('users.index') }}">{{ __('global.all') }} {{ __('pages.users.title') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('users.create') ? 'current' : '' }}"
+                               href="{{ route('users.create') }}">{{ __('global.add') }} {{ __('pages.users.title_singular') }}</a>
+                        </li>
+                    </ul>
+                </div>
             </li>
         @endcanany
         <!-- support -->
         @can('support_ticket_show')
             <li class="nav-item {{ request()->routeIs('support_ticket.index') || request()->routeIs('support_ticket.create') || request()->routeIs('support_ticket.show') ? 'active' : '' }}">
-                <a class="nav-link" data-bs-toggle="collapse" data-bs-target="#support-menu-item-collapse"
+                <a href="#" class="nav-link dropdown-toggle collapsed d-flex align-items-center justify-content-between" data-bs-toggle="collapse" data-bs-target="#support-menu-item-collapse"
                    aria-expanded="true">
                     {{ __('support_ticket.namespace') }}
                 </a>

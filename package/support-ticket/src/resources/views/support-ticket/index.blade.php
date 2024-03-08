@@ -7,13 +7,13 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <h4 class="mb-0">{{ __('support_ticket.namespace') }} {{ __('support_ticket.title') }}</h4>
                     @can('role_create')
-                        <a href="{{ route('support_ticket.create') }}" class="btn btn-success">
+                        <a href="{{ route('support_ticket.create') }}" class="btn btn-sm btn-success">
                             <i class="bi bi-plus-circle"></i> {{ __('global.add') }} {{ __('support_ticket.title_singular') }}
                         </a>
                     @endcan
                 </div>
             </div>
-            <div class="card-body">
+            <div class="card-body table-responsive">
 
                 <table class="table table-striped table-bordered">
                     <thead>

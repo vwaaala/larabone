@@ -92,7 +92,7 @@
                 @endif
             @endcan
             @can('support_ticket_show')
-                @if(!empty($supportTicket->replies) && count($supportTicket->replies) > 1)
+                @if(!empty($supportTicket->replies) && count($supportTicket->replies) > 0)
                     <!-- List of Replies -->
                     <ul class="list-group support-threads">
                         @foreach ($supportTicket->replies as $reply)
