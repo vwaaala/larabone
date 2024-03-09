@@ -71,12 +71,10 @@ return [
     'settings' => [
         'title' => 'সেটিংস',
         'general' => 'সাধারণ',
-        'database' => 'database',
-        'debug' => 'debug',
-        'log' => 'log',
-        'oauth' => 'oauth',
-        'site' => 'site',
-        'smtp' => 'smtp',
+        'database' => 'ডাটাবেইস',
+        'debug' => 'ডিবাগ',
+        'log' => 'লগ',
+        'mail' => 'মেইল',
     ],
     'dashboard' => [
         'title'          => 'ড্যাশবোর্ড',

@@ -70,13 +70,11 @@ return [
     ],
     'settings' => [
         'title' => 'Settings',
-        'general' => 'general',
-        'database' => 'database',
-        'debug' => 'debug',
-        'log' => 'log',
-        'oauth' => 'oauth',
-        'site' => 'site',
-        'smtp' => 'smtp',
+        'general' => 'General',
+        'database' => 'Database',
+        'debug' => 'Debug',
+        'log' => 'Log',
+        'mail' => 'Mail',
     ],
     'dashboard' => [
         'title'          => 'Dashboard',
