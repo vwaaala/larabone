@@ -85,25 +85,38 @@
         @endcan
 
         <!-- settings -->
+
         @can('settings_show')
-            <li class="nav-item {{ request()->routeIs('settings.index') || request()->routeIs('settings.generalInfo') || request()->routeIs('settings.smtpInfo') ? 'active' : '' }}">
-                <a href="#" class="nav-link dropdown-toggle collapsed d-flex align-items-center justify-content-between" data-bs-toggle="collapse" data-bs-target="#support-menu-item-collapse"
+            <li class="nav-item {{ in_array(request()->route()->getName(), ['settings.index', 'settings.generalInfo', 'settings.databaseInfo', 'settings.debugInfo', 'settings.logInfo', 'settings.mailInfo', 'settings.generalEdit', 'settings.databaseEdit', 'settings.debugEdit', 'settings.logEdit', 'settings.mailEdit']) ? 'active' : '' }}">
+                <a href="#" class="nav-link dropdown-toggle collapsed d-flex align-items-center justify-content-between" data-bs-toggle="collapse" data-bs-target="#settings-menu-item-collapse"
                     aria-expanded="true">
                     {{ __('pages.settings.title') }}
                 </a>
-                <div class="collapse {{ request()->routeIs('settings.index') || request()->routeIs('settings.generalInfo') || request()->routeIs('settings.smtpInfo') ? 'show' : '' }}" id="support-menu-item-collapse" style="">
+                <div class="collapse {{ in_array(request()->route()->getName(), ['settings.index', 'settings.generalInfo', 'settings.databaseInfo', 'settings.debugInfo', 'settings.logInfo', 'settings.mailInfo', 'settings.generalEdit', 'settings.databaseEdit', 'settings.debugEdit', 'settings.logEdit', 'settings.mailEdit']) ? 'show' : '' }}" id="settings-menu-item-collapse" style="">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                         <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('settings.index') ? 'current' : '' }}"
                                 href="{{ route('settings.index') }}">{{ __('global.all') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('settings.generalInfo') ? 'current' : '' }}"
+                            <a class="nav-link {{ in_array(request()->route()->getName(),['settings.generalInfo', 'settings.generalEdit']) ? 'current' : '' }}"
                                 href="{{ route('settings.generalInfo') }}">{{ __('pages.settings.general') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('settings.smtpInfo') ? 'current' : '' }}"
-                                href="{{ route('settings.smtpInfo') }}">{{ __('pages.settings.smtp') }}</a>
+                            <a class="nav-link {{ in_array(request()->route()->getName(),['settings.databaseInfo', 'settings.databaseEdit']) ? 'current' : '' }}"
+                                href="{{ route('settings.databaseInfo') }}">{{ __('pages.settings.database') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ in_array(request()->route()->getName(),['settings.debugInfo', 'settings.debugEdit']) ? 'current' : '' }}"
+                                href="{{ route('settings.debugInfo') }}">{{ __('pages.settings.debug') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ in_array(request()->route()->getName(),['settings.logInfo', 'settings.logEdit']) ? 'current' : '' }}"
+                               href="{{ route('settings.logInfo') }}">{{ __('pages.settings.log') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ in_array(request()->route()->getName(),['settings.mailInfo', 'settings.mailEdit']) ? 'current' : '' }}"
+                                href="{{ route('settings.mailInfo') }}">{{ __('pages.settings.mail') }}</a>
                         </li>
                     </ul>
                 </div>

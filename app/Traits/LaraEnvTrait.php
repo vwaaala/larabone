@@ -4,7 +4,7 @@ namespace App\Traits;
 
 use Illuminate\Support\Facades\Artisan;
 
-trait EnvTrait
+trait LaraEnvTrait
 {
     /**
      * Get values from the laravel config for the specified keys.

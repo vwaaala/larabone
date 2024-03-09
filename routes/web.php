@@ -31,13 +31,13 @@ if ($installed === true) {
     // Group routes that require authentication middleware
     Route::middleware(['auth'])->group(function () {
 
-        // Define route for the home page after authentication
+        // Defining route for the home page after authentication
         Route::get('dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
-        // Define routes for managing permissions
+        // Defining routes for managing permissions
         Route::get('permissions', [App\Http\Controllers\PermissionController::class, 'index'])->name('permissions.index');
 
-        // Define routes for specific user operations
+        // Defining routes for specific user operations
         Route::delete('users/{id}/force-delete', [App\Http\Controllers\UserController::class, 'forceDelete'])->name('users.forceDelete');
         Route::get('users/{id}/retrieve', [App\Http\Controllers\UserController::class, 'retrieveDeleted'])->name('users.retrieveDeleted');
         Route::put('users/{id}/change-password', [App\Http\Controllers\UserController::class, 'changePassword'])->name('users.changePassword');
@@ -45,11 +45,19 @@ if ($installed === true) {
         // Define resourceful routes for users and roles
         Route::resources(['users' => UserController::class, 'roles' => RoleController::class,]);
 
+        // Defining resourceful routes for settings
         Route::get('settings/index', [App\Http\Controllers\SettingsController::class, 'index'])->name('settings.index');
         Route::get('settings/general-info', [App\Http\Controllers\SettingsController::class, 'generalInfo'])->name('settings.generalInfo');
-        Route::get('settings/smtp-info', [App\Http\Controllers\SettingsController::class, 'smtpInfo'])->name('settings.smtpInfo');
+        Route::get('settings/general-edit', [App\Http\Controllers\SettingsController::class, 'generalEdit'])->name('settings.generalEdit');
+        Route::get('settings/database-info', [App\Http\Controllers\SettingsController::class, 'databaseInfo'])->name('settings.databaseInfo');
+        Route::get('settings/database-edit', [App\Http\Controllers\SettingsController::class, 'databaseEdit'])->name('settings.databaseEdit');
         Route::get('settings/debug-info', [App\Http\Controllers\SettingsController::class, 'debugInfo'])->name('settings.debugInfo');
-        
+        Route::get('settings/debug-edit', [App\Http\Controllers\SettingsController::class, 'debugEdit'])->name('settings.debugEdit');
+        Route::get('settings/log-info', [App\Http\Controllers\SettingsController::class, 'logInfo'])->name('settings.logInfo');
+        Route::get('settings/log-edit', [App\Http\Controllers\SettingsController::class, 'logEdit'])->name('settings.logEdit');
+        Route::get('settings/mail-info', [App\Http\Controllers\SettingsController::class, 'mailInfo'])->name('settings.mailInfo');
+        Route::get('settings/mail-edit', [App\Http\Controllers\SettingsController::class, 'mailEdit'])->name('settings.mailEdit');
+
     });
 
 } else {
