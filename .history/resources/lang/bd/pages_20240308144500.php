@@ -68,16 +68,6 @@ return [
             'deleted_at_helper' => '',
         ],
     ],
-    'settings' => [
-        'title' => 'সেটিংস',
-        'general' => 'সাধারণ',
-        'database' => 'database',
-        'debug' => 'debug',
-        'log' => 'log',
-        'oauth' => 'oauth',
-        'site' => 'site',
-        'smtp' => 'smtp',
-    ],
     'dashboard' => [
         'title'          => 'ড্যাশবোর্ড',
         'title_singular' => 'ড্যাশবোর্ড',

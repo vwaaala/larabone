@@ -95,7 +95,7 @@
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                         <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('settings.index') ? 'current' : '' }}"
-                                href="{{ route('settings.index') }}">{{ __('global.all') }}</a>
+                                href="{{ route('settings.index') }}">{{ __('settings.title') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('settings.generalInfo') ? 'current' : '' }}"

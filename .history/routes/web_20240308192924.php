@@ -45,10 +45,7 @@ if ($installed === true) {
         // Define resourceful routes for users and roles
         Route::resources(['users' => UserController::class, 'roles' => RoleController::class,]);
 
-        Route::get('settings/index', [App\Http\Controllers\SettingsController::class, 'index'])->name('settings.index');
-        Route::get('settings/general-info', [App\Http\Controllers\SettingsController::class, 'generalInfo'])->name('settings.generalInfo');
-        Route::get('settings/smtp-info', [App\Http\Controllers\SettingsController::class, 'smtpInfo'])->name('settings.smtpInfo');
-        Route::get('settings/debug-info', [App\Http\Controllers\SettingsController::class, 'debugInfo'])->name('settings.debugInfo');
+        Route::get('setting', [App\Http\Controllers\SettingController::class, 'general'])->name('setting');
         
     });
 

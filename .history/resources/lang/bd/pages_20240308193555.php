@@ -69,14 +69,7 @@ return [
         ],
     ],
     'settings' => [
-        'title' => 'সেটিংস',
-        'general' => 'সাধারণ',
-        'database' => 'database',
-        'debug' => 'debug',
-        'log' => 'log',
-        'oauth' => 'oauth',
-        'site' => 'site',
-        'smtp' => 'smtp',
+        'title' => 'Settings'
     ],
     'dashboard' => [
         'title'          => 'ড্যাশবোর্ড',

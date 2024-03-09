@@ -102,6 +102,12 @@ return [
             "trans" => "pages.settings.oauth",
             "parent" => false
         ],
+        "site"=> [
+            "namespace" => "settings.",
+            "route" => "settings.site",
+            "trans" => "pages.settings.site",
+            "parent" => false
+        ],
         "smtp"=> [
             "namespace" => "settings.",
             "route" => "settings.smtp",

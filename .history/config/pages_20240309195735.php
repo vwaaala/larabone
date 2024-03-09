@@ -72,42 +72,13 @@ return [
             "trans" => "pages.settings.title",
             "parent" => true
         ],
-        "general"=> [
-            "namespace" => "settings.",
-            "route" => "settings.general",
-            "trans" => "pages.settings.general",
-            "parent" => false
-        ],
-        "database"=> [
-            "namespace" => "settings.",
-            "route" => "settings.database",
-            "trans" => "pages.settings.database",
-            "parent" => false
-        ],
-        "debug"=> [
-            "namespace" => "settings.",
-            "route" => "settings.debug",
-            "trans" => "pages.settings.debug",
-            "parent" => false
-        ],
-        "log"=> [
-            "namespace" => "settings.",
-            "route" => "settings.log",
-            "trans" => "pages.settings.log",
-            "parent" => false
-        ],
-        "oauth"=> [
-            "namespace" => "settings.",
-            "route" => "settings.oauth",
-            "trans" => "pages.settings.oauth",
-            "parent" => false
-        ],
-        "smtp"=> [
-            "namespace" => "settings.",
-            "route" => "settings.smtp",
-            "trans" => "pages.settings.smtp",
-            "parent" => false
-        ],
+        "general"=> [],
+        "database"=> [],
+        "debug"=> [],
+        "log"=> [],
+        "oauth"=> [],
+        "site"=> [],
+        "smtp"=> [],
     ],
     "support_ticket" => [
         "index" => [

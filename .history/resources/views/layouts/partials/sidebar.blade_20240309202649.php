@@ -86,24 +86,24 @@
 
         <!-- settings -->
         @can('settings_show')
-            <li class="nav-item {{ request()->routeIs('settings.index') || request()->routeIs('settings.generalInfo') || request()->routeIs('settings.smtpInfo') ? 'active' : '' }}">
+            <li class="nav-item {{ request()->routeIs('settings.index') || request()->routeIs('settings.create') || request()->routeIs('settings.show') ? 'active' : '' }}">
                 <a href="#" class="nav-link dropdown-toggle collapsed d-flex align-items-center justify-content-between" data-bs-toggle="collapse" data-bs-target="#support-menu-item-collapse"
                     aria-expanded="true">
                     {{ __('pages.settings.title') }}
                 </a>
-                <div class="collapse {{ request()->routeIs('settings.index') || request()->routeIs('settings.generalInfo') || request()->routeIs('settings.smtpInfo') ? 'show' : '' }}" id="support-menu-item-collapse" style="">
+                <div class="collapse {{ request()->routeIs('settings.index') || request()->routeIs('settings.general') || request()->routeIs('settings.smtp') ? 'show' : '' }}" id="support-menu-item-collapse" style="">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                         <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('settings.index') ? 'current' : '' }}"
-                                href="{{ route('settings.index') }}">{{ __('global.all') }}</a>
+                                href="{{ route('settings.index') }}">{{ __('settings.title') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('settings.generalInfo') ? 'current' : '' }}"
-                                href="{{ route('settings.generalInfo') }}">{{ __('pages.settings.general') }}</a>
+                            <a class="nav-link {{ request()->routeIs('settings.create') ? 'current' : '' }}"
+                                href="{{ route('settings.general') }}">{{ __('settings.general') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('settings.smtpInfo') ? 'current' : '' }}"
-                                href="{{ route('settings.smtpInfo') }}">{{ __('pages.settings.smtp') }}</a>
+                            <a class="nav-link {{ request()->routeIs('settings.smtp') ? 'current' : '' }}"
+                                href="{{ route('settings.smtp') }}">{{ __('settings.smtp') }}</a>
                         </li>
                     </ul>
                 </div>

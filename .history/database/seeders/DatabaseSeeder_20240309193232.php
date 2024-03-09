@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             UserSeeder::class,
             SupportTicketSeeder::class, // from package bunker/support-ticket
-            LaraEnvSeeder::class, // from package bunker/laraenv
+            SupportTicketSeeder::class, // from package bunker/laraenv
         ]);
     }
 }

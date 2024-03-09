@@ -48,7 +48,7 @@ if ($installed === true) {
         Route::get('settings/index', [App\Http\Controllers\SettingsController::class, 'index'])->name('settings.index');
         Route::get('settings/general-info', [App\Http\Controllers\SettingsController::class, 'generalInfo'])->name('settings.generalInfo');
         Route::get('settings/smtp-info', [App\Http\Controllers\SettingsController::class, 'smtpInfo'])->name('settings.smtpInfo');
-        Route::get('settings/debug-info', [App\Http\Controllers\SettingsController::class, 'debugInfo'])->name('settings.debugInfo');
+        Route::get('settings/site-info', [App\Http\Controllers\SettingsController::class, 'siteInfo'])->name('settings.siteInfo');
         
     });
 

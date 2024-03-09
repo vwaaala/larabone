@@ -70,7 +70,7 @@ return [
     ],
     'settings' => [
         'title' => 'সেটিংস',
-        'general' => 'সাধারণ',
+        'general' => 'general',
         'database' => 'database',
         'debug' => 'debug',
         'log' => 'log',

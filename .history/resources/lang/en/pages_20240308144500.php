@@ -68,16 +68,7 @@ return [
             'deleted_at_helper'        => '',
         ],
     ],
-    'settings' => [
-        'title' => 'Settings',
-        'general' => 'general',
-        'database' => 'database',
-        'debug' => 'debug',
-        'log' => 'log',
-        'oauth' => 'oauth',
-        'site' => 'site',
-        'smtp' => 'smtp',
-    ],
+
     'dashboard' => [
         'title'          => 'Dashboard',
         'title_singular' => 'Dashboard',
