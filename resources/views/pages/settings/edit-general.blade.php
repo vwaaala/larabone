@@ -9,7 +9,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <form action="{{ route('settings.generalUpdate') }}" method="POST" enctype="multipart/form-data" class="needs-validation">
+                <form action="" method="POST" enctype="multipart/form-data" class="needs-validation">
                     @csrf
                     <div class="mb-2">
                         <label class="form-label text-muted" for="name">Name your Application <span class="text-danger">*</span></label>
@@ -108,9 +108,10 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            <button type="submit" class="btn btn-outline-primary mt-3"><i class="bi bi-save2"></i> {{ __('global.update') }}</button>
+                            <button type="button" onclick="confirmDelete('{{ route('settings.generalUpdate') }}', 'POST', 'warning', '{{ __('global.update')}}')" class="btn btn-outline-primary mt-3"><i class="bi bi-save2"></i> {{ __('global.update') }}</button>
                         </div>
                     </div>
+
                 </form>
             </div>
         </div>
