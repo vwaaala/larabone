@@ -27,7 +27,7 @@
                         <tr>
                             <th scope="row">{{ $loop->index + 1 }}</th>
                             <td>{{ $key }}</td>
-                            <td>{{ $value }}</td>
+                            <td>{{ str_replace('"', '', $value) }}</td>
                         </tr>
                     @endforeach
                     </tbody>
