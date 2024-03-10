@@ -49,8 +49,10 @@ if ($installed === true) {
         Route::get('settings/index', [App\Http\Controllers\SettingsController::class, 'index'])->name('settings.index');
         Route::get('settings/general-info', [App\Http\Controllers\SettingsController::class, 'generalInfo'])->name('settings.generalInfo');
         Route::get('settings/general-edit', [App\Http\Controllers\SettingsController::class, 'generalEdit'])->name('settings.generalEdit');
+        Route::post('settings/general-update', [App\Http\Controllers\SettingsController::class, 'generalUpdate'])->name('settings.generalUpdate');
         Route::get('settings/database-info', [App\Http\Controllers\SettingsController::class, 'databaseInfo'])->name('settings.databaseInfo');
         Route::get('settings/database-edit', [App\Http\Controllers\SettingsController::class, 'databaseEdit'])->name('settings.databaseEdit');
+        Route::post('settings/database-update', [App\Http\Controllers\SettingsController::class, 'databaseUpdate'])->name('settings.databaseUpdate');
         Route::get('settings/debug-info', [App\Http\Controllers\SettingsController::class, 'debugInfo'])->name('settings.debugInfo');
         Route::get('settings/debug-edit', [App\Http\Controllers\SettingsController::class, 'debugEdit'])->name('settings.debugEdit');
         Route::get('settings/log-info', [App\Http\Controllers\SettingsController::class, 'logInfo'])->name('settings.logInfo');

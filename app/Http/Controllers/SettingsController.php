@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SettingsGeneralUpdateRequest;
 use App\Traits\LaraEnvTrait;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 
 class SettingsController extends Controller
 {
@@ -39,6 +41,41 @@ class SettingsController extends Controller
         return view('pages.settings.edit-general', compact('packets'));
     }
 
+    public function generalUpdate(Request $request): \Illuminate\Foundation\Application|Factory|View|Application
+    {
+        $data = [
+            'APP_NAME' => $request->get('name'),
+            'APP_URL' => $request->get('domain'),
+            'EMAIL_SUPPORT' => $request->get('email'),
+            'CONTACT_NUMBER' => $request->get('phone'),
+            'STREET' => $request->get('street'),
+            'CITY' => $request->get('city'),
+            'COUNTRY' => $request->get('country')
+        ];
+        if ($request->has('logo')){
+            $image = $request->file('logo');
+            $oldLogo = $this->getFromEnv(['APP_LOGO']);
+            if (file_exists('/assets/images/avatar/avatar.jpg')) {
+                // File exists, proceed with unlinking
+            } else {
+                // File does not exist
+            }
+            unlink($oldLogo['APP_LOGO']);
+            $image_name = 'logo' . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path(), $image_name);
+        }
+        if ($request->has('avatar')){
+            $image = $request->file('avatar');
+            $oldLogo = $this->getFromEnv(['DEFAULT_AVATAR']);
+            unlink($oldLogo['DEFAULT_AVATAR']);
+            $image_name = 'avatar' . '.' . $image->getClientOriginalExtension();
+            $image->move(config('panel.avatar_path'), $image_name);
+        }
+
+        $this->setOnEnv($data);
+
+        return $this->generalInfo();
+    }
 
     public function databaseInfo(): View|\Illuminate\Foundation\Application|Factory|Application
     {
@@ -50,6 +87,11 @@ class SettingsController extends Controller
         $title = 'database';
 
         return view('pages.settings.show', compact('packets', 'title'));
+    }
+
+    public function databaseUpdate()
+    {
+
     }
 
     public function databaseEdit(): View|\Illuminate\Foundation\Application|Factory|Application
