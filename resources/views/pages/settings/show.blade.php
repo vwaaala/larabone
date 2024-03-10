@@ -8,7 +8,7 @@
                     <h4 class="mb-0">{{ __('pages.settings.' . $title) }}</h4>
                     @can('settings_edit')
                         <a href="{{ route('settings.'. $title .'Edit') }}" class="btn btn-sm btn-success">
-                            <i class="bi bi-plus-circle"></i> {{ __('global.edit') }}
+                            <span class="bi bi-pencil"></span> {{ __('global.edit') }}
                         </a>
                     @endcan
                 </div>

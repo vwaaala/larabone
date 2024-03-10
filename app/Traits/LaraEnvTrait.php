@@ -3,6 +3,7 @@
 namespace App\Traits;
 
 use Illuminate\Support\Facades\Artisan;
+use Mockery\Matcher\Any;
 
 trait LaraEnvTrait
 {
@@ -12,7 +13,7 @@ trait LaraEnvTrait
      * @param array $keys
      * @return array
      */
-    protected function getFromConfig(array $keys)
+    protected function getFromConfig(array $keys): array
     {
         $values = [];
 
@@ -30,7 +31,7 @@ trait LaraEnvTrait
      * @param array $keys
      * @return array
      */
-    protected function getFromEnv(array $keys)
+    protected function getFromEnv(array $keys): array
     {
         $values = [];
 
@@ -55,7 +56,7 @@ trait LaraEnvTrait
      *
      * @param array $data
      */
-    protected function setOnEnv(array $data)
+    protected function setOnEnv(array $data): void
     {
         foreach ($data as $key => $value) {
             // Set the value in the configuration
@@ -75,7 +76,7 @@ trait LaraEnvTrait
      * @param string $key
      * @param mixed $value
      */
-    protected function updateEnvFile($key, $value)
+    protected function updateEnvFile(string $key, any $value): void
     {
         $envFilePath = base_path('.env');
 
