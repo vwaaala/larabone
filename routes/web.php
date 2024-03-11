@@ -29,7 +29,7 @@ if ($installed === true) {
     Auth::routes(['verify' => false]);
 
     // Group routes that require authentication middleware
-    Route::middleware(['auth'])->group(function () {
+    Route::middleware(['auth', 'web'])->group(function () {
 
         // Defining route for the home page after authentication
         Route::get('dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');

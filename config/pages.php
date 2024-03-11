@@ -1,138 +1,118 @@
 <?php
 return [
-    "dashboard" => [
-        "route" => "dashboard",
-        "trans" => "pages.dashboard.title_singular",
-        "parent" => true
+    [
+        'permission' => 'dashboard',
+        'text' => __('pages.dashboard.title_singular'),
+        'href' => route('dashboard'),
+        'children' => []
     ],
-    "permissions" => [
-        "index" => [
-            "namespace" => "permissions.",
-            "route" => "permissions.index",
-            "trans" => "pages.permissions.title",
-            "parent" => true
-        ],
+    [
+        'permission' => 'permission_show',
+        'text' => __('pages.permissions.title'),
+        'href' => route('permissions.index'),
+        'children' => []
     ],
-    "roles" => [
-        "index" => [
-            "namespace" => "roles.",
-            "route" => "roles.index",
-            "trans" => "pages.roles.title",
-            "parent" => true
-        ],
-        "create" => [
-            "namespace" => "roles.",
-            "route" => "roles.create",
-            "trans" => "global.create",
-            "parent" => false
-        ],
-        "edit" => [
-            "namespace" => "users.",
-            "route" => "roles.edit",
-            "trans" => "global.edit",
-            "parent" => false
-        ],
-        "show" => [
-            "namespace" => "roles.",
-            "route" => "roles.show",
-            "trans" => "global.show",
-            "parent" => false
+    [
+        'permission' => 'role_show',
+        'text' => __('pages.roles.title'),
+        'href' => route('roles.index'),
+        'children' => [
+            [
+                'permission' => 'role_create',
+                'text' => __('global.create'),
+                'href' => route('roles.create'),
+            ],
+            [
+                'permission' => 'role_edit',
+                'text' => __('global.edit'),
+                'href' => route('roles.edit'),
+            ],
+            [
+                'permission' => 'role_show',
+                'text' => __('global.show'),
+                'href' => route('roles.show'),
+            ]
         ],
     ],
-    "users" => [
-        "index" => [
-            "namespace" => "users.",
-            "route" => "users.index",
-            "trans" => "pages.users.title",
-            "parent" => true
-        ],
-        "create" => [
-            "namespace" => "users.",
-            "route" => "users.create",
-            "trans" => "global.create",
-            "parent" => false
-        ],
-        "edit" => [
-            "namespace" => "users.",
-            "route" => "users.edit",
-            "trans" => "global.edit",
-            "parent" => false
-        ],
-        "show" => [
-            "namespace" => "users.",
-            "route" => "users.show",
-            "trans" => "global.show",
-            "parent" => false
+    [
+        'permission' => 'user_show',
+        'text' => __('pages.users.title'),
+        'href' => route('users.index'),
+        'children' => [
+            [
+                'permission' => 'user_create',
+                'text' => __('global.create'),
+                'href' => route('roles.create'),
+            ],
+            [
+                'permission' => 'user_edit',
+                'text' => __('global.edit'),
+                'href' => route('users.edit'),
+            ],
+            [
+                'permission' => 'user_show',
+                'text' => __('global.show'),
+                'href' => route('users.show'),
+            ]
         ],
     ],
-    "settings" => [
-        "index" => [
-            "namespace" => "settings.",
-            "route" => "settings.index",
-            "trans" => "pages.settings.title",
-            "parent" => true
-        ],
-        "general"=> [
-            "namespace" => "settings.",
-            "route" => "settings.general",
-            "trans" => "pages.settings.general",
-            "parent" => false
-        ],
-        "database"=> [
-            "namespace" => "settings.",
-            "route" => "settings.database",
-            "trans" => "pages.settings.database",
-            "parent" => false
-        ],
-        "debug"=> [
-            "namespace" => "settings.",
-            "route" => "settings.debug",
-            "trans" => "pages.settings.debug",
-            "parent" => false
-        ],
-        "log"=> [
-            "namespace" => "settings.",
-            "route" => "settings.log",
-            "trans" => "pages.settings.log",
-            "parent" => false
-        ],
-        "oauth"=> [
-            "namespace" => "settings.",
-            "route" => "settings.oauth",
-            "trans" => "pages.settings.oauth",
-            "parent" => false
-        ],
-        "mail"=> [
-            "namespace" => "settings.",
-            "route" => "settings.mail",
-            "trans" => "pages.settings.mail",
-            "parent" => false
+    [
+        'permission' => 'settings_show',
+        'text' => __('pages.settings.title'),
+        'href' => route('settings.index'),
+        'children' => [
+            [
+                'permission' => 'settings_show',
+                'text' => __('pages.settings.general'),
+                'href' => route('settings.general'),
+            ],
+            [
+                'permission' => 'settings_show',
+                'text' => __('pages.settings.database'),
+                'href' => route('settings.database'),
+            ],
+            [
+                'permission' => 'settings_show',
+                'text' => __('pages.settings.debug'),
+                'href' => route('settings.debug'),
+            ],
+            [
+                'permission' => 'settings_show',
+                'text' => __('pages.settings.log'),
+                'href' => route('settings.log'),
+            ],
+            [
+                'permission' => 'settings_show',
+                'text' => __('pages.settings.oauth'),
+                'href' => route('settings.oauth'),
+            ],
+            [
+                'permission' => 'settings_show',
+                'text' => __('pages.settings.mail'),
+                'href' => route('settings.mail'),
+            ]
         ],
     ],
-    "support_ticket" => [
-        "index" => [
-            "namespace" => "support_ticket.",
-            "route" => "support_ticket.index",
-            "trans" => "support_ticket.title",
-            "parent" => true
-        ],
-        "create" => [
-            "namespace" => "support_ticket.",
-            "route" => "support_ticket.create",
-            "trans" => "global.create",
-            "parent" => false
-        ],
-        "edit" => [
-            "namespace" => "support_ticket.",
-            "route" => "users.edit",
-            "trans" => "global.edit",
-            "parent" => false
-        ],
-        "show" => [
-            "namespace" => "support_ticket.",
-            "route" => "support_ticket.show",
-            "trans" => "global.show",
-            "parent" => false
+    [
+        'permission' => 'user_show',
+        'text' => __('support_ticket.title'),
+        'href' => route('support_ticket.index'),
+        'children' => [
+            [
+                'permission' => 'support_ticket_create',
+                'text' => __('global.create'),
+                'href' => route('support_ticket.create'),
+            ],
+            [
+                'permission' => 'support_ticket_edit',
+                'text' => __('global.edit'),
+                'href' => route('support_ticket.edit'),
+            ],
+            [
+                'permission' => 'support_ticket_show',
+                'text' => __('global.show'),
+                'href' => route('support_ticket.show'),
+            ]
         ],
     ]
 ];

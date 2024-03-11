@@ -117,6 +117,7 @@ return array(
     'Carbon\\Doctrine\\' => array($vendorDir . '/carbonphp/carbon-doctrine-types/src/Carbon/Doctrine'),
     'Carbon\\' => array($vendorDir . '/nesbot/carbon/src/Carbon'),
     'Bunker\\SupportTicket\\' => array($baseDir . '/package/support-ticket/src'),
+    'Bunker\\LaravelSpeedDate\\' => array($baseDir . '/package/laravel-speed-date/src'),
     'Bunker\\LaravelLocalization\\Tests\\' => array($vendorDir . '/bunker/laravel-localization/tests'),
     'Bunker\\LaravelLocalization\\' => array($vendorDir . '/bunker/laravel-localization/src'),
     'Brick\\Math\\' => array($vendorDir . '/brick/math/src'),

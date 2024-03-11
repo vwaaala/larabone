@@ -41,7 +41,8 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
-            "Bunker\\SupportTicket\\": "package/support-ticket/src/"
+            "Bunker\\SupportTicket\\": "package/support-ticket/src/",
+            "Bunker\\LaravelSpeedDate\\": "package/laravel-speed-date/src/"
         }
     },
     "autoload-dev": {

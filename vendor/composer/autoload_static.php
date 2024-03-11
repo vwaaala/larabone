@@ -217,6 +217,7 @@ class ComposerStaticInit2c2255c4e921ab6dacff16f22935ea80
         'B' => 
         array (
             'Bunker\\SupportTicket\\' => 21,
+            'Bunker\\LaravelSpeedDate\\' => 24,
             'Bunker\\LaravelLocalization\\Tests\\' => 33,
             'Bunker\\LaravelLocalization\\' => 27,
             'Brick\\Math\\' => 11,
@@ -688,6 +689,10 @@ class ComposerStaticInit2c2255c4e921ab6dacff16f22935ea80
         array (
             0 => __DIR__ . '/../..' . '/package/support-ticket/src',
         ),
+        'Bunker\\LaravelSpeedDate\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/package/laravel-speed-date/src',
+        ),
         'Bunker\\LaravelLocalization\\Tests\\' => 
         array (
             0 => __DIR__ . '/..' . '/bunker/laravel-localization/tests',
@@ -745,6 +750,7 @@ class ComposerStaticInit2c2255c4e921ab6dacff16f22935ea80
         'App\\Http\\Controllers\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/DashboardController.php',
         'App\\Http\\Controllers\\PermissionController' => __DIR__ . '/../..' . '/app/Http/Controllers/PermissionController.php',
         'App\\Http\\Controllers\\RoleController' => __DIR__ . '/../..' . '/app/Http/Controllers/RoleController.php',
+        'App\\Http\\Controllers\\SettingsController' => __DIR__ . '/../..' . '/app/Http/Controllers/SettingsController.php',
         'App\\Http\\Controllers\\SetupController' => __DIR__ . '/../..' . '/app/Http/Controllers/SetupController.php',
         'App\\Http\\Controllers\\TestDBController' => __DIR__ . '/../..' . '/app/Http/Controllers/TestDBController.php',
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
@@ -758,6 +764,7 @@ class ComposerStaticInit2c2255c4e921ab6dacff16f22935ea80
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\ValidateSignature' => __DIR__ . '/../..' . '/app/Http/Middleware/ValidateSignature.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Http\\Requests\\SettingsGeneralUpdateRequest' => __DIR__ . '/../..' . '/app/Http/Requests/SettingsGeneralUpdateRequest.php',
         'App\\Http\\Requests\\StoreRoleRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreRoleRequest.php',
         'App\\Http\\Requests\\StoreUserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreUserRequest.php',
         'App\\Http\\Requests\\UpdateRoleRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateRoleRequest.php',
@@ -770,7 +777,9 @@ class ComposerStaticInit2c2255c4e921ab6dacff16f22935ea80
         'App\\Providers\\MenuServiceProvider' => __DIR__ . '/../..' . '/app/Providers/MenuServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\Rules\\UserStatusRule' => __DIR__ . '/../..' . '/app/Rules/UserStatusRule.php',
+        'App\\Rules\\ValidDomain' => __DIR__ . '/../..' . '/app/Rules/ValidDomain.php',
         'App\\Rules\\ValidRole' => __DIR__ . '/../..' . '/app/Rules/ValidRole.php',
+        'App\\Traits\\LaraEnvTrait' => __DIR__ . '/../..' . '/app/Traits/LaraEnvTrait.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Barryvdh\\Debugbar\\Console\\ClearCommand' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/Console/ClearCommand.php',
         'Barryvdh\\Debugbar\\Controllers\\AssetController' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/Controllers/AssetController.php',
@@ -847,6 +856,12 @@ class ComposerStaticInit2c2255c4e921ab6dacff16f22935ea80
         'Bunker\\LaravelLocalization\\LocalizationServiceProvider' => __DIR__ . '/..' . '/bunker/laravel-localization/src/LocalizationServiceProvider.php',
         'Bunker\\LaravelLocalization\\Middleware\\SetLocale' => __DIR__ . '/..' . '/bunker/laravel-localization/src/Middleware/SetLocale.php',
         'Bunker\\LaravelLocalization\\Tests\\Feature\\SetLocaleTest' => __DIR__ . '/..' . '/bunker/laravel-localization/tests/Feature/SetLocaleTest.php',
+        'Bunker\\LaravelSpeedDate\\DatingServiceProvider' => __DIR__ . '/../..' . '/package/laravel-speed-date/src/DatingServiceProvider.php',
+        'Bunker\\LaravelSpeedDate\\Enums\\EventTypeEnum' => __DIR__ . '/../..' . '/package/laravel-speed-date/src/Enums/EventTypeEnum.php',
+        'Bunker\\LaravelSpeedDate\\Enums\\GenderEnum' => __DIR__ . '/../..' . '/package/laravel-speed-date/src/Enums/GenderEnum.php',
+        'Bunker\\LaravelSpeedDate\\Http\\Controllers\\DatingEventController' => __DIR__ . '/../..' . '/package/laravel-speed-date/src/Http/Controllers/DatingEventController.php',
+        'Bunker\\LaravelSpeedDate\\Models\\Bio' => __DIR__ . '/../..' . '/package/laravel-speed-date/src/Models/Bio.php',
+        'Bunker\\LaravelSpeedDate\\Models\\DatingEvent' => __DIR__ . '/../..' . '/package/laravel-speed-date/src/Models/DatingEvent.php',
         'Bunker\\SupportTicket\\Http\\Controllers\\TicketController' => __DIR__ . '/../..' . '/package/support-ticket/src/Http/Controllers/TicketController.php',
         'Bunker\\SupportTicket\\Mail\\TicketMailable' => __DIR__ . '/../..' . '/package/support-ticket/src/Mail/TicketMailable.php',
         'Bunker\\SupportTicket\\Models\\Reply' => __DIR__ . '/../..' . '/package/support-ticket/src/Models/Reply.php',
@@ -964,6 +979,7 @@ class ComposerStaticInit2c2255c4e921ab6dacff16f22935ea80
         'Cron\\MonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MonthField.php',
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
+        'Database\\Seeders\\LaraEnvSeeder' => __DIR__ . '/../..' . '/database/seeders/LaraEnvSeeder.php',
         'Database\\Seeders\\PermissionSeeder' => __DIR__ . '/../..' . '/database/seeders/PermissionSeeder.php',
         'Database\\Seeders\\RoleSeeder' => __DIR__ . '/../..' . '/database/seeders/RoleSeeder.php',
         'Database\\Seeders\\SupportTicketSeeder' => __DIR__ . '/../..' . '/database/seeders/SupportTicketSeeder.php',
