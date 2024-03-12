@@ -14,6 +14,7 @@ class RoleSeeder extends Seeder
     public function run(): void
     {
         $permissions = [
+            'dashboard',
             'permission_show',
             'role_create',
             'role_edit',
@@ -22,10 +23,7 @@ class RoleSeeder extends Seeder
             'user_create',
             'user_edit',
             'user_delete',
-            'user_show',
-            'user_access',
-            'message_show',
-            'message_create',
+            'user_show'
          ];
         $super = Role::create(['name' => 'Super Admin']);
         $admin = Role::create(['name' => 'Admin']);
@@ -33,25 +31,20 @@ class RoleSeeder extends Seeder
         $user = Role::create(['name' => 'User']);
         $super->givePermissionTo($permissions);
         $admin->givePermissionTo([
+            'dashboard',
             'user_create',
             'user_edit',
             'user_delete',
-            'user_show',
-            'user_access',
-            'message_show',
-            'message_create',
+            'user_show'
         ]);
 
         $manager->givePermissionTo([
-            'user_show',
-            'message_show',
-            'message_create',
+            'dashboard',
+            'user_show'
         ]);
 
         $user->givePermissionTo([
-            'user_access',
-            'message_show',
-            'message_create',
+            'dashboard'
         ]);
     }
 }

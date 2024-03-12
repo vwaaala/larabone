@@ -28,6 +28,7 @@
 
 <!-- app wrapper -->
 <div id="app">
+
     @auth()
         <!-- sidebar -->
         @include('layouts.partials.sidebar')
@@ -38,7 +39,7 @@
         <div class="p-2 mt-2">
             @auth()
                 <!-- breadcrumb -->
-                @include('layouts.partials.breadcrumb')
+{{--                @include('layouts.partials.breadcrumb')--}}
             @endauth
             @if(session('success'))
                 <!-- session message: success -->
