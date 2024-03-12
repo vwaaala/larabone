@@ -13,14 +13,14 @@ class SettingsController extends Controller
 {
     use LaraEnvTrait;
 
-    public function index(): View|\Illuminate\Foundation\Application|Factory|Application
+    public function index()
     {
         $title = 'index';
         return view('pages.settings.index', compact('title'));
     }
 
 
-    public function generalInfo(): View|\Illuminate\Foundation\Application|Factory|Application
+    public function generalInfo()
     {
         // Get site information from environment variables
         $keys = ['APP_NAME', 'APP_LOGO', 'APP_URL', 'DEFAULT_AVATAR', 'EMAIL_SUPPORT', 'CONTACT_NUMBER', 'STREET', 'CITY', 'COUNTRY',];
@@ -31,7 +31,7 @@ class SettingsController extends Controller
         return view('pages.settings.show', compact('packets', 'title'));
     }
 
-    public function generalEdit(): View|\Illuminate\Foundation\Application|Factory|Application
+    public function generalEdit()
     {
         // Get site information from environment variables
         $keys = ['APP_NAME', 'APP_LOGO', 'APP_URL', 'DEFAULT_AVATAR', 'EMAIL_SUPPORT', 'CONTACT_NUMBER', 'STREET', 'CITY', 'COUNTRY',];
@@ -41,43 +41,44 @@ class SettingsController extends Controller
         return view('pages.settings.edit-general', compact('packets'));
     }
 
-    public function generalUpdate(Request $request): \Illuminate\Foundation\Application|Factory|View|Application
+    public function generalUpdate(SettingsGeneralUpdateRequest $request)
     {
         $data = [
-            'APP_NAME' => $request->get('name'),
-            'APP_URL' => $request->get('domain'),
-            'EMAIL_SUPPORT' => $request->get('email'),
-            'CONTACT_NUMBER' => $request->get('phone'),
-            'STREET' => $request->get('street'),
-            'CITY' => $request->get('city'),
-            'COUNTRY' => $request->get('country')
+            'APP_NAME' =>  '"' . $request->get('name') . '"',
+            'APP_URL' => '"' . $request->get('domain') . '"',
+            'EMAIL_SUPPORT' => '"' . $request->get('email') . '"',
+            'CONTACT_NUMBER' => '"' . $request->get('phone') . '"',
+            'STREET' => '"' . $request->get('street') . '"',
+            'CITY' => '"' . $request->get('city') . '"',
+            'COUNTRY' =>  '"' . $request->get('country') . '"',
         ];
         if ($request->has('logo')){
             $image = $request->file('logo');
             $oldLogo = $this->getFromEnv(['APP_LOGO']);
-            if (file_exists('/assets/images/avatar/avatar.jpg')) {
-                // File exists, proceed with unlinking
-            } else {
-                // File does not exist
+            if (file_exists(public_path() . $oldLogo['APP_LOGO'])) {
+                unlink(public_path() . $oldLogo['APP_LOGO']);
             }
-            unlink($oldLogo['APP_LOGO']);
             $image_name = 'logo' . '.' . $image->getClientOriginalExtension();
             $image->move(public_path(), $image_name);
+            $data['APP_LOGO'] = $image_name;
         }
         if ($request->has('avatar')){
             $image = $request->file('avatar');
             $oldLogo = $this->getFromEnv(['DEFAULT_AVATAR']);
-            unlink($oldLogo['DEFAULT_AVATAR']);
+            if (file_exists(config('panel.avatar_path') . $oldLogo['DEFAULT_AVATAR'])) {
+                unlink(public_path() . $oldLogo['DEFAULT_AVATAR']);
+            }
             $image_name = 'avatar' . '.' . $image->getClientOriginalExtension();
-            $image->move(config('panel.avatar_path'), $image_name);
+            $image->move(public_path() . config('panel.avatar_path'), $image_name);
+            $data['DEFAULT_AVATAR'] = config('panel.avatar_path') . $image_name;
         }
 
         $this->setOnEnv($data);
 
-        return $this->generalInfo();
+        return redirect()->route('settings.generalInfo')->with('success', 'Updated general info!');
     }
 
-    public function databaseInfo(): View|\Illuminate\Foundation\Application|Factory|Application
+    public function databaseInfo()
     {
         // Get site information from environment variables
         $keys = ['DB_CONNECTION', 'DB_HOST', 'DB_PORT', 'DB_DATABASE', 'DB_USERNAME', 'DB_PASSWORD', 'DB_PORT', 'DB_PORT', 'DB_PORT', 'DB_PORT', 'DB_PORT',];
@@ -94,7 +95,7 @@ class SettingsController extends Controller
 
     }
 
-    public function databaseEdit(): View|\Illuminate\Foundation\Application|Factory|Application
+    public function databaseEdit()
     {
         // Get site information from environment variables
         $keys = ['DB_CONNECTION', 'DB_HOST', 'DB_PORT', 'DB_DATABASE', 'DB_USERNAME', 'DB_PASSWORD', 'DB_PORT', 'DB_PORT', 'DB_PORT', 'DB_PORT', 'DB_PORT',];
@@ -106,7 +107,7 @@ class SettingsController extends Controller
     }
 
 
-    public function debugInfo(): View|\Illuminate\Foundation\Application|Factory|Application
+    public function debugInfo()
     {
         // Get site information from environment variables
         $keys = ['APP_ENV', 'APP_DEBUG', 'DEBUGBAR_ENABLED'];
@@ -118,7 +119,7 @@ class SettingsController extends Controller
         return view('pages.settings.show', compact('packets', 'title'));
     }
 
-    public function debugEdit(): View|\Illuminate\Foundation\Application|Factory|Application
+    public function debugEdit()
     {
         // Get site information from environment variables
         $keys = ['APP_ENV', 'APP_DEBUG', 'DEBUGBAR_ENABLED'];
@@ -129,7 +130,7 @@ class SettingsController extends Controller
         return view('pages.settings.edit-debug', compact('packets'));
     }
 
-    public function logInfo(): View|\Illuminate\Foundation\Application|Factory|Application
+    public function logInfo()
     {
         // Get site information from environment variables
         $keys = ['LOG_CHANNEL', 'LOG_LEVEL', 'LOG_DEPRECATIONS_CHANNEL'];
@@ -141,7 +142,7 @@ class SettingsController extends Controller
         return view('pages.settings.show', compact('packets', 'title'));
     }
 
-    public function logEdit(): View|\Illuminate\Foundation\Application|Factory|Application
+    public function logEdit()
     {
         // Get site information from environment variables
         $keys = ['LOG_CHANNEL', 'LOG_LEVEL', 'LOG_DEPRECATIONS_CHANNEL'];
@@ -152,7 +153,7 @@ class SettingsController extends Controller
         return view('pages.settings.edit-log', compact('packets'));
     }
 
-    public function mailInfo(): View|\Illuminate\Foundation\Application|Factory|Application
+    public function mailInfo()
     {
         // Get site information from environment variables
         $keys = ['DB_CONNECTION', 'DB_HOST', 'DB_PORT', 'DB_DATABASE', 'DB_USERNAME', 'DB_PASSWORD'];
@@ -164,7 +165,7 @@ class SettingsController extends Controller
         return view('pages.settings.show', compact('packets', 'title'));
     }
 
-    public function mailEdit(): View|\Illuminate\Foundation\Application|Factory|Application
+    public function mailEdit()
     {
         // Get site information from environment variables
         $keys = ['DB_CONNECTION', 'DB_HOST', 'DB_PORT', 'DB_DATABASE', 'DB_USERNAME', 'DB_PASSWORD'];

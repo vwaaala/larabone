@@ -12,7 +12,7 @@ class SettingsGeneralUpdateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,9 +24,9 @@ class SettingsGeneralUpdateRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'logo' => 'file|mimes:png,jpg,jpeg',
+            'logo' => 'file|mimes:png',
             'domain' => ['required', new ValidDomain],
-            'avatar' => 'file|mimes:png,jpg,jpeg',
+            'avatar' => 'file|mimes:jpg',
             'email' => 'required|email',
             'phone' => 'required',
             'street' => 'required|string',
