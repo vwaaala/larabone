@@ -45,6 +45,20 @@ return [
         ]
     ],
     [
+        'permission' => 'support_ticket_show',
+        'name' => 'support_ticket.title',
+        'text' => 'global.all',
+        'href' => 'support_ticket.index',
+        'include_routes' => ['support_ticket.show'],
+        'children' => [
+            [
+                'permission' => 'support_ticket_create',
+                'text' => 'global.create',
+                'href' => 'support_ticket.create',
+            ]
+        ]
+    ],
+    [
         'permission' => 'settings_show',
         'name' => 'pages.settings.title',
         'text' => 'global.all',
@@ -77,33 +91,5 @@ return [
                 'href' => 'settings.mailInfo',
             ]
         ],
-    ],
-    [
-        'permission' => 'support_ticket_show',
-        'name' => 'support_ticket.title',
-        'text' => 'global.all',
-        'href' => 'support_ticket.index',
-        'include_routes' => [],
-        'children' => [
-            [
-                'permission' => 'support_ticket_create',
-                'text' => 'global.create',
-                'href' => 'support_ticket.create',
-            ]
-        ]
-    ],
-    [
-        'permission' => 'role_show',
-        'name' => 'pages.roles.title',
-        'text' => 'global.all',
-        'href' => 'roles.index',
-        'include_routes' => [],
-        'children' => [
-            [
-                'permission' => 'role_create',
-                'text' => 'global.create',
-                'href' => 'roles.create',
-            ]
-        ]
     ]
 ];
