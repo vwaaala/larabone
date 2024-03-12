@@ -3,7 +3,6 @@
 namespace App\Traits;
 
 use Illuminate\Support\Facades\Artisan;
-use Mockery\Matcher\Any;
 
 trait LaraEnvTrait
 {
@@ -68,6 +67,7 @@ trait LaraEnvTrait
 
         // Clear the configuration cache (optional, but recommended)
         Artisan::call('config:clear');
+        Artisan::call('config:cache');
     }
 
     /**
@@ -76,7 +76,7 @@ trait LaraEnvTrait
      * @param string $key
      * @param mixed $value
      */
-    protected function updateEnvFile(string $key, any $value): void
+    protected function updateEnvFile(string $key, $value): void
     {
         $envFilePath = base_path('.env');
 

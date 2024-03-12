@@ -15,6 +15,7 @@ class PermissionSeeder extends Seeder
     {
         $permissions = [
             'permission_show',
+            'dashboard',
             'role_create',
             'role_edit',
             'role_delete',
@@ -23,9 +24,6 @@ class PermissionSeeder extends Seeder
             'user_edit',
             'user_delete',
             'user_show',
-            'user_access',
-            'message_show',
-            'message_create',
          ];
 
         // Looping and Inserting Array's Permissions into Permission Table

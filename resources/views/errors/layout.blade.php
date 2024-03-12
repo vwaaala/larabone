@@ -46,7 +46,7 @@
             <div class="content">
                 <div class="title">
                     @yield('message')
-                    <a href="{{ route('home') }}">{{ __('global.back_to_list') }} {{ __('global.home') }}</a>
+                    <a href="{{ route('dashboard') }}">{{ __('global.back_to_list') }} {{ __('global.home') }}</a>
                 </div>
             </div>
         </div>

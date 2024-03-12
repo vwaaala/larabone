@@ -1,6 +1,5 @@
-@extends('layouts.app', ['pageName' => config('pages.roles.index')])
+@extends('layouts.app', ['pageName' => 'roles.index'])
 @section('content')
-
     @can('role_show')
         <div class="card mt-2">
             <div class="card-header">
@@ -36,9 +35,9 @@
                                     </a>
                                     @can('role_edit')
                                         <a href="{{ $role->id ===1 ? '#' : route('roles.edit', $role->id) }}"
-                                            class="{{ $role->id ===1 ? 'disabled' : ''  }} btn btn-warning btn-sm"
-                                            title="{{ __('global.edit') }}">
-                                                <i class="bi bi-pencil"></i>
+                                           class="{{ $role->id ===1 ? 'disabled' : ''  }} btn btn-warning btn-sm"
+                                           title="{{ __('global.edit') }}">
+                                            <i class="bi bi-pencil"></i>
                                         </a>
                                     @endcan
                                     @can('role_delete')
