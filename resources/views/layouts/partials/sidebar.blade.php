@@ -14,7 +14,7 @@
             @if(auth()->user()->can($menuItem['permission']))
                 @if(count($menuItem['children']) > 0)
                     @php
-                        $isActive = request()->route()->getName() === $menuItem['href'] || in_array(request()->route()->getName(), array_column($menuItem['children'], 'href'));
+                        $isActive = request()->route()->getName() === $menuItem['href'] || in_array(request()->route()->getName(), array_column($menuItem['children'], 'href')) || in_array(request()->route()->getName(), $menuItem['include_routes']);
                     @endphp
                     <li class="nav-item {{ $isActive ? 'active' : '' }}">
                         <a href="#"
