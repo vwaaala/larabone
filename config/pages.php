@@ -48,27 +48,27 @@ return [
         'children' => [
             [
                 'permission' => 'settings_show',
-                'text' => 'pages.settings.generalInfo',
+                'text' => 'global.general',
                 'href' => 'settings.generalInfo',
             ],
             [
                 'permission' => 'settings_show',
-                'text' => 'pages.settings.databaseInfo',
+                'text' => 'global.database',
                 'href' => 'settings.databaseInfo',
             ],
             [
                 'permission' => 'settings_show',
-                'text' => 'pages.settings.debugInfo',
+                'text' => 'global.debug',
                 'href' => 'settings.debugInfo',
             ],
             [
                 'permission' => 'settings_show',
-                'text' => 'pages.settings.logInfo',
+                'text' => 'global.log',
                 'href' => 'settings.logInfo',
             ],
             [
                 'permission' => 'settings_show',
-                'text' => 'pages.settings.mailInfo',
+                'text' => 'global.mail',
                 'href' => 'settings.mailInfo',
             ]
         ],
