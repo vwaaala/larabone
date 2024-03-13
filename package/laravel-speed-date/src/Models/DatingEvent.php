@@ -24,7 +24,6 @@ class DatingEvent extends Model
     // Define casting for attributes
     protected $casts = [
         'name' => 'string',
-        'type' => 'enum:Bunker\LaravelSpeedDate\Enums\EventTypeEnum', // Casting 'type' attribute to enum
         'status' => 'boolean', // Casting 'status' attribute to boolean
         'happens_on' => 'datetime' // Casting 'happens_on' attribute to datetime
     ];

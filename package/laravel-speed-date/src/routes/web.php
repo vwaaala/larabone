@@ -11,6 +11,7 @@ Route::name('speed_date.')->middleware(['web', 'auth'])->group(function () {
             Route::get('{event}/show', 'show')->name('show');
             Route::get('{event}/edit', 'edit')->name('edit');
             Route::put('{event}/update', 'update')->name('update');
+            Route::post('user-uploads', 'uploadUsers')->name('uploadUsers');
         });
     });
     Route::prefix('votes')->name('votes.')->group(function () {

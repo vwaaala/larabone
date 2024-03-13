@@ -4,6 +4,7 @@ namespace Bunker\LaravelSpeedDate\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
 use Bunker\LaravelSpeedDate\Models\DatingEvent;
 use Bunker\LaravelSpeedDate\Enums\EventTypeEnum;
 
@@ -20,11 +21,21 @@ class DatingEventController extends Controller
         $this->middleware('permission:sd_event_edit', ['only' => ['edit', 'update']]);
         $this->middleware('permission:sd_event_delete', ['only' => ['destroy']]);
     }
-    public function index(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    public function index(Request $request): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
-        $events = DatingEvent::all();
+        
+        $searchQuery = '';
+        // If search parameter exists in the request, filter permissions by name
+        if ($request->has('search')) {
+            $searchQuery = $request->search;
+            $events = DatingEvent::where('name', 'like', '%' . $searchQuery . '%')->paginate(10);
+        } else {
+            // If no search parameter, fetch all permissions with pagination
+            $events = DatingEvent::paginate(10);
 
-        return view('speed_date::events.index', compact('events'));
+        }
+
+        return view('speed_date::events.index', compact('events', 'searchQuery'));
     }
 
     public function create(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
@@ -40,10 +51,19 @@ class DatingEventController extends Controller
             'type' => 'required|in:' . implode(',', array_values(EventTypeEnum::toArray())),
             'status' => 'required|boolean',
         ]);
+        $event = DatingEvent::create([
+            'name' => $request->get('name'),
+            'happens_on' => $request->get('happens_on'),
+            'type' => $request->get('type'),
+            'status' => $request->get('status'),
+        ]);
+        dd($event);
+        if($event)
+        {
+            return redirect()->route('speed_date.events.index')->with('success', 'Event created successfully.');
+        }
 
-        DatingEvent::create($request->all());
-
-        return redirect()->route('speed_date.events.index')->with('success', 'Event created successfully.');
+        return redirect()->back()->with('error', 'Failed to create event.');
     }
 
     public function show(DatingEvent $event): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
@@ -74,5 +94,44 @@ class DatingEventController extends Controller
         $event->delete();
 
         return redirect()->route('events.index')->with('success', 'Event deleted successfully.');
+    }
+
+    // csv uploads insert bulk user in specific event
+
+    public function uploadUsers(Request $request)
+    {
+        $request->validate([
+            'csv_file' => 'required|mimes:csv,txt',
+        ]);
+
+        if ($request->hasFile('csv_file')) {
+            $file = $request->file('csv_file');
+            $csvData = file_get_contents($file);
+            $rows = array_map('str_getcsv', explode("\n", $csvData));
+
+            foreach ($rows as $row) {
+                // handle duplicate user
+                $checkUserExist = User::where('email', $row[1])->first();
+                if($checkUserExist){
+
+                    // update existing user bio
+                }else{
+                    // Assuming CSV columns are: name, email, status, password
+                    User::create([
+                        'uuid' => str()->uuid(),
+                        'name' => $row[0],
+                        'email' => $row[1],
+                        'password' => bcrypt($row[2]), // Assuming password needs to be hashed
+                    ]);
+                    // create user bio
+
+                }
+
+            }
+
+            return redirect()->back()->with('success', 'Users created successfully.');
+        }
+
+        return redirect()->back()->with('error', 'Please provide a valid CSV file.');
     }
 }

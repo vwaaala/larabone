@@ -1,5 +1,8 @@
 @php use Bunker\LaravelSpeedDate\Enums\EventTypeEnum; @endphp
 @extends('layouts.app')
+@push('styles')
+<link rel="stylesheet" src="{{ asset('assets/libs/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css') }}">
+@endpush
 @section('content')
     @can('user_edit')
         <div class="card">
@@ -22,13 +25,27 @@
                         </div>
 
                         <div class="col-6 mb-2">
-                            <label for="statusSelect" class="form-label">{{ __('global.type') }} <span
+                            <label for="typeSelect" class="form-label">{{ __('global.type') }} <span
                                     class="text-danger">*</span></label>
-                            <select class="form-select @error('status') is-invalid @enderror" id="statusSelect"
-                                    name="status">
+                            <select class="form-select @error('type') is-invalid @enderror" id="typeSelect"
+                                    name="type">
                                 @foreach(EventTypeEnum::toArray() as $value)
                                     <option value="{{ $value }}">{{ ucfirst($value) }}</option>
                                 @endforeach
+                            </select>
+
+                            @error('type')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="col-6 mb-2">
+                            <label for="statusSelect" class="form-label">{{ __('global.status') }} <span
+                                    class="text-danger">*</span></label>
+                            <select class="form-select @error('status') is-invalid @enderror" id="statusSelect"
+                                    name="status">
+                                    <option value="0">{{ __('Active') }}</option>
+                                    <option value="1">{{ __('Close') }}</option>
                             </select>
 
                             @error('status')
@@ -38,14 +55,13 @@
 
                         <div class="col-md-6 mb-2">
                             <label for="happens_on" class="form-label">Happens On</label>
-                            <div class="input-group date" id="datetimepicker" data-target-input="nearest">
-                                <input type="text" class="form-control datetimepicker-input"
-                                       data-target="#datetimepicker" name="happens_on" required>
+                            <div class="input-group">
+                                    <input type="text" value="03/13/2024 14:30" name="happens_on" class="form-control datetimepicker-input" required/>                                       
                                 <div class="input-group-text" data-target="#"
                                      data-toggle="datetimepicker">
                                     <i class="bi bi-calendar"></i>
                                 </div>
-                                @error('status')
+                                @error('happens_on')
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -61,13 +77,9 @@
 @endsection
 
 @push('scripts')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-5/6.0.0-alpha20/js/tempusdominus-bootstrap-5.min.js"></script>
+    {{-- <script src="{{ asset('assets/libs/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js') }}"></script>
     <!-- Initialize datetime picker -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            $('#datetimepicker').datetimepicker({
-                format: 'YYYY-MM-DD HH:mm:ss', // Customize the datetime format as needed
-            });
-        });
-    </script>
+            $('.datetimepicker-input').datetimepicker();
+    </script> --}}
 @endpush

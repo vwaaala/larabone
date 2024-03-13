@@ -175,7 +175,7 @@ return [
         Yajra\DataTables\DataTablesServiceProvider::class,
         Bunker\SupportTicket\TicketServiceProvider::class,
         Bunker\LaravelSpeedDate\DatingServiceProvider::class,
-        Bunker\TourismBooking\TourismBookingServiceProvider::class
+        // Bunker\TourismBooking\TourismBookingServiceProvider::class
     ])->toArray(),
 
     /*

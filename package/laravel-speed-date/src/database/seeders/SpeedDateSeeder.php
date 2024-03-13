@@ -5,6 +5,7 @@ namespace Bunker\LaravelSpeedDate\database\seeders;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
+use Bunker\LaravelSpeedDate\Models\DatingEvent;
 
 class SpeedDateSeeder extends Seeder
 {
@@ -28,5 +29,12 @@ class SpeedDateSeeder extends Seeder
         }
         $super = Role::where(['name' => 'Super Admin'])->first();
         $super->givePermissionTo($permissions);
+
+        DatingEvent::create([
+            'name' => 'name',
+            'happens_on' => '03/13/2024 14:30',
+            'type' => 'gay',
+            'status' => 1,
+        ]);
     }
 }
