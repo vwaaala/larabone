@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Bunker\LaravelSpeedDate\Models\DatingEvent;
+use Bunker\LaravelSpeedDate\Models\UserBio;
 use Bunker\LaravelSpeedDate\Enums\EventTypeEnum;
 
 class DatingEventController extends Controller
@@ -113,8 +114,17 @@ class DatingEventController extends Controller
                 // handle duplicate user
                 $checkUserExist = User::where('email', $row[1])->first();
                 if($checkUserExist){
-
                     // update existing user bio
+
+$checkUserExist->bio->update([
+        'nickname' => $row[3],
+        'city' => $row[4],
+        'occupation' => $row[5],
+        'phone' => $row[6],
+        'birthdate' => $row[7],
+        'gender' => $row[8],
+        'looking_for' => $row[9],
+]);
                 }else{
                     // Assuming CSV columns are: name, email, status, password
                     User::create([
@@ -125,6 +135,16 @@ class DatingEventController extends Controller
                     ]);
                     // create user bio
 
+UserBio::create([
+        'user_id' => $user->id,
+        'nickname' => $row[3],
+        'city' => $row[4],
+        'occupation' => $row[5],
+        'phone' => $row[6],
+        'birthdate' => $row[7],
+        'gender' => $row[8],
+        'looking_for' => $row[9],
+]);
                 }
 
             }
