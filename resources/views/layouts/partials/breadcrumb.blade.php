@@ -1,52 +1,43 @@
-@php
-    // Get the current route name
-    $currentRoute = request()->route()->getName();
-
-    // Define the pages structure
-    $pages = config('pages');
-
-    // Initialize an empty array to store breadcrumbs
-    $breadcrumbs = [];
-
-    // Define a function to generate breadcrumbs recursively
-    function generateBreadcrumbs($pages, $currentRoute, &$breadcrumbs) {
-        foreach ($pages as $page) {
-            if ($currentRoute === $page['href']) {
-                $breadcrumbs[] = $page;
-                return;
-            }
-
-            if (isset($page['children'])) {
-                foreach ($page['children'] as $child) {
-                    if ($currentRoute === $child['href']) {
-                        // Add parent
-                        $breadcrumbs[] = $page;
-                        // Add child
-                        $breadcrumbs[] = $child;
-                        return;
+@if(!request()->routeIs('dashboard'))
+    @php
+        $breadCrumbs = [];
+        $currentRoute = request()->route()->getName();
+        foreach(config('pages') as $page){
+            if($page['href'] == $currentRoute){
+                $breadCrumbs[] = ['href' => $page['href'], 'text' => $page['text']];
+            }else{
+                foreach($page['children'] as $child){
+                    if($child['href'] == $currentRoute){
+                        $breadCrumbs[] = ['href' => $page['href'], 'text' => $page['text']];
+                        $breadCrumbs[] = ['href' => $child['href'], 'text' => $child['text']];
                     }
-                }
-                // If the current route doesn't match any child, check recursively in children
-                generateBreadcrumbs($page['children'], $currentRoute, $breadcrumbs);
-                // If breadcrumbs are found in children, add parent
-                if (!empty($breadcrumbs)) {
-                    $breadcrumbs[] = $page;
-                    return;
                 }
             }
         }
-    }
+    @endphp
+    <div class="d-flex mb-2 justify-content-between">
+        <button onclick="window.history.back();" class="btn btn-sm btn-outline-primary"><span
+                class="bi bi-arrow-return-left"></span>
+            {{ __('global.back_to_list') }}
+        </button>
+        @if(isset($breadCrumbs))
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="{{ route(config('pages')[0]['href']) }}">{{ __(config('pages')[0]['text']) }}</a>
+                    </li>
+                    @foreach($breadCrumbs as $bread)
+                        @if(!request()->routeIs($bread['href']))
+                            <li class="breadcrumb-item">
+                                <a href="{{ route($bread['href']) }}">{{ __($bread['text']) }}</a>
+                            </li>
+                        @else
+                            <li class="breadcrumb-item active" aria-current="page">{{ __($bread['text']) }}</li>
+                        @endif
+                    @endforeach
+                </ol>
+            </nav>
+        @endif
 
-    // Generate breadcrumbs
-    generateBreadcrumbs($pages, $currentRoute, $breadcrumbs);
-@endphp
-
-@if (!empty($breadcrumbs))
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            @foreach ($breadcrumbs as $breadcrumb)
-                <li class="breadcrumb-item"><a href="{{ route($breadcrumb['href']) }}">{{ __($breadcrumb['name']) }}</a></li>
-            @endforeach
-        </ol>
-    </nav>
+    </div>
 @endif

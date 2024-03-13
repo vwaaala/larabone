@@ -73,12 +73,14 @@ if ($installed === true) {
     Route::get('/setup/step-1', [SetupController::class, 'viewStep1'])->name('viewStep1');
     Route::get('/setup/step-2', [SetupController::class, 'viewStep2'])->name('viewStep2');
     Route::get('/setup/step-3', [SetupController::class, 'viewStep3'])->name('viewStep3');
-    Route::get('/setup/step-4', [SetupController::class, 'viewStep3'])->name('viewStep4');
+    Route::get('/setup/step-4', [SetupController::class, 'viewStep4'])->name('viewStep4');
+    Route::get('/setup/step-5', [SetupController::class, 'viewStep5'])->name('viewStep5');
     Route::get('/setup/getNewAppKey', [SetupController::class, 'getNewAppKey'])->name('getNewAppKey');
     Route::post('/setup/testDB', [TestDBController::class, 'testDB'])->name('testDB');
     Route::post('/setup/step-2', [SetupController::class, 'setupStep1'])->name('setupStep1');
     Route::post('/setup/step-3', [SetupController::class, 'setupStep2'])->name('setupStep2');
     Route::post('/setup/step-4', [SetupController::class, 'setupStep3'])->name('setupStep3');
+    Route::post('/setup/step-5', [SetupController::class, 'setupStep4'])->name('setupStep4');
     Route::post('/setup/lastStep', [SetupController::class, 'lastStep'])->name('lastStep');
     Route::get('/setup/lastStep', function () {
         return redirect('/setup', 301);

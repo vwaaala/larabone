@@ -15,7 +15,6 @@ return new class extends Migration {
     {
         Schema::create('user_bio', function (Blueprint $table) {
             $table->id();
-            $table->uuid('uuid');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('nickname');
@@ -30,8 +29,8 @@ return new class extends Migration {
 
         Schema::create('dating_events', function (Blueprint $table) {
             $table->id();
-            $table->uuid('uuid');
             $table->string('name');
+            $table->timestamp('happens_on');
             $table->enum('type', array_values(EventTypeEnum::toArray()))->default(EventTypeEnum::STRAIGHT);
             $table->boolean('status')->default(false);
             $table->timestamps();

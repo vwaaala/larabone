@@ -3,11 +3,11 @@
 namespace Bunker\LaravelSpeedDate\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Bunker\LaravelSpeedDate\Models\DatingEvent;
 use Bunker\LaravelSpeedDate\Enums\EventTypeEnum;
+use Bunker\LaravelSpeedDate\Models\DatingEvent;
+use Illuminate\Http\Request;
 
-class DatingEventController extends Controller
+class EventRatingController extends Controller
 {
     public function __construct()
     {
@@ -35,10 +35,10 @@ class DatingEventController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'uuid' => 'required|uuid',
             'name' => 'required|string',
-            'happens_on' => 'required|date_format:Y-m-d H:i:s',
-            'type' => 'required|in:' . implode(',', array_values(EventTypeEnum::toArray())),
-            'status' => 'required|boolean',
+            'status' => 'required|in:' . implode(',', array_values(EventTypeEnum::toArray())),
+            'active' => 'required|boolean',
         ]);
 
         DatingEvent::create($request->all());
@@ -56,12 +56,13 @@ class DatingEventController extends Controller
         return view('events.edit', compact('event'));
     }
 
-    public function update(DatingEvent $event, Request $request)
+    public function update(Request $request, DatingEvent $event)
     {
         $request->validate([
+            'uuid' => 'required|uuid',
             'name' => 'required|string',
-            'type' => 'required|in:' . implode(',', array_values(EventTypeEnum::toArray())),
-            'status' => 'required|boolean',
+            'status' => 'required|in:' . implode(',', array_values(EventTypeEnum::toArray())),
+            'active' => 'required|boolean',
         ]);
 
         $event->update($request->all());

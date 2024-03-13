@@ -1,3 +1,0 @@
-<?php
-
-return ['namespace' => 'Support', 'form_header' => 'Submit Ticket', 'form_submit' => 'Create Ticket','close' => 'Close Ticket','reopen' => 'Reopen Ticket', 'reply_placeholder' => 'Reply to this ticket', 'title' => 'Tickets', 'title_singular' => 'Ticket', 'not_found' => 'No Ticket Found!', 'fields' => ['id' => 'ID', 'id_helper' => '', 'subject' => 'Ticket subject', 'user_id' => 'User', 'message' => 'Tell us how can we help you', 'message_helper' => '', 'status' => 'Status','created_at' => 'Created at', 'created_at_helper' => '', 'updated_at' => 'Updated at', 'updated_at_helper' => '', 'deleted_at' => 'Deleted at', 'deleted_at_helper' => ''], 'analytics' => ['label' => 'Total Ticket', 'message' => 'Solved in total']];
