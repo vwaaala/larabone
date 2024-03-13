@@ -5,7 +5,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h4 class="mb-0">{{ __('pages.settings.database') }}</h4>
+                    <h4 class="mb-0">{{ __('global.database') }}</h4>
                 </div>
             </div>
             <div class="card-body">

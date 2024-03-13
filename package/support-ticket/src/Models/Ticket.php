@@ -19,22 +19,25 @@ class Ticket extends Model
     }
 
     public function replies(): \Illuminate\Database\Eloquent\Relations\HasMany
-    { 
+    {
         return $this->hasMany(Reply::class, 'ticket_id')->orderByDesc('created_at');
     }
 
     public static function percentageOfResolvedTickets(bool $confidential, ?int $userId = null): float|int
     {
-        // Get the total number of tickets
-        $totalTickets = self::count();
-
         // Check if confidential flag is true and user ID is provided
         if ($confidential && $userId !== null) {
+            // Get the total number of tickets
+            $totalTickets = self::where('user_id', $userId)->count();
+
             // Get the number of tickets created by the specified user with status set to false
             $resolvedTickets = self::where('user_id', $userId)
                 ->where('status', false)
                 ->count();
         } else {
+            // Get the total number of tickets
+            $totalTickets = self::count();
+
             // Get the number of tickets with status set to false
             $resolvedTickets = self::where('status', false)->count();
         }

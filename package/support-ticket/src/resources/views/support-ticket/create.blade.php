@@ -1,4 +1,4 @@
-@extends('layouts.app', ['pageName' => config('pages.support_ticket.create')])
+@extends('layouts.app')
 @section('content')
     @can('support_ticket_create')
         <div class="card">

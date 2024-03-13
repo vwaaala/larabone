@@ -1,4 +1,4 @@
-@extends('layouts.app', ['pageName' => config('pages.support_ticket.show')])
+@extends('layouts.app')
 @push('styles')
     <style>
         #ticketReplyForm .form-control {

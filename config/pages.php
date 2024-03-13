@@ -5,6 +5,7 @@ return [
         'name' => 'pages.dashboard.title_singular',
         'text' => 'global.all',
         'href' => 'dashboard',
+        'include_routes' => [],
         'children' => []
     ],
     [
@@ -12,6 +13,7 @@ return [
         'name' => 'pages.permissions.title',
         'text' => 'global.all',
         'href' => 'permissions.index',
+        'include_routes' => [],
         'children' => []
     ],
     [
@@ -19,6 +21,7 @@ return [
         'name' => 'pages.roles.title',
         'text' => 'global.all',
         'href' => 'roles.index',
+        'include_routes' => ['roles.edit'],
         'children' => [
             [
                 'permission' => 'role_create',
@@ -32,6 +35,7 @@ return [
         'name' => 'pages.users.title',
         'text' => 'global.all',
         'href' => 'users.index',
+        'include_routes' => ['users.edit', 'users.show'],
         'children' => [
             [
                 'permission' => 'user_create',
@@ -41,43 +45,11 @@ return [
         ]
     ],
     [
-        'permission' => 'settings_show',
-        'name' => 'pages.settings.title',
-        'text' => 'global.all',
-        'href' => 'settings.index',
-        'children' => [
-            [
-                'permission' => 'settings_show',
-                'text' => 'pages.settings.generalInfo',
-                'href' => 'settings.generalInfo',
-            ],
-            [
-                'permission' => 'settings_show',
-                'text' => 'pages.settings.databaseInfo',
-                'href' => 'settings.databaseInfo',
-            ],
-            [
-                'permission' => 'settings_show',
-                'text' => 'pages.settings.debugInfo',
-                'href' => 'settings.debugInfo',
-            ],
-            [
-                'permission' => 'settings_show',
-                'text' => 'pages.settings.logInfo',
-                'href' => 'settings.logInfo',
-            ],
-            [
-                'permission' => 'settings_show',
-                'text' => 'pages.settings.mailInfo',
-                'href' => 'settings.mailInfo',
-            ]
-        ],
-    ],
-    [
-        'permission' => 'user_show',
+        'permission' => 'support_ticket_show',
         'name' => 'support_ticket.title',
         'text' => 'global.all',
         'href' => 'support_ticket.index',
+        'include_routes' => ['support_ticket.show'],
         'children' => [
             [
                 'permission' => 'support_ticket_create',
@@ -85,5 +57,39 @@ return [
                 'href' => 'support_ticket.create',
             ]
         ]
+    ],
+    [
+        'permission' => 'settings_show',
+        'name' => 'pages.settings.title',
+        'text' => 'global.all',
+        'href' => 'settings.index',
+        'include_routes' => [],
+        'children' => [
+            [
+                'permission' => 'settings_show',
+                'text' => 'global.general',
+                'href' => 'settings.generalInfo',
+            ],
+            [
+                'permission' => 'settings_show',
+                'text' => 'global.database',
+                'href' => 'settings.databaseInfo',
+            ],
+            [
+                'permission' => 'settings_show',
+                'text' => 'global.debug',
+                'href' => 'settings.debugInfo',
+            ],
+            [
+                'permission' => 'settings_show',
+                'text' => 'global.log',
+                'href' => 'settings.logInfo',
+            ],
+            [
+                'permission' => 'settings_show',
+                'text' => 'global.mail',
+                'href' => 'settings.mailInfo',
+            ]
+        ],
     ]
 ];

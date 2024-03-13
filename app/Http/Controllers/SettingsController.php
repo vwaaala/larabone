@@ -137,7 +137,7 @@ class SettingsController extends Controller
 
         // Get site information from the .env file
         $packets = $this->getFromEnv($keys);
-        $title = 'debug';
+        $title = 'log';
 
         return view('pages.settings.show', compact('packets', 'title'));
     }

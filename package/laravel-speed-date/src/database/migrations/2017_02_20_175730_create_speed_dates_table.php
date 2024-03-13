@@ -65,9 +65,9 @@ return new class extends Migration {
      */
     public function down(): void
     {
+        Schema::dropIfExists('user_bio');
         Schema::dropIfExists('event_ratings');
         Schema::dropIfExists('event_users');
         Schema::dropIfExists('dating_events');
-        Schema::dropIfExists('user_bio');
     }
 };
