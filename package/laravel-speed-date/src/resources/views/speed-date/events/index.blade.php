@@ -36,9 +36,20 @@
                         <!-- Display permissions name and description -->
                         <td>{{ $value->name }}</td>
                         <td>
-                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal-file">
-                                Launch demo modal
-                              </button>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal-file">
+                                    <i class="bi bi-arrow-up"></i><i class="bi bi-filetype-csv"></i>
+                                </button>
+                                <a href="#" class="btn btn-success btn-sm">
+                                    <i class="bi bi-eye"></i>
+                                </a>
+                                <a href="{{ route('speed_date.events.edit', $value->id) }}" class="btn btn-warning btn-sm">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                                <a href="#" class="btn btn-danger btn-sm">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                            </div>
                         </td>
                     </tr>
                 @endforeach

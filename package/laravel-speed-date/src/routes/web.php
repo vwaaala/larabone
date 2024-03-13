@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 Route::name('speed_date.')->middleware(['web', 'auth'])->group(function () {
     Route::prefix('events')->name('events.')->group(function () {
         Route::controller(\Bunker\LaravelSpeedDate\Http\Controllers\DatingEventController::class)->group(function () {
-            Route::get('/index', 'index')->name('index');
+            Route::get('index', 'index')->name('index');
             Route::get('create', 'create')->name('create');
             Route::post('store', 'store')->name('store');
             Route::get('{event}/show', 'show')->name('show');

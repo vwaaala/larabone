@@ -7,7 +7,7 @@
     @can('user_edit')
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title">{{ __('global.create') }} {{ __('speed_date::speed_date.events') }}</h5>
+                <h5 class="card-title">{{ __('global.edit') }} {{ __('speed_date::speed_date.events') }}</h5>
             </div>
             <div class="card-body">
                 <form method="POST" action="{{ route('speed_date.events.store') }}">
@@ -18,7 +18,7 @@
                             <label for="name" class="form-label">{{ __('global.name') }} <span
                                     class="text-danger">*</span></label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
-                                   name="name" value="{{ old('name') }}" required>
+                                   name="name" value="{{ $event->name }}" required>
                             @error('name')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -30,7 +30,7 @@
                             <select class="form-select @error('type') is-invalid @enderror" id="typeSelect"
                                     name="type">
                                 @foreach(EventTypeEnum::toArray() as $value)
-                                    <option value="{{ $value }}" @if($value == old('type')) selected @endif>{{ ucfirst($value) }}</option>
+                                    <option value="{{ $value }}" @if($value == $event->type) selected @endif>{{ ucfirst($value) }}</option>
                                 @endforeach
                             </select>
 
@@ -44,8 +44,8 @@
                                     class="text-danger">*</span></label>
                             <select class="form-select @error('status') is-invalid @enderror" id="statusSelect"
                                     name="status">
-                                    <option value="1" @if($value == old('status')) selected @endif>{{ __('Active') }}</option>
-                                    <option value="0" @if($value == old('status')) selected @endif>{{ __('Close') }}</option>
+                                    <option value="1" @if($value == $event->status) selected @endif>{{ __('Active') }}</option>
+                                    <option value="0" @if($value == $event->status) selected @endif>{{ __('Close') }}</option>
                             </select>
 
                             @error('status')
@@ -56,7 +56,7 @@
                         <div class="col-md-6 mb-2">
                             <label for="happens_on" class="form-label">Happens On</label>
                             <div class="input-group">
-                                <input type="text" name="happens_on" value="{{ old('happens_on') }}" class="form-control" id="datepicker" required>
+                                <input type="text" name="happens_on" value="{{ $event->happens_on->format('d-m-y') }}" class="form-control" id="datepicker" required>
                                 <div class="input-group-text" data-target="#"
                                      data-toggle="datetimepicker">
                                     <i class="bi bi-calendar"></i>
@@ -69,7 +69,7 @@
 
                     </div>
 
-                    <button type="submit" class="btn btn-primary mt-5">{{ __('global.create') }}</button>
+                    <button type="submit" class="btn btn-primary mt-5">{{ __('global.update') }}</button>
                 </form>
             </div>
         </div>
