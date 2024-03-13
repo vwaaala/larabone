@@ -1,8 +1,7 @@
 <?php
 
-namespace Database\Seeders;
+namespace Bunker\SupportTicket\database\seeders;
 
-use Bunker\SupportTicket\Models\Reply;
 use Bunker\SupportTicket\Models\Ticket;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;

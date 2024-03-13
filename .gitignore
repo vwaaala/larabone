@@ -18,3 +18,4 @@ yarn-error.log
 package/.DS_Store
 node_modules/*
 .history/
+package/tourism-booking/*

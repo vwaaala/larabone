@@ -42,7 +42,8 @@
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
             "Bunker\\SupportTicket\\": "package/support-ticket/src/",
-            "Bunker\\LaravelSpeedDate\\": "package/laravel-speed-date/src/"
+            "Bunker\\LaravelSpeedDate\\": "package/laravel-speed-date/src/",
+            "Bunker\\TourismBooking\\": "package/tourism-booking/src/"
         }
     },
     "autoload-dev": {
