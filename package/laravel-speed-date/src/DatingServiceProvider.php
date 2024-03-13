@@ -18,13 +18,13 @@ class DatingServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
 
         // Load views for the support ticket package
-        $this->loadViewsFrom(__DIR__ . '/resources/views/speed-date', 'speed-date');
+        $this->loadViewsFrom(__DIR__ . '/resources/views/speed-date', 'speed_date');
 
         // Load migrations for the support ticket package
         $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
 
         // Load translations for the support ticket package
-        // $this->loadTranslationsFrom(__DIR__ . '/resources/lang', 'speed-date');
+         $this->loadTranslationsFrom(__DIR__ . '/resources/lang', 'speed_date');
 
         // Merge configuration for the support ticket package
         // $this->mergeConfigFrom(__DIR__ . '/config/speed_date.php', 'speed-date');
