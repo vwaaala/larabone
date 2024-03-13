@@ -97,8 +97,12 @@ class SetupController extends Controller
     {
         return view('setup.step3');
     }
-
     public function viewStep4(): View|\Illuminate\Foundation\Application|Factory|Application
+    {
+        return view('setup.step4');
+    }
+
+    public function viewStep5(): View|\Illuminate\Foundation\Application|Factory|Application
     {
         if (session('env.DB_CONNECTION') == null) {
             $dbtype = config("database.default");
@@ -127,10 +131,15 @@ class SetupController extends Controller
             "ADMIN_NAME" => session('env.ADMIN_NAME'),
             "ADMIN_EMAIL" => session('env.ADMIN_EMAIL'),
             "ADMIN_PASSWORD" => session('env.ADMIN_PASSWORD'),
-
+            "MAIL_MAILER" => session('env.MAIL_MAILER'),
+            "MAIL_HOST" => session('env.MAIL_HOST'),
+            "MAIL_PORT" => session('env.MAIL_PORT'),
+            "MAIL_USERNAME" => session('env.MAIL_USERNAME'),
+            "MAIL_PASSWORD" => session('env.MAIL_PASSWORD'),
+            "MAIL_ENCRYPTION" => session('env.MAIL_ENCRYPTION')
         );
 
-        return view('setup.step4', compact('data'));
+        return view('setup.step5', compact('data'));
     }
 
     public function lastStep(): View|\Illuminate\Foundation\Application|Factory|string|Application
@@ -253,6 +262,20 @@ class SetupController extends Controller
         $request->session()->put('env.ADMIN_EMAIL', $request->email);
 
         return $this->viewStep4();
+    }
+
+    public function setupStep4(Request $request): Factory|View|Application
+    {
+        if (strlen($request->get('mail_password')) > 0) {
+            $request->session()->put('env.MAIL_PASSWORD', '"'. $request->get('mail_password') . '"');
+        }
+        $request->session()->put('env.MAIL_MAILER', $request->get('mail_driver'));
+        $request->session()->put('env.MAIL_HOST', $request->get('mail_host'));
+        $request->session()->put('env.MAIL_PORT', $request->get('mail_port'));
+        $request->session()->put('env.MAIL_USERNAME', $request->get('mail_username'));
+        $request->session()->put('env.MAIL_ENCRYPTION', $request->get('mail_encryption'));
+
+        return $this->viewStep5();
     }
 
 }
