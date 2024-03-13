@@ -12,7 +12,6 @@ class Bio extends Model
     protected $table = 'user_bio';
 
     protected $fillable = [
-        'uuid',
         'user_id',
         'nickname',
         'city',
