@@ -216,9 +216,7 @@ class ComposerStaticInit2c2255c4e921ab6dacff16f22935ea80
         ),
         'B' => 
         array (
-            'Bunker\\TourismBooking\\' => 22,
             'Bunker\\SupportTicket\\' => 21,
-            'Bunker\\LaravelSpeedDate\\' => 24,
             'Bunker\\LaravelLocalization\\Tests\\' => 33,
             'Bunker\\LaravelLocalization\\' => 27,
             'Brick\\Math\\' => 11,
@@ -686,17 +684,9 @@ class ComposerStaticInit2c2255c4e921ab6dacff16f22935ea80
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
         ),
-        'Bunker\\TourismBooking\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/package/tourism-booking/src',
-        ),
         'Bunker\\SupportTicket\\' => 
         array (
             0 => __DIR__ . '/../..' . '/package/support-ticket/src',
-        ),
-        'Bunker\\LaravelSpeedDate\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/package/laravel-speed-date/src',
         ),
         'Bunker\\LaravelLocalization\\Tests\\' => 
         array (
@@ -861,25 +851,12 @@ class ComposerStaticInit2c2255c4e921ab6dacff16f22935ea80
         'Bunker\\LaravelLocalization\\LocalizationServiceProvider' => __DIR__ . '/..' . '/bunker/laravel-localization/src/LocalizationServiceProvider.php',
         'Bunker\\LaravelLocalization\\Middleware\\SetLocale' => __DIR__ . '/..' . '/bunker/laravel-localization/src/Middleware/SetLocale.php',
         'Bunker\\LaravelLocalization\\Tests\\Feature\\SetLocaleTest' => __DIR__ . '/..' . '/bunker/laravel-localization/tests/Feature/SetLocaleTest.php',
-        'Bunker\\LaravelSpeedDate\\DatingServiceProvider' => __DIR__ . '/../..' . '/package/laravel-speed-date/src/DatingServiceProvider.php',
-        'Bunker\\LaravelSpeedDate\\Enums\\EventTypeEnum' => __DIR__ . '/../..' . '/package/laravel-speed-date/src/Enums/EventTypeEnum.php',
-        'Bunker\\LaravelSpeedDate\\Enums\\GenderEnum' => __DIR__ . '/../..' . '/package/laravel-speed-date/src/Enums/GenderEnum.php',
-        'Bunker\\LaravelSpeedDate\\Enums\\RatingEnum' => __DIR__ . '/../..' . '/package/laravel-speed-date/src/Enums/RatingEnum.php',
-        'Bunker\\LaravelSpeedDate\\Http\\Controllers\\DatingEventController' => __DIR__ . '/../..' . '/package/laravel-speed-date/src/Http/Controllers/DatingEventController.php',
-        'Bunker\\LaravelSpeedDate\\Models\\Bio' => __DIR__ . '/../..' . '/package/laravel-speed-date/src/Models/Bio.php',
-        'Bunker\\LaravelSpeedDate\\Models\\DatingEvent' => __DIR__ . '/../..' . '/package/laravel-speed-date/src/Models/DatingEvent.php',
         'Bunker\\SupportTicket\\Http\\Controllers\\TicketController' => __DIR__ . '/../..' . '/package/support-ticket/src/Http/Controllers/TicketController.php',
         'Bunker\\SupportTicket\\Mail\\TicketMailable' => __DIR__ . '/../..' . '/package/support-ticket/src/Mail/TicketMailable.php',
         'Bunker\\SupportTicket\\Models\\Reply' => __DIR__ . '/../..' . '/package/support-ticket/src/Models/Reply.php',
         'Bunker\\SupportTicket\\Models\\Ticket' => __DIR__ . '/../..' . '/package/support-ticket/src/Models/Ticket.php',
         'Bunker\\SupportTicket\\TicketServiceProvider' => __DIR__ . '/../..' . '/package/support-ticket/src/TicketServiceProvider.php',
         'Bunker\\SupportTicket\\database\\seeders\\SupportTicketSeeder' => __DIR__ . '/../..' . '/package/support-ticket/src/database/seeders/SupportTicketSeeder.php',
-        'Bunker\\TourismBooking\\Http\\Controllers\\Admin\\RegionController' => __DIR__ . '/../..' . '/package/tourism-booking/src/Http/Controllers/Admin/RegionController.php',
-        'Bunker\\TourismBooking\\Http\\Controllers\\RegionController' => __DIR__ . '/../..' . '/package/tourism-booking/src/Http/Controllers/RegionController.php',
-        'Bunker\\TourismBooking\\Models\\Destination' => __DIR__ . '/../..' . '/package/tourism-booking/src/Models/Destination.php',
-        'Bunker\\TourismBooking\\Models\\Region' => __DIR__ . '/../..' . '/package/tourism-booking/src/Models/Region.php',
-        'Bunker\\TourismBooking\\TourismBookingServiceProvider' => __DIR__ . '/../..' . '/package/tourism-booking/src/TourismBookingServiceProvider.php',
-        'Bunker\\TourismBooking\\database\\seeders\\TourismBookingSeeder' => __DIR__ . '/../..' . '/package/tourism-booking/src/database/seeders/TourismBookingSeeder.php',
         'Carbon\\AbstractTranslator' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/AbstractTranslator.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonConverterInterface' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonConverterInterface.php',

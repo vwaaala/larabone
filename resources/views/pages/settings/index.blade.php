@@ -13,12 +13,20 @@
                     <thead>
                         <tr>
                           <th scope="col">#</th>
-                          <th scope="col">First</th>
-                          <th scope="col">Last</th>
-                          <th scope="col">Handle</th>
+                          <th scope="col">{{ __('global.name') }}</th>
+                          <th scope="col">{{ __('global.description') }}</th>
                         </tr>
                       </thead>
                       <tbody>
+                      @foreach($packet as $key => $value)
+                          <tr>
+                              <th scope="row">{{ $loop->iteration }}</th>
+                              <td>{{ $key }}</td>
+                              <td>{{ $value }}</td>
+                          </tr>
+                      @endforeach
+
+                      </tbody>
                   </table>
             </div>
         </div>

@@ -173,9 +173,7 @@ return [
         Spatie\Permission\PermissionServiceProvider::class,
         App\Providers\MenuServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
-        Bunker\SupportTicket\TicketServiceProvider::class,
-        Bunker\LaravelSpeedDate\DatingServiceProvider::class,
-        // Bunker\TourismBooking\TourismBookingServiceProvider::class
+        Bunker\SupportTicket\TicketServiceProvider::class
     ])->toArray(),
 
     /*

@@ -18,14 +18,14 @@
                     <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Value</th>
+                        <th scope="col">{{ __('global.name') }}</th>
+                        <th scope="col">{{ __('global.description') }}</th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($packets as $key => $value)
                         <tr>
-                            <th scope="row">{{ $loop->index + 1 }}</th>
+                            <th scope="row">{{ $loop->iteration }}</th>
                             <td>{{ $key }}</td>
                             <td>{{ str_replace('"', '', $value) }}</td>
                         </tr>

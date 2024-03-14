@@ -16,11 +16,12 @@ class SettingsController extends Controller
     public function index()
     {
         $title = 'index';
-        return view('pages.settings.index', compact('title'));
+        $packet = $this->getAllFromEnv();
+        return view('pages.settings.index', compact('packet','title'));
     }
 
 
-    public function generalInfo()
+    public function generalInfo(): View|\Illuminate\Foundation\Application|Factory|Application
     {
         // Get site information from environment variables
         $keys = ['APP_NAME', 'APP_LOGO', 'APP_URL', 'DEFAULT_AVATAR', 'EMAIL_SUPPORT', 'CONTACT_NUMBER', 'STREET', 'CITY', 'COUNTRY',];
@@ -31,7 +32,7 @@ class SettingsController extends Controller
         return view('pages.settings.show', compact('packets', 'title'));
     }
 
-    public function generalEdit()
+    public function generalEdit(): View|\Illuminate\Foundation\Application|Factory|Application
     {
         // Get site information from environment variables
         $keys = ['APP_NAME', 'APP_LOGO', 'APP_URL', 'DEFAULT_AVATAR', 'EMAIL_SUPPORT', 'CONTACT_NUMBER', 'STREET', 'CITY', 'COUNTRY',];
@@ -41,7 +42,7 @@ class SettingsController extends Controller
         return view('pages.settings.edit-general', compact('packets'));
     }
 
-    public function generalUpdate(SettingsGeneralUpdateRequest $request)
+    public function generalUpdate(SettingsGeneralUpdateRequest $request): \Illuminate\Http\RedirectResponse
     {
         $data = [
             'APP_NAME' =>  '"' . $request->get('name') . '"',
@@ -78,7 +79,7 @@ class SettingsController extends Controller
         return redirect()->route('settings.generalInfo')->with('success', 'Updated general info!');
     }
 
-    public function databaseInfo()
+    public function databaseInfo(): View|\Illuminate\Foundation\Application|Factory|Application
     {
         // Get site information from environment variables
         $keys = ['DB_CONNECTION', 'DB_HOST', 'DB_PORT', 'DB_DATABASE', 'DB_USERNAME', 'DB_PASSWORD', 'DB_PORT', 'DB_PORT', 'DB_PORT', 'DB_PORT', 'DB_PORT',];
@@ -95,7 +96,7 @@ class SettingsController extends Controller
 
     }
 
-    public function databaseEdit()
+    public function databaseEdit(): View|\Illuminate\Foundation\Application|Factory|Application
     {
         // Get site information from environment variables
         $keys = ['DB_CONNECTION', 'DB_HOST', 'DB_PORT', 'DB_DATABASE', 'DB_USERNAME', 'DB_PASSWORD', 'DB_PORT', 'DB_PORT', 'DB_PORT', 'DB_PORT', 'DB_PORT',];
@@ -107,7 +108,7 @@ class SettingsController extends Controller
     }
 
 
-    public function debugInfo()
+    public function debugInfo(): View|\Illuminate\Foundation\Application|Factory|Application
     {
         // Get site information from environment variables
         $keys = ['APP_ENV', 'APP_DEBUG', 'DEBUGBAR_ENABLED'];
@@ -119,7 +120,7 @@ class SettingsController extends Controller
         return view('pages.settings.show', compact('packets', 'title'));
     }
 
-    public function debugEdit()
+    public function debugEdit(): View|\Illuminate\Foundation\Application|Factory|Application
     {
         // Get site information from environment variables
         $keys = ['APP_ENV', 'APP_DEBUG', 'DEBUGBAR_ENABLED'];
@@ -130,7 +131,7 @@ class SettingsController extends Controller
         return view('pages.settings.edit-debug', compact('packets'));
     }
 
-    public function logInfo()
+    public function logInfo(): View|\Illuminate\Foundation\Application|Factory|Application
     {
         // Get site information from environment variables
         $keys = ['LOG_CHANNEL', 'LOG_LEVEL', 'LOG_DEPRECATIONS_CHANNEL'];
@@ -142,7 +143,7 @@ class SettingsController extends Controller
         return view('pages.settings.show', compact('packets', 'title'));
     }
 
-    public function logEdit()
+    public function logEdit(): View|\Illuminate\Foundation\Application|Factory|Application
     {
         // Get site information from environment variables
         $keys = ['LOG_CHANNEL', 'LOG_LEVEL', 'LOG_DEPRECATIONS_CHANNEL'];
@@ -153,7 +154,7 @@ class SettingsController extends Controller
         return view('pages.settings.edit-log', compact('packets'));
     }
 
-    public function mailInfo()
+    public function mailInfo(): View|\Illuminate\Foundation\Application|Factory|Application
     {
         // Get site information from environment variables
         $keys = ['DB_CONNECTION', 'DB_HOST', 'DB_PORT', 'DB_DATABASE', 'DB_USERNAME', 'DB_PASSWORD'];
@@ -165,7 +166,7 @@ class SettingsController extends Controller
         return view('pages.settings.show', compact('packets', 'title'));
     }
 
-    public function mailEdit()
+    public function mailEdit(): View|\Illuminate\Foundation\Application|Factory|Application
     {
         // Get site information from environment variables
         $keys = ['DB_CONNECTION', 'DB_HOST', 'DB_PORT', 'DB_DATABASE', 'DB_USERNAME', 'DB_PASSWORD'];

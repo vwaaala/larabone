@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 use Spatie\Permission\Models\Permission;
 
 class PermissionController extends Controller
@@ -32,8 +33,17 @@ class PermissionController extends Controller
             // If no search parameter, fetch all permissions with pagination
             $permissions = Permission::paginate(10);
         }
+        // Get the current page number
+        $currentPage = $permissions->currentPage();
 
+        // Calculate the offset
+        $offset = ($currentPage - 1) * $permissions->perPage();
+
+        // Set the paginator current page to adjust the numbering
+        Paginator::currentPageResolver(function () use ($currentPage) {
+            return $currentPage;
+        });
         // Return the view with permissions and search query
-        return view('pages.permissions.index', compact('permissions', 'searchQuery'));
+        return view('pages.permissions.index', compact('permissions', 'searchQuery', 'offset'));
     }
 }
