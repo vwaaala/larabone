@@ -70,8 +70,6 @@
 @vite(['resources/js/app.js'])
 <!-- page specific js -->
 @stack('scripts')
-<!-- Tempus Dominus Bootstrap 5 JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-5/6.0.0-alpha20/js/tempusdominus-bootstrap-5.min.js"></script>
 <style>
     .nav-item.active .dropdown-toggle::after {
     display: inline-block;

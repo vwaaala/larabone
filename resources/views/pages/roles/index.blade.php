@@ -16,7 +16,7 @@
                 <table class="table table-striped table-bordered">
                     <thead>
                     <tr>
-                        <th scope="col">Id</th>
+                        <th scope="col">#</th>
                         <th scope="col">{{ __('pages.roles.title_singular') }}</th>
                         <th scope="col" style="width: 250px;">{{ __('global.action') }}</th>
                     </tr>
@@ -41,7 +41,7 @@
                                         </a>
                                     @endcan
                                     @can('role_delete')
-                                        <a href="#" onclick="confirmDelete('{{ route('roles.destroy', $role->id) }}')"
+                                        <a href="#" onclick="confirmDelete('{{ route('roles.destroy', $role->id) }}', 'DELETE', {color: 'danger', text: 'Yes, delete it!'})"
                                            class="btn btn-danger btn-sm"
                                            title="{{ __('global.delete') }}">
                                             <i class="bi bi-trash"></i>

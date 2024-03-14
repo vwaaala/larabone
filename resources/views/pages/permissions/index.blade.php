@@ -21,7 +21,7 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <th scope="col">Id</th>
+                    <th scope="col">#</th>
                     <!-- Column headers -->
                     <th scope="col">{{ __('pages.permissions.title') }} {{ __('pages.permissions.fields.title') }}</th>
                 </tr>
@@ -31,7 +31,7 @@
                 @foreach($permissions as $key => $value)
                     <tr>
                         <!-- Output the row number -->
-                        <th scope="row">{{ $loop->iteration }}</th>
+                        <th scope="row">{{ $loop->iteration + $offset }}</th>
                         <!-- Display permissions name and description -->
                         <td>{{ $value->name }}</td>
                     </tr>
