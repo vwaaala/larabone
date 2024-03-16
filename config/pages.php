@@ -31,6 +31,12 @@ return [
                 'text' => 'global.edit',
                 'href' => 'roles.edit',
                 'sidebar' => false
+            ],
+            [
+                'permission' => 'role_show',
+                'text' => 'global.show',
+                'href' => 'roles.show',
+                'sidebar' => false
             ]
         ]
     ],

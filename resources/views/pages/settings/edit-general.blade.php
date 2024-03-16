@@ -2,7 +2,7 @@
 @section('content')
     @can('settings_edit')
         <!-- User DataTable -->
-        <div class="card">
+        <div class="card p-3">
             <div class="card-header">
                 <div class="d-flex justify-content-between align-items-center">
                     <h4 class="mb-0">{{ __('pages.settings.general') }}</h4>
@@ -97,7 +97,7 @@
                         <div class="col-md-6">
                             <label class="form-label text-muted" for="country">Country <span class="text-danger">*</span></label>
                             <span class="text-primary" data-bs-toggle="tooltip" title="This name will be used as country" aria-hidden="true"><i class="bi bi-question-circle"></i></span>
-                            <input type="text" 
+                            <input type="text"
                                 class="form-control @error('country') is-invalid @enderror" id="country" name="country"
                                 value="{{ str_replace('"', '', $packets['COUNTRY']) }}" autofocus required>
                             @error('country')

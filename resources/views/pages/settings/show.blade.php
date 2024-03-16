@@ -2,7 +2,7 @@
 @section('content')
     @canany(['settings_show', 'settings_create', 'settings_edit', 'settings_delete'])
         <!-- User DataTable -->
-        <div class="card">
+        <div class="card p-3">
             <div class="card-header">
                 <div class="d-flex justify-content-between align-items-center">
                     <h4 class="mb-0">{{ __('pages.settings.' . $title) }}</h4>

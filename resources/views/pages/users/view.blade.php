@@ -1,7 +1,7 @@
 @extends('layouts.app', ['pageName' => config('pages.users.show')])
 
 @section('content')
-    <div class="card">
+    <div class="card p-3">
         <div class="card-header">
             <div class="d-flex justify-content-between align-items-center">
                 <span>{{ __('global.profile') }}</span>

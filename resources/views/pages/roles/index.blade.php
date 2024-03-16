@@ -1,7 +1,7 @@
 @extends('layouts.app', ['pageName' => 'roles.index'])
 @section('content')
     @can('role_show')
-        <div class="card mt-2">
+        <div class="card mt-2 p-3">
             <div class="card-header">
                 <div class="d-flex justify-content-between align-items-center">
                     <h4 class="mb-0">{{ __('pages.roles.title') }}</h4>

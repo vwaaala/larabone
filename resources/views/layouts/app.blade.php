@@ -60,7 +60,7 @@
 
         <!-- footer -->
         <footer class="bg-light">
-            <p>&copy; 2024 | All rights reserved | <a href="https://bunk3r.net" target="_blank" rel="noopener noreferrer">Bunk3r</a></p>
+            <p>&copy; 2024 | All rights reserved | <a href="https://bunk3r.net" target="_blank" rel="noopener noreferrer">Bunker</a></p>
         </footer>
     </div>
 </div>
@@ -71,16 +71,7 @@
 <!-- page specific js -->
 @stack('scripts')
 <style>
-    .nav-item.active .dropdown-toggle::after {
-    display: inline-block;
-    margin-left: 0.255em;
-    vertical-align: 0.255em;
-    content: "";
-    border-top: 0;
-    border-right: 0.3em solid transparent;
-    border-bottom: 0.3em solid;
-    border-left: 0.3em solid transparent;
-}
+
 </style>
 </body>
 

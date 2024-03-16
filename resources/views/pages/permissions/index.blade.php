@@ -1,7 +1,7 @@
 @extends('layouts.app', ['pageName' => config('pages.permissions.index')])
 @section('content')
 
-    <div class="card">
+    <div class="card p-3">
         <div class="card-header">
             <div class="d-flex justify-content-between align-items-center">
                 <h4 class="mb-0">{{ __('pages.permissions.title') }}</h4>

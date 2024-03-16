@@ -2,7 +2,7 @@
 @section('content')
     @canany(['user_show', 'user_create', 'user_edit', 'user_delete'])
         <!-- User DataTable -->
-        <div class="card">
+        <div class="card p-3">
             <div class="card-header">
                 <div class="d-flex justify-content-between align-items-center">
                     @if(request()->has('show_deleted'))
