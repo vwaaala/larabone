@@ -67,6 +67,32 @@ return [
         ]
     ],
     [
+        'permission' => 'support_ticket_show',
+        'name' => 'support_ticket.title',
+        'text' => 'global.all',
+        'href' => 'support_ticket.index',
+        'children' => [
+            [
+                'permission' => 'support_ticket_create',
+                'text' => 'global.create',
+                'href' => 'support_ticket.create',
+                'sidebar' => true
+            ],
+            [
+                'permission' => 'support_ticket_edit',
+                'text' => 'global.edit',
+                'href' => 'support_ticket.edit',
+                'sidebar' => false
+            ],
+            [
+                'permission' => 'support_ticket_show',
+                'text' => 'global.show',
+                'href' => 'support_ticket.show',
+                'sidebar' => false
+            ]
+        ]
+    ],
+    [
         'permission' => 'settings_show',
         'name' => 'pages.settings.title',
         'text' => 'global.all',
