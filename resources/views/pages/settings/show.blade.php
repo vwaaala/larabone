@@ -26,7 +26,7 @@
                     @foreach($packets as $key => $value)
                         <tr>
                             <th scope="row">{{ $loop->index + 1 }}</th>
-                            <td>{{ $key }}</td>
+                            <td>{{ str_replace('_', ' ', $key) }}</td>
                             <td>{{ str_replace('"', '', $value) }}</td>
                         </tr>
                     @endforeach
