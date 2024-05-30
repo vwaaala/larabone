@@ -8,6 +8,7 @@
                 <li class="active"><a href="{{ route('viewStep1') }}">Settings</a></li>
                 <li>Database</li>
                 <li>Admin</li>
+                <li>Mail</li>
                 <li>Summary</li>
             </ul>
         </div>
@@ -71,7 +72,7 @@
                         <div class="col-12">
                             <label class="form-label text-muted" for="app_key">App Key <span class="text-danger">*</span></label>
                             <span class="text-primary" data-bs-toggle="tooltip" title="The application key is a unique base64 String. Click if you want a new one for your application"><i class="bi bi-question-circle"></i></span>
-                            <input type="text" class="form-control" id="app_key" name="app_key" value="{{$data['APP_KEY']}}" placeholder="Click Button to generate" readonly>
+                            <input type="text" class="form-control" id="app_key" name="app_key" value="{{ $data['APP_KEY'] }}" placeholder="Click Button to generate" readonly>
                         </div>
                         <div class="col-6">
                             <button class="btn btn-outline-secondary mt-3" id="generate_key" title="Generate" data-url="{{ route('getNewAppKey') }}"><i class="bi bi-newspaper"></i> Generate Key</button>
@@ -81,33 +82,33 @@
 
                 <div class="row mb-2">
                     <div class="col-md-6">
-                        <label class="form-label text-muted" for="support_email">Support email <span class="text-danger">*</span></label>
+                        <label class="form-label text-muted" for="support_email">Business email <span class="text-danger">*</span></label>
                         <span class="text-primary" data-bs-toggle="tooltip" title="This email will be used for support channel" aria-hidden="true"><i class="bi bi-question-circle"></i></span>
-                        <input type="email" class="form-control" id="support_email" name="support_email" value="support@domain.tld" placeholder="support@domain.tld" autofocus required>
+                        <input type="email" class="form-control" id="support_email" name="support_email" placeholder="support@domain.tld" autofocus required>
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label text-muted" for="phone_first">Site Contact Number <span class="text-danger">*</span></label>
+                        <label class="form-label text-muted" for="phone_first">Business Number <span class="text-danger">*</span></label>
                         <span class="text-primary" data-bs-toggle="tooltip" title="This number will be used as first phone" aria-hidden="true"><i class="bi bi-question-circle"></i></span>
-                        <input type="text" class="form-control" id="phone_first" name="phone_first" value="+8801811000000" placeholder="+880 1811 000 000" autofocus required>
+                        <input type="text" class="form-control" id="phone_first" name="phone_first" placeholder="+880 1811 000 000" autofocus required>
                     </div>
                 </div>
 
                 <div class="mb-2">
                     <label class="form-label text-muted" for="street">Street <span class="text-danger">*</span></label>
                     <span class="text-primary" data-bs-toggle="tooltip" title="This will be used as street address" aria-hidden="true"><i class="bi bi-question-circle"></i></span>
-                    <input type="text" class="form-control" id="street" name="street" value="20/22 Kaminari, Sonngard" placeholder="20/22 Kaminari, Sonngard" autofocus required>
+                    <input type="text" class="form-control" id="street" name="street" placeholder="20/22 Kaminari, Sonngard" autofocus required>
                 </div>
 
                 <div class="row mb-2">
                     <div class="col-md-6">
                         <label class="form-label text-muted" for="city">City <span class="text-danger">*</span></label>
                         <span class="text-primary" data-bs-toggle="tooltip" title="This name will be used as city" aria-hidden="true"><i class="bi bi-question-circle"></i></span>
-                        <input type="text" class="form-control" id="city" name="city" value="Khulna" placeholder="Khulna" autofocus required>
+                        <input type="text" class="form-control" id="city" name="city" placeholder="Khulna" autofocus required>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label text-muted" for="country">Country <span class="text-danger">*</span></label>
                         <span class="text-primary" data-bs-toggle="tooltip" title="This name will be used as country" aria-hidden="true"><i class="bi bi-question-circle"></i></span>
-                        <input type="text" class="form-control" id="country" name="country" value="Bangladesh" placeholder="Bangladesh" autofocus required>
+                        <input type="text" class="form-control" id="country" name="country" placeholder="Bangladesh" autofocus required>
                     </div>
                 </div>
 

@@ -52,24 +52,24 @@ class UserSeeder extends Seeder
         $user->assignRole('User');
 
         // Creating Normal User
-        $numberOfUsers = 100;
+        // $numberOfUsers = 100;
 
         // Loop to create users
-        for ($i = 0; $i < $numberOfUsers; $i++) {
-            // Generate fake data using Faker
-            $faker = \Faker\Factory::create();
+        // for ($i = 0; $i < $numberOfUsers; $i++) {
+        //     // Generate fake data using Faker
+        //     $faker = \Faker\Factory::create();
 
-            // Create a user
-            $user = User::create([
-                'uuid' => str()->uuid(),
-                'name' => $faker->name,
-                'email' => $faker->unique()->safeEmail,
-                'status' => $faker->randomElement(UserStatusEnum::toArray()),
-                'password' => bcrypt('secret')
-            ]);
+        //     // Create a user
+        //     $user = User::create([
+        //         'uuid' => str()->uuid(),
+        //         'name' => $faker->name,
+        //         'email' => $faker->unique()->safeEmail,
+        //         'status' => $faker->randomElement(UserStatusEnum::toArray()),
+        //         'password' => bcrypt('secret')
+        //     ]);
 
-            // Output the created user
-            $user->assignRole('User');
-        }
+        //     // Output the created user
+        //     $user->assignRole('User');
+        // }
     }
 }

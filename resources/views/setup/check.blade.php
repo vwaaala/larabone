@@ -22,8 +22,8 @@ $reqList = array(
 );
 
 
-$strOk = '<i style="color: #22bb33;" class="bi bi-check-circle"></i>';
-$strFail = '<i style=" color: red; " class="bi bi-x-circle"></i>';
+$strOk = '<i style="color: #0d6efd;" class="bi bi-check-circle"></i>';
+$strFail = '<i style=" color: #dc3545; " class="bi bi-x-circle"></i>';
 $strUnknown = '<i class="bi bi-question-circle"></i>';
 
 $requirements = array();
@@ -79,13 +79,14 @@ $allValuesAreTrue = (count(array_unique($requirements)) === 1);
 @extends('setup.master')
 @section('content')
 
-    <div class="row">
+    <div class="row mt-3">
         <div class="col-12 text-center mt-3">
             <ul class="progressbar">
                 <li class="active"><a href="{{ route('viewSetup') }}">Server Requirements</a></li>
                 <li>Settings</li>
                 <li>Database</li>
                 <li>Admin</li>
+                <li>Mail</li>
                 <li>Summary</li>
             </ul>
         </div>
