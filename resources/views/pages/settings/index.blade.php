@@ -2,7 +2,7 @@
 @section('content')
     @canany(['user_show', 'user_create', 'user_edit', 'user_delete'])
         <!-- User DataTable -->
-        <div class="card">
+        <div class="card p-3">
             <div class="card-header">
                 <div class="d-flex justify-content-between align-items-center">
                     <h4 class="mb-0">{{ __('pages.settings.title') }}</h4>
@@ -13,12 +13,20 @@
                     <thead>
                         <tr>
                           <th scope="col">#</th>
-                          <th scope="col">First</th>
-                          <th scope="col">Last</th>
-                          <th scope="col">Handle</th>
+                          <th scope="col">{{ __('global.name') }}</th>
+                          <th scope="col">{{ __('global.description') }}</th>
                         </tr>
                       </thead>
                       <tbody>
+                      @foreach($packet as $key => $value)
+                          <tr>
+                              <th scope="row">{{ $loop->iteration }}</th>
+                              <td>{{ $key }}</td>
+                              <td>{{ $value }}</td>
+                          </tr>
+                      @endforeach
+
+                      </tbody>
                   </table>
             </div>
         </div>

@@ -31,6 +31,12 @@ return [
                 'text' => 'global.edit',
                 'href' => 'roles.edit',
                 'sidebar' => false
+            ],
+            [
+                'permission' => 'role_show',
+                'text' => 'global.show',
+                'href' => 'roles.show',
+                'sidebar' => false
             ]
         ]
     ],
@@ -71,6 +77,12 @@ return [
                 'text' => 'global.create',
                 'href' => 'support_ticket.create',
                 'sidebar' => true
+            ],
+            [
+                'permission' => 'support_ticket_edit',
+                'text' => 'global.edit',
+                'href' => 'support_ticket.edit',
+                'sidebar' => false
             ],
             [
                 'permission' => 'support_ticket_show',
@@ -115,58 +127,6 @@ return [
                 'text' => 'global.mail',
                 'href' => 'settings.mailInfo',
                 'sidebar' => true
-            ]
-        ]
-    ],
-    [
-        'permission' => 'sd_event_show',
-        'name' => 'speed_date::speed_date.events',
-        'text' => 'global.all',
-        'href' => 'speed_date.events.index',
-        'children' => [
-            [
-                'permission' => 'sd_event_create',
-                'text' => 'global.create',
-                'href' => 'speed_date.events.create',
-                'sidebar' => true
-            ],
-            [
-                'permission' => 'sd_event_edit',
-                'text' => 'global.edit',
-                'href' => 'speed_date.events.edit',
-                'sidebar' => false
-            ],
-            [
-                'permission' => 'sd_event_show',
-                'text' => 'global.show',
-                'href' => 'speed_date.events.show',
-                'sidebar' => false
-            ]
-        ]
-    ],
-    [
-        'permission' => 'sd_vote_show',
-        'name' => 'speed_date::speed_date.votes',
-        'text' => 'global.all',
-        'href' => 'speed_date.votes.index',
-        'children' => [
-            [
-                'permission' => 'sd_vote_create',
-                'text' => 'global.create',
-                'href' => 'speed_date.votes.create',
-                'sidebar' => true
-            ],
-            [
-                'permission' => 'sd_vote_edit',
-                'text' => 'global.edit',
-                'href' => 'speed_date.votes.edit',
-                'sidebar' => false
-            ],
-            [
-                'permission' => 'sd_vote_show',
-                'text' => 'global.show',
-                'href' => 'speed_date.votes.show',
-                'sidebar' => false
             ]
         ]
     ]

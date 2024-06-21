@@ -4,7 +4,6 @@
     function confirmDelete(formAction = null, formMethod = 'POST', button = { color : 'danger', text: 'Yes, delete it!'}) {
         Swal.fire({
             title: '{{ __('global.areYouSure') }}',
-            text: "{{ __('global.willNotBeAbleToRevert') }}",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: 'var(--bs-' + button.color + ')',

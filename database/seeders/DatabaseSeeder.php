@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Bunker\LaravelSpeedDate\database\seeders\SpeedDateSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder

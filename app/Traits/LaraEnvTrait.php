@@ -50,6 +50,31 @@ trait LaraEnvTrait
 
         return $values;
     }
+
+    /**
+     * Get all key-value pairs from the .env file.
+     *
+     * @return array
+     */
+    protected function getAllFromEnv(): array
+    {
+        $values = [];
+
+        // Read the contents of the .env file
+        $envContents = file_get_contents(base_path('.env'));
+
+        // Match all key-value pairs using regular expression
+        preg_match_all('/^(?!#)([^\s=]+)=(.*)$/m', $envContents, $matches, PREG_SET_ORDER);
+
+        // Iterate over matched pairs and populate the $values array
+        foreach ($matches as $match) {
+            $values[$match[1]] = $match[2];
+        }
+
+        return $values;
+    }
+
+
     /**
      * Set values in the environment for the specified keys.
      *

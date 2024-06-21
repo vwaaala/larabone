@@ -1,8 +1,8 @@
 @extends('layouts.app', ['pageName' => config('pages.roles.create')])
 @section('content')
-    <div class="card">
+    <div class="card p-3">
         <div class="card-header">
-            <h5 class="card-title">{{ __('pages.roles.title_singular') }} {{ __('global.create') }}</h5>
+            <h4 class="mb-0">{{ __('pages.roles.title_singular') }} {{ __('global.create') }}</h4>
         </div>
         <div class="card-body">
             <form method="POST" action="{{ route('roles.store') }}">

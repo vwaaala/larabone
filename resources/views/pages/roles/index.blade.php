@@ -1,7 +1,7 @@
 @extends('layouts.app', ['pageName' => 'roles.index'])
 @section('content')
     @can('role_show')
-        <div class="card mt-2">
+        <div class="card mt-2 p-3">
             <div class="card-header">
                 <div class="d-flex justify-content-between align-items-center">
                     <h4 class="mb-0">{{ __('pages.roles.title') }}</h4>
@@ -16,7 +16,7 @@
                 <table class="table table-striped table-bordered">
                     <thead>
                     <tr>
-                        <th scope="col">Id</th>
+                        <th scope="col">#</th>
                         <th scope="col">{{ __('pages.roles.title_singular') }}</th>
                         <th scope="col" style="width: 250px;">{{ __('global.action') }}</th>
                     </tr>
@@ -41,7 +41,7 @@
                                         </a>
                                     @endcan
                                     @can('role_delete')
-                                        <a href="#" onclick="confirmDelete('{{ route('roles.destroy', $role->id) }}')"
+                                        <a href="#" onclick="confirmDelete('{{ route('roles.destroy', $role->id) }}', 'DELETE', {color: 'danger', text: 'Yes, delete it!'})"
                                            class="btn btn-danger btn-sm"
                                            title="{{ __('global.delete') }}">
                                             <i class="bi bi-trash"></i>

@@ -2,9 +2,9 @@
 @section('content')
     @can('role_show')
         <!-- User DataTable -->
-        <div class="card">
+        <div class="card p-3">
             <div class="card-header d-flex justify-content-between">
-                <span>{{ $role->name }}</span>
+                <h4 class="mb-0">{{ $role->name }}</h4>
             </div>
 
             <div class="card-body">
@@ -12,7 +12,7 @@
                     <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">{{ __('pages.roles.title') }}</th>
+                        <th scope="col">{{ __('pages.permissions.title_singular') }}</th>
                     </tr>
                     </thead>
                     <tbody>

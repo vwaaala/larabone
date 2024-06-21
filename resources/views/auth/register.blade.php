@@ -2,19 +2,17 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('global.register') }}</div>
-
-                <div class="card-body">
+    <div class="text-center mt-5">
+        <div class="d-inline-block">
+            <div class="card p-4">
+                <div class="card-header d-flex justify-content-between align-items-start">{{ __('global.register') }}</div>
+                <div class="card-body text-start">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
-
                         <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('pages.users.fields.title') }}</label>
+                            <label for="name" class="col-12 col-form-label ">{{ __('pages.users.fields.title') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col-12">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                 @error('name')
@@ -26,9 +24,9 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('pages.users.fields.email') }}</label>
+                            <label for="email" class="col-12 col-form-label">{{ __('pages.users.fields.email') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col-12">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
@@ -40,9 +38,9 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('pages.users.fields.password') }}</label>
+                            <label for="password" class="col-12 col-form-label">{{ __('pages.users.fields.password') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col-12">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                 @error('password')
@@ -54,24 +52,28 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('pages.users.fields.password_confirm') }}</label>
+                            <label for="password-confirm" class="col-12 col-form-label">{{ __('pages.users.fields.password_confirm') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col-12">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
 
                         <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('global.register') }}
-                                </button>
-                                @if (Route::has('login'))
-                                    <a class="btn btn-link text-danger" href="{{ route('login') }}">
-                                        {{ __('global.ready_to_login') }}
-                                    </a>
-                                @endif
+                            <div class="col-12 offset-md-4">
+
+
                             </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-start mt-2">
+                            <button type="submit" class="btn btn-primary">
+                                {{ __('global.register') }}
+                            </button>
+                            @if (Route::has('login'))
+                                <a class="btn btn-link text-danger" href="{{ route('login') }}">
+                                    {{ __('global.ready_to_login') }}
+                                </a>
+                            @endif
                         </div>
                     </form>
                 </div>

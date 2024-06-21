@@ -4,12 +4,12 @@
         $currentRoute = request()->route()->getName();
         foreach(config('pages') as $page){
             if($page['href'] == $currentRoute){
-                $breadCrumbs[] = ['href' => $page['href'], 'text' => $page['text']];
+                $breadCrumbs[] = ['href' => $page['href'], 'text' => $page['text'], 'name' => $page['name']];
             }else{
                 foreach($page['children'] as $child){
                     if($child['href'] == $currentRoute){
-                        $breadCrumbs[] = ['href' => $page['href'], 'text' => $page['text']];
-                        $breadCrumbs[] = ['href' => $child['href'], 'text' => $child['text']];
+                        $breadCrumbs[] = ['href' => $page['href'], 'text' => $page['text'], 'name' => $page['name']];
+                        $breadCrumbs[] = ['href' => $child['href'], 'text' => $child['text'], 'name' => $page['name']];
                     }
                 }
             }
@@ -29,10 +29,10 @@
                     @foreach($breadCrumbs as $bread)
                         @if(!request()->routeIs($bread['href']))
                             <li class="breadcrumb-item">
-                                <a href="{{ route($bread['href']) }}">{{ __($bread['text']) }}</a>
+                                <a href="{{ route($bread['href']) }}">{{ __($bread['text']) }} {{ __($bread['name']) }}</a>
                             </li>
                         @else
-                            <li class="breadcrumb-item active" aria-current="page">{{ __($bread['text']) }}</li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ __($bread['text']) }} {{ __($bread['name']) }}</li>
                         @endif
                     @endforeach
                 </ol>

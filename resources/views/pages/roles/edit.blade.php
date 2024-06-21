@@ -1,9 +1,9 @@
 @extends('layouts.app', ['pageName' => config('pages.roles.edit')]) <!-- Extending the layout from the 'app.blade.php' file -->
 
 @section('content')
-    <div class="card">
+    <div class="card p-3">
         <div class="card-header">
-            <h5 class="card-title">{{ __('pages.roles.title_singular') }} {{ __('global.edit') }}</h5> <!-- Card title for basic information -->
+            <h4 class="mb-0">{{ __('pages.roles.title_singular') }} {{ __('global.edit') }}</h4> <!-- Card title for basic information -->
         </div>
         <div class="card-body">
             <!-- Form for updating users basic information -->
