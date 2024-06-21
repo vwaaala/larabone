@@ -73,5 +73,13 @@ $(function () {
             }, 200); // Adjust this value to match the duration of the fade-out effect
         }, 5000); // Delay the fade-out effect by 5000 milliseconds (5 seconds)
     }
-
+    // prevent the browser from going back to the previous URL if the current URL contains /setup
+    window.addEventListener('popstate', function(event) {
+        if (window.location.pathname.includes('/setup/')) {
+            history.pushState(null, '', window.location.href);
+        }
+    });
+    
+    history.pushState(null, '', window.location.href);
+    
 });

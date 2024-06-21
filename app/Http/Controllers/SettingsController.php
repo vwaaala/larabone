@@ -4,10 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SettingsGeneralUpdateRequest;
 use App\Traits\LaraEnvTrait;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 
 class SettingsController extends Controller
 {
@@ -24,7 +21,7 @@ class SettingsController extends Controller
     public function generalInfo(): View|\Illuminate\Foundation\Application|Factory|Application
     {
         // Get site information from environment variables
-        $keys = ['APP_NAME', 'APP_LOGO', 'APP_URL', 'DEFAULT_AVATAR', 'EMAIL_SUPPORT', 'CONTACT_NUMBER', 'STREET', 'CITY', 'COUNTRY',];
+        $keys = ['APP_NAME', 'APP_LOGO', 'APP_URL', 'DEFAULT_AVATAR', 'BUSINESS_EMAIL', 'BUSINESS_NUMBER', 'STREET', 'CITY', 'COUNTRY',];
         // Get site information from the .env file
         $packets = $this->getFromEnv($keys);
         $title = 'general';
@@ -35,10 +32,9 @@ class SettingsController extends Controller
     public function generalEdit(): View|\Illuminate\Foundation\Application|Factory|Application
     {
         // Get site information from environment variables
-        $keys = ['APP_NAME', 'APP_LOGO', 'APP_URL', 'DEFAULT_AVATAR', 'EMAIL_SUPPORT', 'CONTACT_NUMBER', 'STREET', 'CITY', 'COUNTRY',];
+        $keys = ['APP_NAME', 'APP_LOGO', 'APP_URL', 'DEFAULT_AVATAR', 'BUSINESS_EMAIL', 'BUSINESS_NUMBER', 'STREET', 'CITY', 'COUNTRY',];
         // Get site information from the .env file
         $packets = $this->getFromEnv($keys);
-
         return view('pages.settings.edit-general', compact('packets'));
     }
 
@@ -47,8 +43,8 @@ class SettingsController extends Controller
         $data = [
             'APP_NAME' =>  '"' . $request->get('name') . '"',
             'APP_URL' => '"' . $request->get('domain') . '"',
-            'EMAIL_SUPPORT' => '"' . $request->get('email') . '"',
-            'CONTACT_NUMBER' => '"' . $request->get('phone') . '"',
+            'BUSINESS_EMAIL' => '"' . $request->get('email') . '"',
+            'BUSINESS_NUMBER' => '"' . $request->get('phone') . '"',
             'STREET' => '"' . $request->get('street') . '"',
             'CITY' => '"' . $request->get('city') . '"',
             'COUNTRY' =>  '"' . $request->get('country') . '"',
@@ -75,6 +71,8 @@ class SettingsController extends Controller
         }
 
         $this->setOnEnv($data);
+        Artisan::call('config:clear');
+        Artisan::call('config:cache');
 
         return redirect()->route('settings.generalInfo')->with('success', 'Updated general info!');
     }
@@ -82,7 +80,7 @@ class SettingsController extends Controller
     public function databaseInfo(): View|\Illuminate\Foundation\Application|Factory|Application
     {
         // Get site information from environment variables
-        $keys = ['DB_CONNECTION', 'DB_HOST', 'DB_PORT', 'DB_DATABASE', 'DB_USERNAME', 'DB_PASSWORD', 'DB_PORT', 'DB_PORT', 'DB_PORT', 'DB_PORT', 'DB_PORT',];
+        $keys = ['DB_CONNECTION', 'DB_HOST', 'DB_PORT', 'DB_DATABASE', 'DB_USERNAME', 'DB_PASSWORD',];
 
         // Get site information from the .env file
         $packets = $this->getFromEnv($keys);

@@ -12,12 +12,12 @@ use App\Models\User;
 
 class SetupController extends Controller
 {
-    public function viewSetup(): View|\Illuminate\Foundation\Application|Factory|Application
+    public function viewSetup(): View|Application|Factory
     {
         return view('setup.check');
     }
 
-    public function viewStep1(): View|\Illuminate\Foundation\Application|Factory|Application
+    public function viewStep1(): View|Application|Factory
     {
         $data = array(
             "APP_NAME" => session('env.APP_NAME') ? str_replace('"', '', session('env.APP_NAME')) : str_replace('"', '', config('app.name')),
@@ -30,7 +30,7 @@ class SetupController extends Controller
     }
 
 
-    public function viewStep2(): View|\Illuminate\Foundation\Application|Factory|Application
+    public function viewStep2(): View|Application|Factory
     {
         if (config("database.default") == 'mysql') {
             $db = config('database.connections.mysql');
@@ -93,16 +93,16 @@ class SetupController extends Controller
         }
     }
 
-    public function viewStep3(): View|\Illuminate\Foundation\Application|Factory|Application
+    public function viewStep3(): View|Application|Factory
     {
         return view('setup.step3');
     }
-    public function viewStep4(): View|\Illuminate\Foundation\Application|Factory|Application
+    public function viewStep4(): View|Application|Factory
     {
         return view('setup.step4');
     }
 
-    public function viewStep5(): View|\Illuminate\Foundation\Application|Factory|Application
+    public function viewStep5(): View|Application|Factory
     {
         if (session('env.DB_CONNECTION') == null) {
             $dbtype = config("database.default");
@@ -113,6 +113,8 @@ class SetupController extends Controller
         if ($dbtype == 'mysql') {
             $db = config('database.connections.mysql');
 
+        } else{
+            $db = config('database.connections.pgsql');
         }
 
         $dbDatabase = session('env.DB_DATABASE');
@@ -142,7 +144,7 @@ class SetupController extends Controller
         return view('setup.step5', compact('data'));
     }
 
-    public function lastStep(): View|\Illuminate\Foundation\Application|Factory|string|Application
+    public function lastStep(): View|Application|Factory|string
     {
         ini_set('max_execution_time', 600); //600 seconds = 10 minutes
         $super_admin = [
@@ -168,11 +170,19 @@ class SetupController extends Controller
                 'DB_USERNAME' => session('env.DB_USERNAME'),
                 'DB_PASSWORD' => session('env.DB_PASSWORD'),
 
-                'EMAIL_SUPPORT' => session('env.EMAIL_SUPPORT'),
-                'CONTACT_NUMBER' => session('env.PHONE_FIRST'),
-                'STREET' => session('env.STREET'),
-                'CITY' => session('env.CITY'),
-                'COUNTRY' => session('env.COUNTRY'),
+                'BUSINESS_EMAIL' => session('env.EMAIL_CONTACT'),
+                'BUSINESS_NUMBER' => session('env.CONTACT_NUMBER'),
+                'BUSINESS_STREET' => session('env.STREET'),
+                'BUSINESS_CITY' => session('env.CITY'),
+                'BUSINESS_COUNTRY' => session('env.COUNTRY'),
+
+                'MAIL_MAILER' => session('env.MAIL_MAILER'),
+                'MAIL_HOST' => session('env.MAIL_HOST'),
+                'MAIL_PORT' => session('env.MAIL_PORT'),
+                'MAIL_USERNAME' => session('env.MAIL_USERNAME'),
+                'MAIL_PASSWORD' => session('env.MAIL_PASSWORD'),
+                'MAIL_ENCRYPTION' => session('env.MAIL_ENCRYPTION'),
+                'MAIL_FROM_ADDRESS' => session('env.MAIL_FROM'),
             ]);
 
             Artisan::call('migrate:fresh --force --seed');
@@ -182,7 +192,6 @@ class SetupController extends Controller
             Storage::disk('public')->put('installed', 'Contents');
 
             Artisan::call('optimize');
-
 
         } catch (\Exception $e) {
 
@@ -218,22 +227,11 @@ class SetupController extends Controller
             $request->session()->put('env.APP_KEY', $request->app_key);
         }
 
-        $request->session()->put('env.EMAIL_CAREER', $request->career_email);
-        $request->session()->put('env.EMAIL_SUPPORT', $request->support_email);
-        $request->session()->put('env.EMAIL_INFO', $request->info_email);
-        $request->session()->put('env.EMAIL_SALES', $request->sales_email);
-        $request->session()->put('env.PHONE_FIRST', $request->phone_first);
-        $request->session()->put('env.PHONE_SECOND', $request->phone_second);
-        $request->session()->put('env.PHONE_THIRD', $request->phone_third);
+        $request->session()->put('env.EMAIL_CONTACT', $request->support_email);
+        $request->session()->put('env.CONTACT_NUMBER', $request->phone_first);
         $request->session()->put('env.STREET', '"'.$request->street.'"');
         $request->session()->put('env.CITY', $request->city);
         $request->session()->put('env.COUNTRY', $request->country);
-        $request->session()->put('env.WHATSAPP', $request->whatsapp);
-        $request->session()->put('env.FACEBOOK_PAGE', $request->facebook);
-        $request->session()->put('env.INSTAGRAM_PAGE', $request->instagram);
-        $request->session()->put('env.LINKEDIN_PAGE', $request->linkedin);
-        $request->session()->put('env.TWITTER_PAGE', $request->twitter);
-        $request->session()->put('env.YOUTUBE_CHANNEL', $request->youtube);
 
         return $this->viewStep2();
     }

@@ -55,19 +55,19 @@
 
                     <div class="row mb-2">
                         <div class="col-md-6">
-                            <label class="form-label text-muted" for="email">Support email <span class="text-danger">*</span></label>
+                            <label class="form-label text-muted" for="email">Business email <span class="text-danger">*</span></label>
                             <span class="text-primary" data-bs-toggle="tooltip" title="This email will be used for support channel" aria-hidden="true"><i class="bi bi-question-circle"></i></span>
                             <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email"
-                            value="{{ str_replace('"', '', $packets['EMAIL_SUPPORT']) }}" autofocus required>
+                            value="{{ str_replace('"', '', $packets['BUSINESS_EMAIL']) }}" autofocus required>
                             @error('email')
                             <div class="invalid-feedback">{{ $message }}</div> <!-- Error message for support email input -->
                         @enderror
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label text-muted" for="phone">Site Contact Number <span class="text-danger">*</span></label>
+                            <label class="form-label text-muted" for="phone">Business Number <span class="text-danger">*</span></label>
                             <span class="text-primary" data-bs-toggle="tooltip" title="This number will be used contact number" aria-hidden="true"><i class="bi bi-question-circle"></i></span>
                             <input type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone"
-                            value="{{ str_replace('"', '', $packets['CONTACT_NUMBER']) }}" autofocus required>
+                            value="{{ str_replace('"', '', $packets['BUSINESS_NUMBER']) }}" autofocus required>
                             @error('phone')
                             <div class="invalid-feedback">{{ $message }}</div> <!-- Error message for name input -->
                         @enderror

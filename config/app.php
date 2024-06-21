@@ -166,14 +166,12 @@ return [
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-         App\Providers\BroadcastServiceProvider::class,
+        App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Spatie\Menu\Laravel\MenuServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
-        App\Providers\MenuServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
-        Bunker\SupportTicket\TicketServiceProvider::class
+        Bunker\SupportTicket\TicketServiceProvider::class,
     ])->toArray(),
 
     /*

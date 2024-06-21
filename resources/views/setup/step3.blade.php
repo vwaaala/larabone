@@ -8,6 +8,7 @@
                 <li class="active"><a href="/setup">Settings</a></li>
                 <li class="active"><a href="/setup/step-2">Database</a></li>
                 <li class="active"><a href="/setup/step-3">Admin</a></li>
+                <li>Mail</li>
                 <li>Summary</li>
             </ul>
         </div>
@@ -47,9 +48,8 @@
                             Step </a>
                     </div>
                     <div class="col-6 col-md-6 d-flex justify-content-end">
-                        <button type="submit" id="next" class="btn btn-outline-primary mt-3 float-md-right"> Next Step
-                            <i
-                                class="bi bi-arrow-right"></i></button>
+                        <button type="submit" id="next" class="btn btn-outline-primary mt-3 float-md-right">
+                            <i class="bi bi-arrow-right"></i> Next Step</button>
                     </div>
                 </div>
             </form>

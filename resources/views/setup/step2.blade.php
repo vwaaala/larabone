@@ -7,6 +7,7 @@
                 <li class="active"><a href="{{ route('viewStep1') }}">Settings</a></li>
                 <li class="active"><a href="{{ route('viewStep2') }}">Database</a></li>
                 <li>Admin</li>
+                <li>Mail</li>
                 <li>Summary</li>
             </ul>
         </div>
@@ -23,6 +24,7 @@
                     </span>
                     <select class="form-select" id="db_connection" name="db_connection">
                         <option value="mysql">MySQL</option>
+                        <option value="pgsql">PostgreSQL</option>
                     </select>
 
                     <label for="db_host" class="form-label mt-3" id="db_host_label">DB Host</label>
