@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
@@ -32,7 +29,7 @@ class RoleController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Role $role): View|\Illuminate\Foundation\Application|Factory|Application
+    public function index(Role $role): View
     {
         // Return view with paginated roles
         return view('pages.roles.index', ['roles' => $role->orderBy('id', 'ASC')->paginate(10)]);
@@ -41,7 +38,7 @@ class RoleController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): \Illuminate\Http\RedirectResponse
     {
         // Store a new role and sync its permissions
         $role = Role::create(['name' => $request->name]);
@@ -65,7 +62,7 @@ class RoleController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Role $role): View|\Illuminate\Foundation\Application|Factory|Application
+    public function show(Role $role): View
     {
         // Show role details with its associated permissions
         $rolePermissions = $role->permissions()->select('name')->get();
@@ -76,7 +73,7 @@ class RoleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Role $role)
+    public function edit(Role $role): View
     {
         // Prevent editing of the 'Super Admin' role
         if($role->name=='Super Admin'){
@@ -107,7 +104,7 @@ class RoleController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Role $role)
+    public function destroy(Role $role): \Illuminate\Http\RedirectResponse
     {
         // Prevent deletion of 'Super Admin' role, self-assigned role, or roles with associated users
         if ($role->name == 'Super Admin') {

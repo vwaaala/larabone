@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 
 /**
@@ -27,9 +26,9 @@ class DashboardController extends Controller
      * Show the application dashboard.
      *
      * @param Request $request The HTTP request object.
-     * @return Renderable The renderable view representing the application dashboard.
+     * @return view The view representing the application dashboard.
      */
-    public function index(Request $request): Renderable
+    public function index(Request $request): \Illuminate\Contracts\View\View
     {
         // Initialize the packet array
         $packet = [];

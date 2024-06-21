@@ -12,12 +12,12 @@ use App\Models\User;
 
 class SetupController extends Controller
 {
-    public function viewSetup(): View|Application|Factory
+    public function viewSetup(): View
     {
         return view('setup.check');
     }
 
-    public function viewStep1(): View|Application|Factory
+    public function viewStep1(): View
     {
         $data = array(
             "APP_NAME" => session('env.APP_NAME') ? str_replace('"', '', session('env.APP_NAME')) : str_replace('"', '', config('app.name')),
@@ -30,7 +30,7 @@ class SetupController extends Controller
     }
 
 
-    public function viewStep2(): View|Application|Factory
+    public function viewStep2(): View
     {
         if (config("database.default") == 'mysql') {
             $db = config('database.connections.mysql');
@@ -93,16 +93,16 @@ class SetupController extends Controller
         }
     }
 
-    public function viewStep3(): View|Application|Factory
+    public function viewStep3(): View
     {
         return view('setup.step3');
     }
-    public function viewStep4(): View|Application|Factory
+    public function viewStep4(): View
     {
         return view('setup.step4');
     }
 
-    public function viewStep5(): View|Application|Factory
+    public function viewStep5(): View
     {
         if (session('env.DB_CONNECTION') == null) {
             $dbtype = config("database.default");
@@ -144,7 +144,7 @@ class SetupController extends Controller
         return view('setup.step5', compact('data'));
     }
 
-    public function lastStep(): View|Application|Factory|string
+    public function lastStep(): Application|Factory|string
     {
         ini_set('max_execution_time', 600); //600 seconds = 10 minutes
         $super_admin = [

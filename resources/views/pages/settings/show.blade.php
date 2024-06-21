@@ -15,17 +15,9 @@
             </div>
             <div class="card-body">
                 <table class="table table-bordered border-primary">
-                    <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">{{ __('global.name') }}</th>
-                        <th scope="col">{{ __('global.description') }}</th>
-                    </tr>
-                    </thead>
                     <tbody>
                     @foreach($packets as $key => $value)
                         <tr>
-                            <th scope="row">{{ $loop->index + 1 }}</th>
                             <td>{{ str_replace('_', ' ', $key) }}</td>
                             <td>{{ str_replace('"', '', $value) }}</td>
                         </tr>

@@ -35,7 +35,7 @@ class UserController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(): View|\Illuminate\Foundation\Application|Factory|Application
+    public function create(): View
     {
         if(auth()->user()->hasRole('Super Admin')){
             $roles = Role::all()->pluck('name');
@@ -89,7 +89,7 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(User $user): Factory|\Illuminate\Foundation\Application|View|Application|\Illuminate\Http\RedirectResponse
+    public function show(User $user): View|\Illuminate\Http\RedirectResponse
     {
         if(auth()->user()->hasPermissionTo('user_show') || (auth()->user()->hasPermissionTo('user_access') && auth()->user()->id == $user->id)){
             return view('pages.users.view', compact('user'));
@@ -100,7 +100,7 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $user): View|\Illuminate\Foundation\Application|Factory|Application
+    public function edit(User $user): View
     {
         if(auth()->user()->id != $user->id && !auth()->user()->hasPermissionTo('user_edit')){
             abort(403, 'You are not authorized');
