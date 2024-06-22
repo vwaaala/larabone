@@ -1,12 +1,6 @@
 <?php
 
 return [
-    'User' => 'User',
-    'Users' => 'Users',
-    'Role' => 'Role',
-    'Roles' => 'Roles',
-    'Permission' => 'Permission',
-    'Permissions' => 'Permissions',
     'update' => 'Update',
     'create' => 'Create',
     'id' => 'ID',
@@ -20,7 +14,7 @@ return [
     'reset_password' => 'Reset Password',
     'send_password' => 'Send Password Reset Link',
     'save' => 'Save',
-    'forgot_password' => 'Forgot your password?',
+    'forgot_password' => 'Forgot your password?',,
     'name' => 'Name',
     'freshVerificationLink' => 'A fresh verification link has been sent to your email address.',
     'checkVerificationLink' => 'Before proceeding, please check your email for a verification link.',

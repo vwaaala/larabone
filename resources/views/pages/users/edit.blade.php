@@ -7,7 +7,7 @@
             <div class="col-lg-6 col-md-12 col-12">
                 <div class="card p-3">
                     <div class="card-header">
-                        <h4 class="mb-0">{{ __('global.edit') }} {{ __('pages.users.title_singular') }}</h4> <!-- Card title for basic information -->
+                        <h4 class="mb-0">{{ __('global.edit') }} {{ __('global.User') }}</h4> <!-- Card title for basic information -->
                     </div>
                     <div class="card-body">
                         <!-- Form for updating users basic information -->
@@ -18,7 +18,7 @@
                             <div class="row">
                                 <div class="col-12 mb-2">
                                     <!-- Input field for user's name -->
-                                    <label for="name" class="form-label">{{ __('pages.users.fields.title') }} <span class="text-danger">*</span></label>
+                                    <label for="name" class="form-label">{{ __('global.name') }} <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
                                            name="name" value="{{ $user->name }}" required>
                                     @error('name')
@@ -28,11 +28,9 @@
 
                                 <div class="col-12 mb-2">
                                     <!-- Input field for user's email (disabled) -->
-                                    <label for="email" class="form-label">{{ __('pages.users.fields.email') }}</label>
+                                    <label for="email" class="form-label">{{ __('global.email') }}</label>
                                     <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
                                            value="{{ $user->email }}" disabled>
-                                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
-                                    </div>
                                     @error('email')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                     <!-- Error message for email input -->
@@ -64,7 +62,7 @@
                                     @canany(['user_create', 'user_delete'])
                                         <div class="col-6 mb-2">
                                             <!-- Dropdown for selecting user's roles -->
-                                            <label for="roleSelect" class="form-label">{{ __('pages.users.fields.roles') }} <span
+                                            <label for="roleSelect" class="form-label">{{ __('global.Role') }} <span
                                                     class="text-danger">*</span></label>
                                             <select class="form-select @error('roles') is-invalid @enderror" id="roleSelect"
                                                     name="role">
@@ -86,13 +84,9 @@
                                             <select class="form-select @error('status') is-invalid @enderror"
                                                     id="statusSelect"
                                                     name="status">
-                                                @foreach(['pending', 'active', 'inactive', 'banned'] as $value)
-                                                        <?php
-                                                        $isSelected = ($user->status == $value) ? 'selected' : '';
-                                                        ?>
-                                                    <option
-                                                        value="{{ $value }}" {{ $isSelected }}>{{ ucfirst($value) }}</option>
-                                                @endforeach
+                                                    <option value="1" {{ ($user->status == 1) ? 'selected' : '' }}>{{ __('global.Active') }}</option>
+                                                    <option value="0" {{ ($user->status == 0) ? 'selected' : '' }}>{{ __('global.Inactive') }}</option>
+                                        </select>
                                             </select>
                                             @error('status')
                                             <div class="invalid-feedback">{{ $message }}</div>
@@ -103,7 +97,7 @@
                                 @endif
                                 <div class="col-12 mt-2">
                                     <!-- Button to submit users update -->
-                                    <button type="submit" class="btn btn-primary">{{ __('global.update') }} {{ __('pages.users.title_singular') }}</button>
+                                    <button type="submit" class="btn btn-primary">{{ __('global.update') }} {{ __('global.User') }}</button>
                                 </div>
                             </div>
                         </form>
@@ -114,7 +108,7 @@
             <div class="col-lg-6 col-md-12 col-12">
                 <div class="card p-3">
                     <div class="card-header">
-                        <h5 class="card-title">{{ __('global.update') }} {{ __('pages.users.title_singular') }} {{ __('pages.users.fields.password') }}</h5> <!-- Card title for updating password -->
+                        <h5 class="card-title">{{ __('global.update') }} {{ __('global.password') }}</h5> <!-- Card title for updating password -->
                     </div>
                     <div class="card-body">
                         <!-- Form for updating user's password -->
@@ -124,20 +118,20 @@
 
                             <div class="mb-3">
                                 <!-- Input field for new password -->
-                                <label for="password" class="form-label">{{ __('pages.users.fields.password') }}</label>
+                                <label for="password" class="form-label">{{ __('global.password') }}</label>
                                 <input type="password" class="form-control" id="password" name="password" required>
                             </div>
 
                             <div class="mb-3">
                                 <!-- Input field for confirming new password -->
-                                <label for="password_confirmation" class="form-label">{{ __('pages.users.fields.password_confirm') }}</label>
+                                <label for="password_confirmation" class="form-label">{{ __('global.password_confirm') }}</label>
                                 <input type="password" class="form-control" id="password_confirmation"
                                        name="password_confirmation"
                                        required>
                             </div>
 
                             <!-- Button to submit password update -->
-                            <button type="submit" class="btn btn-primary">{{ __('global.update') }} {{ __('pages.users.fields.password') }}</button>
+                            <button type="submit" class="btn btn-primary">{{ __('global.update') }} {{ __('global.password') }}</button>
                         </form>
                     </div>
                 </div>

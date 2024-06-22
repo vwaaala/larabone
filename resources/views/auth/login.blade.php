@@ -16,7 +16,7 @@
 
                             <div class="row mb-3">
                                 <label for="email"
-                                       class="col-12 col-form-label">{{ __('pages.users.fields.email') }}</label>
+                                       class="col-12 col-form-label">{{ __('global.email') }}</label>
 
                                 <div class="col-12">
                                     <input id="email" type="email"
@@ -33,7 +33,7 @@
 
                             <div class="row mb-3">
                                 <label for="password"
-                                       class="col-12 col-form-label">{{ __('pages.users.fields.password') }}</label>
+                                       class="col-12 col-form-label">{{ __('global.password') }}</label>
 
                                 <div class="col-12">
                                     <input id="password" type="password"

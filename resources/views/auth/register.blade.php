@@ -10,7 +10,7 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
                         <div class="row mb-3">
-                            <label for="name" class="col-12 col-form-label ">{{ __('pages.users.fields.title') }}</label>
+                            <label for="name" class="col-12 col-form-label ">{{ __('global.name') }}</label>
 
                             <div class="col-12">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -24,7 +24,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="email" class="col-12 col-form-label">{{ __('pages.users.fields.email') }}</label>
+                            <label for="email" class="col-12 col-form-label">{{ __('global.email') }}</label>
 
                             <div class="col-12">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -38,7 +38,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="password" class="col-12 col-form-label">{{ __('pages.users.fields.password') }}</label>
+                            <label for="password" class="col-12 col-form-label">{{ __('global.password') }}</label>
 
                             <div class="col-12">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
@@ -52,7 +52,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="password-confirm" class="col-12 col-form-label">{{ __('pages.users.fields.password_confirm') }}</label>
+                            <label for="password-confirm" class="col-12 col-form-label">{{ __('global.password_confirm') }}</label>
 
                             <div class="col-12">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">

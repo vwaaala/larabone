@@ -24,13 +24,13 @@
 
     @can('user_delete')
         @if(request()->has('show_deleted'))
-            <a onclick="confirmDelete('{{ route('users.forceDelete', $id) }}', 'DELETE', { color : 'danger', text: 'Yes, permanently delete it!'})"
+            <a onclick="confirmDelete('{{ route('users.forceDelete', $id) }}', 'DELETE', { color : 'danger', text: '{{ __('global.Yes, permanently delete it!')}}'})"
                href="#" class="btn btn-sm btn-danger"
                title="{{ __('global.delete') }}">
                 <span class="bi bi-trash"></span> <!-- Bootstrap arrow-return-left icon -->
             </a>
         @else
-            <a onclick="confirmDelete('{{ route('users.destroy', $id) }}', 'DELETE', { color : 'warning', text: 'Yes, move to trash!'})"
+            <a onclick="confirmDelete('{{ route('users.destroy', $id) }}', 'DELETE', { color : 'warning', text: '{{ __('global.Yes, move to trash!')}}'})"
                href="#" class="btn btn-sm btn-danger"
                title="{{ __('global.delete') }}">
                 <span class="bi bi-trash"></span> <!-- Bootstrap arrow-return-left icon -->

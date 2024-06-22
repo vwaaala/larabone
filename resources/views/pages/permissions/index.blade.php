@@ -23,7 +23,7 @@
                 <tr>
                     <th scope="col">#</th>
                     <!-- Column headers -->
-                    <th scope="col">{{ __('pages.permissions.title') }} {{ __('pages.permissions.fields.title') }}</th>
+                    <th scope="col">{{ __('global.Permissions') }} {{ __('global.list') }}</th>
                 </tr>
                 </thead>
                 <tbody>

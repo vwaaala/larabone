@@ -3,12 +3,12 @@
 return [
     'userManagement' => [
         'header' => 'USER MANAGEMENT',
-        'title' => 'Users',
-        'title_singular' => 'User',
+        'title' => 'glonal.Users',
+        'title_singular' => 'global.User',
     ],
     'permissions' => [
-        'title' => 'Permissions',
-        'title_singular' => 'Permission',
+        'title' => 'global.Permissions',
+        'title_singular' => 'global.Permission',
         // 'fields' => [
         //     'id' => 'ID',
         //     'id_helper' => '',
@@ -23,8 +23,8 @@ return [
         // ],
     ],
     'roles' => [
-        'title' => 'Roles',
-        'title_singular' => 'Role',
+        'title' => 'global.Roles',
+        'title_singular' => 'global.Role',
         'not_found' => 'No Role Found!',
         // 'fields' => [
         //     'id' => 'ID',
@@ -42,8 +42,8 @@ return [
         // ],
     ],
     'users' => [
-        'title' => 'Users',
-        'title_singular' => 'User',
+        'title' => 'global.Users',
+        'title_singular' => 'global.User',
         // 'fields' => [
         //     'id' => 'ID',
         //     'id_helper' => '',
@@ -69,15 +69,15 @@ return [
         // ],
     ],
     'settings' => [
-        'title' => 'Settings',
-        'general' => 'General',
-        'database' => 'Database',
-        'debug' => 'Debug',
-        'log' => 'Log',
-        'mail' => 'Mail',
+        'title' => 'global.Settings',
+        'general' => 'global.General',
+        'database' => 'global.Database',
+        'debug' => 'global.Debug',
+        'log' => 'global.Log',
+        'mail' => 'global.Mail',
     ],
     'dashboard' => [
-        'title' => 'Dashboard',
-        'title_singular' => 'Dashboard',
+        'title' => 'global.Dashboard',
+        'title_singular' => 'global.Dashboard',
     ]
 ];

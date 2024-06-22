@@ -11,9 +11,9 @@
 
                     <div class="row">
                         <div class="col-6 mb-2">
-                            <label for="name" class="form-label">{{ __('pages.users.fields.title') }} <span
+                            <label for="name" class="form-label">{{ __('global.name') }} <span
                                     class="text-danger">*</span></label>
-                            <span class="tip" title="Full name of the user">
+                            <span class="tip" title="{{ __('global.Full name of the user')}}">
                                 <i class="bi bi-question-circle"></i>
                             </span>
                             <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
@@ -24,22 +24,21 @@
                         </div>
 
                         <div class="col-6 mb-2">
-                            <label for="email" class="form-label">{{ __('pages.users.fields.email') }} <span
+                            <label for="email" class="form-label">{{ __('global.email') }} <span
                                     class="text-danger">*</span></label>
-                            <span class="tip" title="Email of user">
+                            <span class="tip" title="{{ __('global.email') }}">
                                 <i class="bi bi-question-circle"></i>
                             </span>
                             <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
                                    name="email" required>
-                            <div id="emailHelp" class="form-text">{{ __('pages.users.fields.email_helper') }}</div>
                             @error('email')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="col-6 mb-2">
-                            <label for="password" class="form-label">{{ __('pages.users.fields.password') }} <span
+                            <label for="password" class="form-label">{{ __('global.password') }} <span
                                     class="text-danger">*</span></label>
-                            <span class="tip" title="Minimum 6 digits">
+                            <span class="tip" title="{{ __('global.Minimum 6 digits')}}">
                                 <i class="bi bi-question-circle"></i>
                             </span>
                             <input type="password" class="form-control @error('password') is-invalid @enderror"
@@ -50,7 +49,7 @@
                         </div>
                         <div class="col-6 mb-2">
                             <label for="password_confirmation"
-                                   class="form-label">{{ __('pages.users.fields.password_confirm') }} <span
+                                   class="form-label">{{ __('global.password_confirm') }} <span
                                     class="text-danger">*</span></label>
                             <span class="tip" title="Password confirmation">
                                 <i class="bi bi-question-circle"></i>
@@ -63,9 +62,9 @@
                             @enderror
                         </div>
                         <div class="col-6 mb-2">
-                            <label for="roleSelect" class="form-label">{{ __('pages.users.fields.roles') }} <span
+                            <label for="roleSelect" class="form-label">{{ __('pages.role.title_singular') }} <span
                                     class="text-danger">*</span></label>
-                            <span class="tip" title="Assign role for this user">
+                            <span class="tip" title="{{ __('global.Assign role for this user')}}">
                                 <i class="bi bi-question-circle"></i>
                             </span>
                             <select class="form-select @error('roles') is-invalid @enderror" id="roleSelect"
@@ -82,15 +81,13 @@
                         <div class="col-6 mb-2">
                             <label for="statusSelect" class="form-label">{{ __('global.status') }} <span
                                     class="text-danger">*</span></label>
-                            <span class="tip" title="Give user a status">
+                            <span class="tip" title="{{ __('global.Inactive users are restricted from access')}}">
                                 <i class="bi bi-question-circle"></i>
                             </span>
                             <select class="form-select @error('status') is-invalid @enderror" id="statusSelect"
                                     name="status">
-                                <option value="pending">Pending</option>
-                                <option value="active">Active</option>
-                                <option value="inactive">Inactive</option>
-                                <option value="banned">Banned</option>
+                                <option value="1">{{ __('global.Active') }}</option>
+                                <option value="0">{{ __('global.Inactive') }}</option>
                             </select>
                             @error('status')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -98,7 +95,7 @@
                         </div>
                         <div class="col-12">
                             <label for="avatar" class="form-label">{{ __('global.photo') }}</label>
-                            <span class="tip" title="Maximum 2mb and square like 500x500">
+                            <span class="tip" title="{{ __('global.Image files only') }}">
                                 <i class="bi bi-question-circle"></i>
                             </span>
                             <input type="file" class="form-control" id="avatar" name="avatar">

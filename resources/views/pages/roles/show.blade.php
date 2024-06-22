@@ -24,7 +24,7 @@
                     @empty
                         <td colspan="3">
                         <span class="text-danger">
-                            <strong>{{ __('pages.roles.not_found') }}</strong>
+                            <strong>{{ __('global.notfound') }}</strong>
                         </span>
                         </td>
                     @endforelse

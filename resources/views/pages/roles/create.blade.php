@@ -9,7 +9,7 @@
                 @csrf
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12">
-                        <label for="name" class="form-label">{{ __('pages.roles.fields.title') }} <span
+                        <label for="name" class="form-label">{{ __('global.name') }} <span
                                 class="text-danger">*</span></label>
                         <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
                                name="name" required>

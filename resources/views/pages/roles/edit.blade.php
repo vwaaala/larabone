@@ -14,7 +14,7 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-12 col-12">
                         <!-- Input field for users's name -->
-                        <label for="name" class="form-label">{{ __('pages.roles.fields.title') }} <span class="text-danger">*</span></label>
+                        <label for="name" class="form-label">{{ __('global.name') }} <span class="text-danger">*</span></label>
                         <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
                                name="name" value="{{ $role->name }}" required>
                         @error('name')
